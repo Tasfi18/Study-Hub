@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Edit Profile - StudyHub</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;900&amp;family=Noto+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2b4bee",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101322",
+                        "card-light": "#ffffff",
+                        "card-dark": "#1a1d2d",
+                        "input-light": "#f0f1f4",
+                        "input-dark": "#252836",
+                        "text-main-light": "#111218",
+                        "text-main-dark": "#ffffff",
+                        "text-sec-light": "#616889",
+                        "text-sec-dark": "#949bb3",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen flex flex-col font-display text-text-main-light dark:text-text-main-dark overflow-x-hidden">
+<!-- TopNavBar -->
+<header class="sticky top-0 z-50 bg-card-light dark:bg-card-dark border-b border-input-light dark:border-input-dark px-4 sm:px-10 py-3">
+<div class="max-w-7xl mx-auto flex items-center justify-between whitespace-nowrap">
+<div class="flex items-center gap-4 lg:gap-8">
+<div class="flex items-center gap-4 text-primary">
+<div class="size-8 text-primary">
+<svg class="w-full h-full" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M36.7273 44C33.9891 44 31.6043 39.8386 30.3636 33.69C29.123 39.8386 26.7382 44 24 44C21.2618 44 18.877 39.8386 17.6364 33.69C16.3957 39.8386 14.0109 44 11.2727 44C7.25611 44 4 35.0457 4 24C4 12.9543 7.25611 4 11.2727 4C14.0109 4 16.3957 8.16144 17.6364 14.31C18.877 8.16144 21.2618 4 24 4C26.7382 4 29.123 8.16144 30.3636 14.31C31.6043 8.16144 33.9891 4 36.7273 4C40.7439 4 44 12.9543 44 24C44 35.0457 40.7439 44 36.7273 44Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-text-main-light dark:text-white text-xl font-bold leading-tight tracking-tight">StudyHub</h2>
+</div>
+<label class="hidden md:flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-text-sec-light dark:text-text-sec-dark flex border-none bg-input-light dark:bg-input-dark items-center justify-center pl-4 rounded-l-lg border-r-0">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-text-main-light dark:text-white focus:outline-0 focus:ring-0 border-none bg-input-light dark:bg-input-dark focus:border-none h-full placeholder:text-text-sec-light dark:placeholder:text-text-sec-dark px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal" placeholder="Search resources..." value=""/>
+</div>
+</label>
+</div>
+<div class="flex flex-1 justify-end gap-4 lg:gap-8">
+<div class="hidden lg:flex items-center gap-8">
+<a class="text-text-main-light dark:text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-text-main-light dark:text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Courses</a>
+<a class="text-text-main-light dark:text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Community</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-text-main-light dark:text-white lg:hidden">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-transparent hover:border-primary cursor-pointer transition-all" data-alt="User profile avatar showing a smiling student" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDE7d0z-KRRyKTsI5rJkA-uxH-GGzMeRkGlFrDoV_3JTXm0KtAm2SVnxP7YCi8jYgnFBZUJ8U64E3UQ6us7njnfScotROmJIp2YHsrC-_oUb5XUftRe4l9vc7IiZOsDpTYEeCyAOzemC2xWtcrv_6-DdnlRbGY3akT2hZimQjvYC0U-QaCiXPw_lRf0x2h_KJnr_vwTLQjOqEcSYCbRnFQvMku6bBn_ohFs24zsb9Y8voybtNFHHOKvXA2hm0mx6fl5y-vnzOywP9g");'></div>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Layout -->
+<main class="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-10 py-8">
+<!-- Breadcrumbs -->
+<nav class="mb-6 flex flex-wrap gap-2 items-center text-sm">
+<a class="text-text-sec-light dark:text-text-sec-dark font-medium hover:text-primary transition-colors" href="#">Home</a>
+<span class="text-text-sec-light dark:text-text-sec-dark font-medium">/</span>
+<a class="text-text-sec-light dark:text-text-sec-dark font-medium hover:text-primary transition-colors" href="#">Settings</a>
+<span class="text-text-sec-light dark:text-text-sec-dark font-medium">/</span>
+<span class="text-text-main-light dark:text-white font-medium">Edit Profile</span>
+</nav>
+<!-- Page Heading -->
+<div class="mb-8">
+<h1 class="text-text-main-light dark:text-white text-3xl md:text-4xl font-bold tracking-tight mb-2">Edit Profile</h1>
+<p class="text-text-sec-light dark:text-text-sec-dark text-base">Manage your personal information, security settings, and preferences.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Side Navigation -->
+<aside class="lg:col-span-3">
+<div class="sticky top-24 bg-card-light dark:bg-card-dark rounded-xl shadow-sm border border-input-light dark:border-input-dark overflow-hidden">
+<nav class="flex flex-col p-2 space-y-1">
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg bg-primary/10 text-primary font-medium" href="#general">
+<span class="material-symbols-outlined icon-fill">person</span>
+                            General Profile
+                        </a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-text-sec-light dark:text-text-sec-dark hover:bg-input-light dark:hover:bg-input-dark hover:text-text-main-light dark:hover:text-white transition-colors font-medium" href="#security">
+<span class="material-symbols-outlined">lock</span>
+                            Security
+                        </a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-text-sec-light dark:text-text-sec-dark hover:bg-input-light dark:hover:bg-input-dark hover:text-text-main-light dark:hover:text-white transition-colors font-medium" href="#notifications">
+<span class="material-symbols-outlined">notifications</span>
+                            Notifications
+                        </a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-text-sec-light dark:text-text-sec-dark hover:bg-input-light dark:hover:bg-input-dark hover:text-text-main-light dark:hover:text-white transition-colors font-medium" href="#privacy">
+<span class="material-symbols-outlined">visibility</span>
+                            Privacy
+                        </a>
+<div class="h-px bg-input-light dark:bg-input-dark my-2 mx-3"></div>
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors font-medium" href="#">
+<span class="material-symbols-outlined">logout</span>
+                            Sign Out
+                        </a>
+</nav>
+</div>
+</aside>
+<!-- Main Content Form -->
+<div class="lg:col-span-9 space-y-6">
+<!-- General Profile Section -->
+<section class="bg-card-light dark:bg-card-dark rounded-xl shadow-sm border border-input-light dark:border-input-dark p-6 md:p-8" id="general">
+<h2 class="text-xl font-bold text-text-main-light dark:text-white mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">id_card</span>
+                        Public Information
+                    </h2>
+<div class="flex flex-col md:flex-row gap-8 items-start">
+<!-- Avatar Uploader -->
+<div class="flex flex-col items-center gap-3 min-w-[120px]">
+<div class="relative group cursor-pointer">
+<div class="w-28 h-28 rounded-full bg-input-light dark:bg-input-dark bg-center bg-cover border-4 border-background-light dark:border-background-dark shadow-md" data-alt="Current profile picture of the user" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCZzUZ7-5CsPu6GE1C2KhGQoeWv0ww0CDxf1FYvx6TMlezBMIXyXvnCkv8z8bbCnVKwP6qj0hIoShyQWv-rN25ZTCz26q8HLniamdL05vAR1nfeAxOi-ALACbcUiAZQfSuBpvPau_74zkX9IxX3OMGX7yFJ41nSnJaUTjnZY2tQrgCdYefGC2HpO2CrcoyB5yRrBcFedn25MKUxXy7RK6ZbnPm1CgktQbZvsLUM0tX27IGyG0-1nvisPctOB3UtuCLz4SNkDr79WJY");'>
+</div>
+<div class="absolute inset-0 bg-black/40 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-white">edit</span>
+</div>
+<button class="absolute bottom-0 right-0 bg-primary text-white rounded-full p-1.5 shadow-md hover:bg-blue-600 transition-colors">
+<span class="material-symbols-outlined text-[18px]">photo_camera</span>
+</button>
+</div>
+<span class="text-sm font-medium text-text-sec-light dark:text-text-sec-dark">Profile Photo</span>
+</div>
+<!-- Fields -->
+<div class="flex-1 w-full grid grid-cols-1 md:grid-cols-2 gap-5">
+<div class="md:col-span-2">
+<label class="block text-sm font-medium text-text-main-light dark:text-white mb-1.5">Full Name</label>
+<input class="w-full rounded-lg bg-input-light dark:bg-input-dark border-transparent focus:border-primary focus:bg-card-light dark:focus:bg-card-dark focus:ring-0 text-text-main-light dark:text-white placeholder:text-text-sec-light dark:placeholder:text-text-sec-dark px-4 py-2.5 transition-colors" type="text" value="Alex Johnson"/>
+</div>
+<div class="md:col-span-1">
+<label class="block text-sm font-medium text-text-main-light dark:text-white mb-1.5">Email Address</label>
+<input class="w-full rounded-lg bg-input-light dark:bg-input-dark border-transparent focus:border-primary focus:bg-card-light dark:focus:bg-card-dark focus:ring-0 text-text-main-light dark:text-white placeholder:text-text-sec-light dark:placeholder:text-text-sec-dark px-4 py-2.5 transition-colors" type="email" value="alex.j@university.edu"/>
+</div>
+<div class="md:col-span-1">
+<label class="block text-sm font-medium text-text-main-light dark:text-white mb-1.5">Major / Field of Study</label>
+<input class="w-full rounded-lg bg-input-light dark:bg-input-dark border-transparent focus:border-primary focus:bg-card-light dark:focus:bg-card-dark focus:ring-0 text-text-main-light dark:text-white placeholder:text-text-sec-light dark:placeholder:text-text-sec-dark px-4 py-2.5 transition-colors" type="text" value="Computer Science"/>
+</div>
+<div class="md:col-span-2">
+<label class="block text-sm font-medium text-text-main-light dark:text-white mb-1.5">Bio</label>
+<textarea class="w-full rounded-lg bg-input-light dark:bg-input-dark border-transparent focus:border-primary focus:bg-card-light dark:focus:bg-card-dark focus:ring-0 text-text-main-light dark:text-white placeholder:text-text-sec-light dark:placeholder:text-text-sec-dark px-4 py-2.5 transition-colors resize-none" rows="4">Passionate about algorithms and open source software. Always learning new technologies.</textarea>
+<p class="text-xs text-text-sec-light dark:text-text-sec-dark mt-1 text-right">0 / 250 characters</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Security Section -->
+<section class="bg-card-light dark:bg-card-dark rounded-xl shadow-sm border border-input-light dark:border-input-dark p-6 md:p-8" id="security">
+<h2 class="text-xl font-bold text-text-main-light dark:text-white mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">security</span>
+                        Security
+                    </h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-2xl">
+<div class="md:col-span-2">
+<label class="block text-sm font-medium text-text-main-light dark:text-white mb-1.5">Current Password</label>
+<input class="w-full rounded-lg bg-input-light dark:bg-input-dark border-transparent focus:border-primary focus:bg-card-light dark:focus:bg-card-dark focus:ring-0 text-text-main-light dark:text-white placeholder:text-text-sec-light dark:placeholder:text-text-sec-dark px-4 py-2.5 transition-colors" placeholder="••••••••" type="password"/>
+</div>
+<div class="md:col-span-1">
+<label class="block text-sm font-medium text-text-main-light dark:text-white mb-1.5">New Password</label>
+<input class="w-full rounded-lg bg-input-light dark:bg-input-dark border-transparent focus:border-primary focus:bg-card-light dark:focus:bg-card-dark focus:ring-0 text-text-main-light dark:text-white placeholder:text-text-sec-light dark:placeholder:text-text-sec-dark px-4 py-2.5 transition-colors" placeholder="New password" type="password"/>
+</div>
+<div class="md:col-span-1">
+<label class="block text-sm font-medium text-text-main-light dark:text-white mb-1.5">Confirm Password</label>
+<input class="w-full rounded-lg bg-input-light dark:bg-input-dark border-transparent focus:border-primary focus:bg-card-light dark:focus:bg-card-dark focus:ring-0 text-text-main-light dark:text-white placeholder:text-text-sec-light dark:placeholder:text-text-sec-dark px-4 py-2.5 transition-colors" placeholder="Confirm password" type="password"/>
+</div>
+</div>
+</section>
+<!-- Notifications & Privacy Section -->
+<section class="bg-card-light dark:bg-card-dark rounded-xl shadow-sm border border-input-light dark:border-input-dark p-6 md:p-8" id="notifications">
+<h2 class="text-xl font-bold text-text-main-light dark:text-white mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">tune</span>
+                        Preferences
+                    </h2>
+<div class="space-y-8">
+<!-- Notifications -->
+<div>
+<h3 class="text-sm uppercase tracking-wider text-text-sec-light dark:text-text-sec-dark font-semibold mb-4">Email Notifications</h3>
+<div class="space-y-4">
+<label class="flex items-center justify-between cursor-pointer group">
+<div>
+<p class="text-text-main-light dark:text-white font-medium">Weekly Digest</p>
+<p class="text-sm text-text-sec-light dark:text-text-sec-dark">Get a summary of top study materials every Monday.</p>
+</div>
+<div class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-input-light dark:bg-input-dark rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</div>
+</label>
+<label class="flex items-center justify-between cursor-pointer group">
+<div>
+<p class="text-text-main-light dark:text-white font-medium">New Followers</p>
+<p class="text-sm text-text-sec-light dark:text-text-sec-dark">Receive an email when someone follows your profile.</p>
+</div>
+<div class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-input-light dark:bg-input-dark rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</div>
+</label>
+</div>
+</div>
+<div class="h-px bg-input-light dark:bg-input-dark w-full"></div>
+<!-- Privacy -->
+<div id="privacy">
+<h3 class="text-sm uppercase tracking-wider text-text-sec-light dark:text-text-sec-dark font-semibold mb-4">Privacy Settings</h3>
+<label class="flex items-center justify-between cursor-pointer group">
+<div>
+<p class="text-text-main-light dark:text-white font-medium">Public Course List</p>
+<p class="text-sm text-text-sec-light dark:text-text-sec-dark">Allow others to see the courses you are studying.</p>
+</div>
+<div class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-input-light dark:bg-input-dark rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</div>
+</label>
+</div>
+</div>
+</section>
+<!-- Action Bar -->
+<div class="sticky bottom-0 z-10 -mx-4 px-4 sm:-mx-10 sm:px-10 py-4 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-t border-input-light dark:border-input-dark flex items-center justify-end gap-4 lg:rounded-b-xl">
+<button class="px-6 py-2.5 rounded-lg text-text-sec-light dark:text-text-sec-dark hover:text-text-main-light dark:hover:text-white hover:bg-input-light dark:hover:bg-input-dark font-medium transition-colors">
+                        Cancel
+                    </button>
+<button class="px-8 py-2.5 rounded-lg bg-primary text-white font-medium hover:bg-blue-700 focus:ring-4 focus:ring-primary/20 transition-all shadow-lg shadow-primary/30">
+                        Save Changes
+                    </button>
+</div>
+</div>
+</div>
+</main>
+</body></html>

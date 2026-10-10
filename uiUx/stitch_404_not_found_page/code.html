@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>404 Error Page - StudyPlatform</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2b4bee",
+                        "primary-hover": "#1e3ab5",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101322",
+                        "surface-dark": "#1c1d27",
+                        "border-dark": "#282b39",
+                        "text-secondary": "#9da1b9",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "sans": ["Inter", "sans-serif"],
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display overflow-x-hidden min-h-screen flex flex-col">
+<!-- Top Navigation -->
+<header class="w-full border-b border-gray-200 dark:border-border-dark bg-white dark:bg-background-dark/80 backdrop-blur-md sticky top-0 z-50">
+<div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-16">
+<!-- Logo -->
+<div class="flex items-center gap-3">
+<div class="text-primary">
+<svg class="size-8" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M36.7273 44C33.9891 44 31.6043 39.8386 30.3636 33.69C29.123 39.8386 26.7382 44 24 44C21.2618 44 18.877 39.8386 17.6364 33.69C16.3957 39.8386 14.0109 44 11.2727 44C7.25611 44 4 35.0457 4 24C4 12.9543 7.25611 4 11.2727 4C14.0109 4 16.3957 8.16144 17.6364 14.31C18.877 8.16144 21.2618 4 24 4C26.7382 4 29.123 8.16144 30.3636 14.31C31.6043 8.16144 33.9891 4 36.7273 4C40.7439 4 44 12.9543 44 24C44 35.0457 40.7439 44 36.7273 44Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-lg font-bold tracking-tight text-slate-900 dark:text-white">StudyPlatform</h2>
+</div>
+<!-- Desktop Nav -->
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-sm font-medium text-slate-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors" href="#">Home</a>
+<a class="text-sm font-medium text-slate-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors" href="#">Subjects</a>
+<a class="text-sm font-medium text-slate-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors" href="#">Upload</a>
+<a class="text-sm font-medium text-slate-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors" href="#">Help</a>
+</nav>
+<!-- Actions -->
+<div class="flex items-center gap-4">
+<button class="hidden md:flex items-center justify-center h-10 px-5 rounded-lg bg-primary hover:bg-primary-hover text-white text-sm font-bold transition-all shadow-lg shadow-primary/20">
+                        Sign In
+                    </button>
+<!-- Mobile Menu Button -->
+<button class="md:hidden text-slate-900 dark:text-white">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow flex flex-col justify-center py-10 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+<!-- Background Ambient Glow -->
+<div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[128px] pointer-events-none"></div>
+<div class="absolute bottom-1/4 right-1/4 w-64 h-64 bg-purple-600/10 rounded-full blur-[100px] pointer-events-none"></div>
+<div class="layout-content-container max-w-[1024px] w-full mx-auto relative z-10">
+<!-- Hero Section / 404 Content -->
+<div class="@container">
+<div class="flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-20">
+<!-- Left: Text Content -->
+<div class="flex flex-col gap-6 flex-1 w-full text-center lg:text-left">
+<div class="space-y-4">
+<h1 class="text-[120px] leading-none font-black text-transparent bg-clip-text bg-gradient-to-br from-white to-gray-600 dark:from-white dark:to-gray-600 tracking-tighter opacity-90 select-none">
+                                404
+                            </h1>
+<h2 class="text-3xl font-bold text-slate-900 dark:text-white">
+                                Page Not Found
+                            </h2>
+<p class="text-slate-600 dark:text-text-secondary text-lg max-w-lg mx-auto lg:mx-0">
+                                Looks like you've wandered off the syllabus. The study material you're looking for might have been moved, deleted, or never existed.
+                            </p>
+</div>
+<!-- Search Bar -->
+<div class="w-full max-w-md mx-auto lg:mx-0 mt-4">
+<label class="relative flex items-center group">
+<span class="absolute left-4 text-text-secondary group-focus-within:text-primary transition-colors">
+<span class="material-symbols-outlined">search</span>
+</span>
+<input class="w-full h-14 pl-12 pr-4 rounded-xl bg-white dark:bg-surface-dark border border-gray-200 dark:border-border-dark focus:border-primary focus:ring-2 focus:ring-primary/20 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-text-secondary transition-all outline-none" placeholder="Try searching for 'Calculus II'..." type="text"/>
+<button class="absolute right-2 h-10 px-6 bg-primary hover:bg-primary-hover text-white rounded-lg text-sm font-bold transition-colors">
+                                    Search
+                                </button>
+</label>
+</div>
+<!-- Return Home Button -->
+<div class="pt-4 flex justify-center lg:justify-start">
+<a class="inline-flex items-center gap-2 text-primary font-bold hover:underline underline-offset-4 decoration-2" href="#">
+<span class="material-symbols-outlined text-lg">arrow_back</span>
+                                Return to Dashboard
+                            </a>
+</div>
+</div>
+<!-- Right: Illustration -->
+<div class="w-full lg:w-1/2 flex justify-center">
+<div class="relative w-full aspect-square max-w-[500px]">
+<!-- Abstract Illustration -->
+<div class="w-full h-full bg-cover bg-center rounded-2xl shadow-2xl ring-1 ring-white/10" data-alt="Abstract 3D geometric shapes floating in dark space with blue lighting, representing digital confusion or lost data" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBJu363MWsJRHCYbH2Iex7SkB7wgWPB7Q5GBZtqPd1hpN95BWaxLv4p8_5s2QmIEfS7Z8vYTntrZ67y5lHzkQWDXmI_WiYsK0tPPiJppU-dJSK_yxu_eMis24crT4ECVxBT_bQyCRnzBArQ4oSgImC3qadEgJqQUkzDCJZX3AE9raSgUD7gKO_h0UIfMD2uFL_D1Cbw6PBBDuyeDG5SHyLAg5ooAZv_ueP1z7AcpoefKDe-Fe8SGzQC-syfAfHA1ypO9OCke0UaodU');"></div>
+<!-- Floating Card Element Decoration -->
+<div class="absolute -bottom-6 -left-6 p-4 bg-surface-dark/90 backdrop-blur-md border border-border-dark rounded-xl shadow-xl hidden sm:flex items-center gap-3 animate-bounce" style="animation-duration: 3s;">
+<div class="p-2 bg-red-500/20 rounded-lg text-red-500">
+<span class="material-symbols-outlined">error_outline</span>
+</div>
+<div>
+<div class="text-xs text-text-secondary">Error Code</div>
+<div class="text-sm font-mono font-bold text-white">MISSING_REF</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Popular Sections Divider -->
+<div class="mt-20 mb-8 border-t border-gray-200 dark:border-border-dark"></div>
+<!-- Suggested Content -->
+<div class="space-y-6">
+<h3 class="text-xl font-bold text-slate-900 dark:text-white">Popular Study Sections</h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Card 1 -->
+<a class="group flex items-center gap-4 p-4 rounded-xl border border-gray-200 dark:border-border-dark bg-white dark:bg-surface-dark hover:border-primary/50 hover:bg-slate-50 dark:hover:bg-[#232530] transition-all duration-300" href="#">
+<div class="flex items-center justify-center w-12 h-12 rounded-lg bg-blue-500/10 text-blue-500 group-hover:bg-blue-500 group-hover:text-white transition-colors">
+<span class="material-symbols-outlined">calculate</span>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 dark:text-white">Mathematics</h4>
+<p class="text-xs text-slate-500 dark:text-text-secondary">1.2k Resources</p>
+</div>
+</a>
+<!-- Card 2 -->
+<a class="group flex items-center gap-4 p-4 rounded-xl border border-gray-200 dark:border-border-dark bg-white dark:bg-surface-dark hover:border-primary/50 hover:bg-slate-50 dark:hover:bg-[#232530] transition-all duration-300" href="#">
+<div class="flex items-center justify-center w-12 h-12 rounded-lg bg-purple-500/10 text-purple-500 group-hover:bg-purple-500 group-hover:text-white transition-colors">
+<span class="material-symbols-outlined">terminal</span>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 dark:text-white">Comp Sci</h4>
+<p class="text-xs text-slate-500 dark:text-text-secondary">850 Resources</p>
+</div>
+</a>
+<!-- Card 3 -->
+<a class="group flex items-center gap-4 p-4 rounded-xl border border-gray-200 dark:border-border-dark bg-white dark:bg-surface-dark hover:border-primary/50 hover:bg-slate-50 dark:hover:bg-[#232530] transition-all duration-300" href="#">
+<div class="flex items-center justify-center w-12 h-12 rounded-lg bg-orange-500/10 text-orange-500 group-hover:bg-orange-500 group-hover:text-white transition-colors">
+<span class="material-symbols-outlined">history_edu</span>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 dark:text-white">History</h4>
+<p class="text-xs text-slate-500 dark:text-text-secondary">640 Resources</p>
+</div>
+</a>
+<!-- Card 4 -->
+<a class="group flex items-center gap-4 p-4 rounded-xl border border-gray-200 dark:border-border-dark bg-white dark:bg-surface-dark hover:border-primary/50 hover:bg-slate-50 dark:hover:bg-[#232530] transition-all duration-300" href="#">
+<div class="flex items-center justify-center w-12 h-12 rounded-lg bg-emerald-500/10 text-emerald-500 group-hover:bg-emerald-500 group-hover:text-white transition-colors">
+<span class="material-symbols-outlined">menu_book</span>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 dark:text-white">Literature</h4>
+<p class="text-xs text-slate-500 dark:text-text-secondary">920 Resources</p>
+</div>
+</a>
+</div>
+</div>
+</div>
+</main>
+<!-- Simple Footer -->
+<footer class="py-8 text-center text-sm text-slate-500 dark:text-text-secondary/60">
+<p>© 2024 StudyPlatform. All rights reserved.</p>
+</footer>
+</body></html>

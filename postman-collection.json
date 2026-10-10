@@ -1,0 +1,437 @@
+{
+  "info": {
+    "name": "MERN Study Materials API",
+    "description": "Complete API collection for Khulna University Study Materials Management System",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "version": "1.0.0"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000",
+      "type": "string"
+    },
+    {
+      "key": "authToken",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "🏥 Health Check",
+      "item": [
+        {
+          "name": "Server Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/health",
+              "host": ["{{baseUrl}}"],
+              "path": ["health"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "🔐 Authentication",
+      "item": [
+        {
+          "name": "User Registration",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"student@ku.ac.bd\",\n  \"password\": \"SecurePass123!\",\n  \"fullName\": \"John Doe\",\n  \"role\": \"student\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/register",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "register"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "User Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "    const response = pm.response.json();",
+                  "    if (response.success && response.data && response.data.token) {",
+                  "        pm.collectionVariables.set('authToken', response.data.token);",
+                  "        console.log('Auth token saved:', response.data.token);",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"student@ku.ac.bd\",\n  \"password\": \"SecurePass123!\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "login"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "📚 Materials Management",
+      "item": [
+        {
+          "name": "Get All Materials",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/materials",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "materials"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Material by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/materials/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "materials", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "uuid-here"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Download Material",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/materials/:id/download",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "materials", ":id", "download"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "uuid-here"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Upload Material",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "title",
+                  "value": "Advanced Mathematics Notes",
+                  "type": "text"
+                },
+                {
+                  "key": "description",
+                  "value": "Comprehensive notes on calculus and linear algebra",
+                  "type": "text"
+                },
+                {
+                  "key": "disciplineId",
+                  "value": "discipline-uuid-here",
+                  "type": "text"
+                },
+                {
+                  "key": "batchId",
+                  "value": "batch-uuid-here",
+                  "type": "text"
+                },
+                {
+                  "key": "courseCodeId",
+                  "value": "course-uuid-here",
+                  "type": "text"
+                },
+                {
+                  "key": "tags",
+                  "value": "[\"mathematics\", \"calculus\", \"notes\"]",
+                  "type": "text"
+                },
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": []
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/materials",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "materials"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Material Status",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"approved\",\n  \"comment\": \"Good quality material, approved for public access\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/materials/:id/status",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "materials", ":id", "status"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "uuid-here"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "🧪 Test Endpoints (No Database)",
+      "item": [
+        {
+          "name": "Mock Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "    const response = pm.response.json();",
+                  "    if (response.success && response.data && response.data.token) {",
+                  "        pm.collectionVariables.set('authToken', response.data.token);",
+                  "        console.log('Mock auth token saved:', response.data.token);",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\\n  \\\"email\\\": \\\"test@ku.ac.bd\\\",\\n  \\\"password\\\": \\\"testpass123\\\"\\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/test/auth/test-login",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "test", "auth", "test-login"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Mock Materials",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/test/materials",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "test", "materials"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Mock Material by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/test/materials/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "test", "materials", "1"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "📤 Legacy Upload",
+      "item": [
+        {
+          "name": "Upload Material (Legacy)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "title",
+                  "value": "Physics Laboratory Manual",
+                  "type": "text"
+                },
+                {
+                  "key": "description",
+                  "value": "Complete laboratory manual for Physics experiments",
+                  "type": "text"
+                },
+                {
+                  "key": "disciplineId",
+                  "value": "discipline-uuid-here",
+                  "type": "text"
+                },
+                {
+                  "key": "batchId",
+                  "value": "batch-uuid-here",
+                  "type": "text"
+                },
+                {
+                  "key": "courseCodeId",
+                  "value": "course-uuid-here",
+                  "type": "text"
+                },
+                {
+                  "key": "tags",
+                  "value": "[\"physics\", \"laboratory\", \"manual\"]",
+                  "type": "text"
+                },
+                {
+                  "key": "userId",
+                  "value": "user-uuid-here",
+                  "type": "text"
+                },
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": []
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/upload/material",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "upload", "material"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "🔔 Webhooks",
+      "item": [
+        {
+          "name": "Material Approved Webhook",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"materialId\": \"material-uuid-here\",\n  \"approvedBy\": \"admin-uuid-here\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/webhooks/material-approved",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "webhooks", "material-approved"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Material Rejected Webhook",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"materialId\": \"material-uuid-here\",\n  \"rejectionReason\": \"File format not supported or content inappropriate\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/webhooks/material-rejected",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "webhooks", "material-rejected"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

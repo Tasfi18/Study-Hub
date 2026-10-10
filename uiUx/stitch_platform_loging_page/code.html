@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Platform Login Page</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display antialiased text-[#0d121b] dark:text-white">
+<div class="relative flex h-screen w-full flex-col overflow-hidden">
+<!-- Header / Logo Area -->
+<div class="absolute top-0 left-0 w-full p-6 z-10">
+<div class="flex items-center gap-4 text-[#0d121b] dark:text-white">
+<div class="size-8 text-primary">
+<svg fill="currentColor" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M39.475 21.6262C40.358 21.4363 40.6863 21.5589 40.7581 21.5934C40.7876 21.655 40.8547 21.857 40.8082 22.3336C40.7408 23.0255 40.4502 24.0046 39.8572 25.2301C38.6799 27.6631 36.5085 30.6631 33.5858 33.5858C30.6631 36.5085 27.6632 38.6799 25.2301 39.8572C24.0046 40.4502 23.0255 40.7407 22.3336 40.8082C21.8571 40.8547 21.6551 40.7875 21.5934 40.7581C21.5589 40.6863 21.4363 40.358 21.6262 39.475C21.8562 38.4054 22.4689 36.9657 23.5038 35.2817C24.7575 33.2417 26.5497 30.9744 28.7621 28.762C30.9744 26.5497 33.2417 24.7574 35.2817 23.5037C36.9657 22.4689 38.4054 21.8562 39.475 21.6262ZM4.41189 29.2403L18.7597 43.5881C19.8813 44.7097 21.4027 44.9179 22.7217 44.7893C24.0585 44.659 25.5148 44.1631 26.9723 43.4579C29.9052 42.0387 33.2618 39.5667 36.4142 36.4142C39.5667 33.2618 42.0387 29.9052 43.4579 26.9723C44.1631 25.5148 44.659 24.0585 44.7893 22.7217C44.9179 21.4027 44.7097 19.8813 43.5881 18.7597L29.2403 4.41187C27.8527 3.02428 25.8765 3.02573 24.2861 3.36776C22.6081 3.72863 20.7334 4.58419 18.8396 5.74801C16.4978 7.18716 13.9881 9.18353 11.5858 11.5858C9.18354 13.988 7.18717 16.4978 5.74802 18.8396C4.58421 20.7334 3.72865 22.6081 3.36778 24.2861C3.02574 25.8765 3.02429 27.8527 4.41189 29.2403Z" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em]">ScholarHub</h2>
+</div>
+</div>
+<div class="flex h-full w-full">
+<!-- Left Side: Abstract Educational Background -->
+<div class="hidden lg:flex flex-1 relative bg-cover bg-center" data-alt="University library with books and quiet study atmosphere" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDP2wJ-cijYbdVUcgyVmgBgiIcvgGqtHumWdVqLWijdhBQGjITTsDLUqfamICZSP5GVRpFzi6xUgLwWdcI9KZn56IrHKLtp8S6Jff3wNST3G-9VeKDVsS1wGMPjpyyFfAGgVDUdcIFldUFbwvojYYU_LV-NFS9NTZbW_khxxr0zZq7YhmQG2Ak2b2Ku0wsRK1TTV_eEIXMQzpXxPDuIT5d8r1ANyy39nBKCwamcxpY-M4tZ3QlsxayKVhSNzAOgw6y_2oQZjjSqZdhd");'>
+<div class="absolute inset-0 bg-primary/40 backdrop-blur-[2px]"></div>
+<div class="relative z-10 flex flex-col justify-end p-16 h-full text-white max-w-2xl">
+<h1 class="text-4xl font-bold mb-4">Empowering the next generation of scholars.</h1>
+<p class="text-lg font-medium opacity-90">Discover millions of study materials, notes, and guides shared by students from top universities worldwide.</p>
+</div>
+</div>
+<!-- Right Side: Login Form -->
+<div class="flex flex-1 flex-col justify-center items-center p-6 lg:p-12 overflow-y-auto">
+<div class="w-full max-w-[480px] flex flex-col gap-8">
+<!-- Heading -->
+<div class="flex flex-col gap-2">
+<h2 class="text-[#0d121b] dark:text-white text-3xl font-black leading-tight tracking-[-0.033em]">Welcome back, Scholar</h2>
+<p class="text-[#4c669a] dark:text-gray-400 text-base font-normal leading-normal">Access your study materials and notes.</p>
+</div>
+<!-- Social Login -->
+<div class="flex flex-col gap-3">
+<button class="flex items-center justify-center gap-3 w-full h-12 rounded-lg border border-[#cfd7e7] dark:border-gray-700 bg-white dark:bg-[#1a2235] hover:bg-gray-50 dark:hover:bg-[#252e42] transition-colors text-[#0d121b] dark:text-white font-medium">
+<img alt="Google" class="w-5 h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuwbO-ZtWeegmqGFVDZihB90bEEiEWqjWWd6r2FRRhJoE6skpNajzY-471Jui50uZlK-f107ZIzc-R90TxizS4ow_7TQAtS1e_b6zd6O2V-0bqWNhzID662-gZj-7r33zra2ghBtU2bMhVWZwjrfg8D661nKwUcmLzcqr9lpvcAUdtPPa-yDdoYwAYFTAHj5UcxXWSoScBvqhdPMXzeywBoAMT7FMZPuXeMqtuLi4Cm6RWNz1xWPRNty2dYW68y-Fh3_qeaEnEFtQ8"/>
+                            Sign in with Google
+                        </button>
+<button class="flex items-center justify-center gap-3 w-full h-12 rounded-lg border border-[#cfd7e7] dark:border-gray-700 bg-white dark:bg-[#1a2235] hover:bg-gray-50 dark:hover:bg-[#252e42] transition-colors text-[#0d121b] dark:text-white font-medium">
+<img alt="GitHub" class="w-5 h-5 dark:invert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEHRI7VehMC2TRZ3-KXj9fV8q2LGc8i57cv-bs7EhAyqEReTBY1LLWikeGP5eCzfnWuLSASzvTFbhdZCSiGH-sCJ9C6abxEQhPcnGq9xXDPsqNAjI8HKx_UGHgO2o1BCKGTEQuMBWUeJi7Etbu19F9nOXnz-1EzrFFHPXKKC6DdQDEVdWuBKNz_GSbrbummtRwU8_895XNA77PKb7otmczhTN1ch_EVFLFU-Xu6CZtLlzj-k61EIjz4rMGUwKTpf-OTT0e6WddfntX"/>
+                            Sign in with GitHub
+                        </button>
+</div>
+<!-- Divider -->
+<div class="relative flex items-center py-2">
+<div class="flex-grow border-t border-[#e7ebf3] dark:border-gray-700"></div>
+<span class="flex-shrink-0 mx-4 text-sm text-[#4c669a] dark:text-gray-500">Or continue with</span>
+<div class="flex-grow border-t border-[#e7ebf3] dark:border-gray-700"></div>
+</div>
+<!-- Login Form -->
+<form class="flex flex-col gap-5">
+<!-- Email Input -->
+<div class="flex flex-col gap-2">
+<label class="text-[#0d121b] dark:text-white text-sm font-medium leading-normal">Email or Username</label>
+<input class="form-input flex w-full h-12 px-4 rounded-lg border border-[#cfd7e7] dark:border-gray-600 bg-white dark:bg-[#1a2235] text-[#0d121b] dark:text-white placeholder:text-[#9ca3af] focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all" placeholder="student@university.edu" type="text"/>
+</div>
+<!-- Password Input -->
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-center">
+<label class="text-[#0d121b] dark:text-white text-sm font-medium leading-normal">Password</label>
+</div>
+<div class="relative flex w-full">
+<input class="form-input flex w-full h-12 pl-4 pr-12 rounded-lg border border-[#cfd7e7] dark:border-gray-600 bg-white dark:bg-[#1a2235] text-[#0d121b] dark:text-white placeholder:text-[#9ca3af] focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all" placeholder="Enter your password" type="password"/>
+<button class="absolute right-0 top-0 h-full px-3 text-[#4c669a] dark:text-gray-400 hover:text-primary transition-colors flex items-center justify-center" type="button">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</div>
+</div>
+<!-- Remember Me & Forgot Password -->
+<div class="flex items-center justify-between">
+<label class="flex items-center gap-3 cursor-pointer">
+<div class="relative flex items-center">
+<input class="peer h-5 w-5 cursor-pointer appearance-none rounded border border-[#cfd7e7] dark:border-gray-600 checked:border-primary checked:bg-primary transition-all" type="checkbox"/>
+<span class="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-white opacity-0 peer-checked:opacity-100">
+<svg class="h-3.5 w-3.5" fill="currentColor" stroke="currentColor" stroke-width="1" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill-rule="evenodd"></path>
+</svg>
+</span>
+</div>
+<span class="text-[#0d121b] dark:text-gray-200 text-sm font-normal">Remember me</span>
+</label>
+<a class="text-primary hover:text-blue-700 text-sm font-medium transition-colors" href="#">Forgot Password?</a>
+</div>
+<!-- Submit Button -->
+<button class="w-full h-12 bg-primary hover:bg-blue-700 text-white font-bold rounded-lg shadow-sm hover:shadow-md transition-all duration-200 flex items-center justify-center gap-2" type="submit">
+                            Log In
+                        </button>
+</form>
+<!-- Footer -->
+<div class="text-center">
+<p class="text-[#4c669a] dark:text-gray-400 text-sm">
+                            Don't have an account? 
+                            <a class="text-primary font-bold hover:underline ml-1" href="#">Sign Up</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

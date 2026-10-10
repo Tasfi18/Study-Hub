@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Q&amp;A System - EduShare</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1839dc",
+                        "primary-hover": "#132eb0",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111421",
+                        "card-dark": "#1c1f2e",
+                        "card-border": "#292b38",
+                        "text-secondary": "#9da2b8",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for better aesthetics in dark mode */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111421; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #292b38; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3b3e4f; 
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display min-h-screen flex flex-col overflow-x-hidden">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-50 w-full border-b border-solid border-b-[#292b38] bg-[#111218]/80 backdrop-blur-md px-10 py-3">
+<div class="flex items-center justify-between whitespace-nowrap max-w-[1440px] mx-auto">
+<div class="flex items-center gap-4 text-white">
+<div class="size-8 text-primary">
+<svg class="w-full h-full" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_6_543)">
+<path d="M42.1739 20.1739L27.8261 5.82609C29.1366 7.13663 28.3989 10.1876 26.2002 13.7654C24.8538 15.9564 22.9595 18.3449 20.6522 20.6522C18.3449 22.9595 15.9564 24.8538 13.7654 26.2002C10.1876 28.3989 7.13663 29.1366 5.82609 27.8261L20.1739 42.1739C21.4845 43.4845 24.5355 42.7467 28.1133 40.548C30.3042 39.2016 32.6927 37.3073 35 35C37.3073 32.6927 39.2016 30.3042 40.548 28.1133C42.7467 24.5355 43.4845 21.4845 42.1739 20.1739Z" fill="currentColor"></path>
+<path clip-rule="evenodd" d="M7.24189 26.4066C7.31369 26.4411 7.64204 26.5637 8.52504 26.3738C9.59462 26.1438 11.0343 25.5311 12.7183 24.4963C14.7583 23.2426 17.0256 21.4503 19.238 19.238C21.4503 17.0256 23.2426 14.7583 24.4963 12.7183C25.5311 11.0343 26.1438 9.59463 26.3738 8.52504C26.5637 7.64204 26.4411 7.31369 26.4066 7.24189C26.345 7.21246 26.143 7.14535 25.6664 7.1918C24.9745 7.25925 23.9954 7.5498 22.7699 8.14278C20.3369 9.32007 17.3369 11.4915 14.4142 14.4142C11.4915 17.3369 9.32007 20.3369 8.14278 22.7699C7.5498 23.9954 7.25925 24.9745 7.1918 25.6664C7.14534 26.143 7.21246 26.345 7.24189 26.4066ZM29.9001 10.7285C29.4519 12.0322 28.7617 13.4172 27.9042 14.8126C26.465 17.1544 24.4686 19.6641 22.0664 22.0664C19.6641 24.4686 17.1544 26.465 14.8126 27.9042C13.4172 28.7617 12.0322 29.4519 10.7285 29.9001L21.5754 40.747C21.6001 40.7606 21.8995 40.931 22.8729 40.7217C23.9424 40.4916 25.3821 39.879 27.0661 38.8441C29.1062 37.5904 31.3734 35.7982 33.5858 33.5858C35.7982 31.3734 37.5904 29.1062 38.8441 27.0661C39.879 25.3821 40.4916 23.9425 40.7216 22.8729C40.931 21.8995 40.7606 21.6001 40.747 21.5754L29.9001 10.7285ZM29.2403 4.41187L43.5881 18.7597C44.9757 20.1473 44.9743 22.1235 44.6322 23.7139C44.2714 25.3919 43.4158 27.2666 42.252 29.1604C40.8128 31.5022 38.8165 34.012 36.4142 36.4142C34.012 38.8165 31.5022 40.8128 29.1604 42.252C27.2666 43.4158 25.3919 44.2714 23.7139 44.6322C22.1235 44.9743 20.1473 44.9757 18.7597 43.5881L4.41187 29.2403C3.29027 28.1187 3.08209 26.5973 3.21067 25.2783C3.34099 23.9415 3.8369 22.4852 4.54214 21.0277C5.96129 18.0948 8.43335 14.7382 11.5858 11.5858C14.7382 8.43335 18.0948 5.9613 21.0277 4.54214C22.4852 3.8369 23.9415 3.34099 25.2783 3.21067C26.5973 3.08209 28.1187 3.29028 29.2403 4.41187Z" fill="currentColor" fill-rule="evenodd"></path>
+</g>
+<defs>
+<clippath id="clip0_6_543"><rect fill="white" height="48" width="48"></rect></clippath>
+</defs>
+</svg>
+</div>
+<h2 class="text-white text-xl font-bold leading-tight tracking-tight">EduShare</h2>
+</div>
+<div class="flex flex-1 justify-end gap-8">
+<nav class="flex items-center gap-9 hidden md:flex">
+<a class="text-text-secondary hover:text-white transition-colors text-sm font-medium leading-normal" href="#">Study Materials</a>
+<a class="text-white text-sm font-medium leading-normal border-b-2 border-primary pb-1" href="#">Q&amp;A</a>
+<a class="text-text-secondary hover:text-white transition-colors text-sm font-medium leading-normal" href="#">Groups</a>
+<a class="text-text-secondary hover:text-white transition-colors text-sm font-medium leading-normal" href="#">Tutors</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="text-text-secondary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[24px]">notifications</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-9 border border-[#292b38] cursor-pointer hover:border-primary transition-colors" data-alt="User profile picture showing a smiling student" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCkrD_cdO7syGgctCqfn5Aq_eke073w0QNfyamjXywVK4ftAi7LEsq0_FsNZKUznFL_VO5qrswuNJYM8bqJ4XLFWAXOkzK00Ro-NvvhmykDvan6vxZQFv8fSlyoN7hfSJZxzVsUnjSmZPJs9UmCvNEY6G-dp886Wg15hKA7cFILzgNJlO-eXojRYwrwgcGyWFq0bD7Ww6OTsVUaY9kwOwkFK7MD7yrC_6TTjb27kpAYvzRQh8PoXXI-wKDQcjkGLS09eEzw2HNAgvo");'></div>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-grow flex flex-col items-center w-full px-5 py-8 md:px-10 lg:px-20">
+<div class="max-w-[1200px] w-full flex flex-col gap-8">
+<!-- Page Heading & Actions -->
+<section class="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-2">
+<div class="flex flex-col gap-2 max-w-2xl">
+<h1 class="text-white text-4xl md:text-5xl font-black leading-tight tracking-[-0.033em]">Community Q&amp;A</h1>
+<p class="text-text-secondary text-lg font-normal leading-relaxed">Find answers, ask questions, and collaborate with peers to master your subjects.</p>
+</div>
+<button class="flex shrink-0 w-full md:w-auto items-center justify-center gap-2 rounded-lg h-12 px-6 bg-primary hover:bg-primary-hover text-white text-sm font-bold leading-normal tracking-[0.015em] transition-all shadow-lg shadow-primary/25">
+<span class="material-symbols-outlined text-[20px]">add</span>
+<span>Ask a Question</span>
+</button>
+</section>
+<!-- Search Bar -->
+<section class="w-full">
+<label class="flex flex-col h-14 w-full relative group">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full bg-[#1c1f2e] border border-card-border group-focus-within:border-primary transition-colors overflow-hidden">
+<div class="text-text-secondary flex items-center justify-center pl-4 pr-2">
+<span class="material-symbols-outlined text-[24px]">search</span>
+</div>
+<input class="flex w-full min-w-0 flex-1 bg-transparent text-white focus:outline-0 placeholder:text-text-secondary px-2 text-base font-normal leading-normal" placeholder="Search for questions, topics, or keywords..." value=""/>
+<div class="hidden sm:flex items-center pr-4">
+<kbd class="hidden sm:inline-block border border-[#292b38] rounded px-2 py-0.5 text-xs font-regular text-text-secondary bg-[#111218]">⌘ K</kbd>
+</div>
+</div>
+<!-- Autocomplete Dropdown (Hidden by default, shown for demo structure) -->
+<!-- <div class="absolute top-full left-0 w-full bg-[#1c1f2e] border border-card-border rounded-lg mt-2 p-2 shadow-2xl z-20 hidden"> ... </div> -->
+</label>
+</section>
+<!-- Filters -->
+<section class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-[#292b38] pb-4">
+<div class="flex gap-2 overflow-x-auto w-full sm:w-auto pb-2 sm:pb-0 no-scrollbar">
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary/20 text-primary border border-primary/30 px-4 transition-all">
+<span class="text-sm font-semibold">Most Recent</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-transparent hover:bg-[#292b38] text-text-secondary hover:text-white px-4 transition-all">
+<span class="text-sm font-medium">Most Popular</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-transparent hover:bg-[#292b38] text-text-secondary hover:text-white px-4 transition-all">
+<span class="text-sm font-medium">Unanswered</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-transparent hover:bg-[#292b38] text-text-secondary hover:text-white px-4 transition-all">
+<span class="text-sm font-medium">My Questions</span>
+</button>
+</div>
+<div class="flex items-center gap-3 w-full sm:w-auto">
+<span class="text-text-secondary text-sm hidden md:block">Filter by:</span>
+<div class="relative w-full sm:w-48">
+<select class="w-full h-9 bg-[#1c1f2e] text-white text-sm border border-card-border rounded-lg px-3 focus:outline-none focus:border-primary appearance-none cursor-pointer">
+<option>All Topics</option>
+<option>Mathematics</option>
+<option>Computer Science</option>
+<option>Physics</option>
+<option>Literature</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-text-secondary">
+<span class="material-symbols-outlined text-[18px]">expand_more</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Main Content Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Question Feed -->
+<div class="lg:col-span-8 flex flex-col gap-4">
+<!-- Question Card 1 -->
+<article class="group relative flex flex-col sm:flex-row gap-4 p-5 rounded-xl bg-card-dark border border-card-border hover:border-primary/50 transition-all hover:shadow-lg hover:shadow-primary/5 cursor-pointer">
+<!-- Voting Side -->
+<div class="flex sm:flex-col items-center justify-between sm:justify-start gap-1 sm:gap-2 min-w-[50px] sm:border-r sm:border-card-border sm:pr-4">
+<button class="text-text-secondary hover:text-primary transition-colors p-1 rounded hover:bg-[#292b38]">
+<span class="material-symbols-outlined text-[24px]">keyboard_arrow_up</span>
+</button>
+<span class="text-white font-bold text-lg">42</span>
+<button class="text-text-secondary hover:text-red-500 transition-colors p-1 rounded hover:bg-[#292b38]">
+<span class="material-symbols-outlined text-[24px]">keyboard_arrow_down</span>
+</button>
+<!-- Mobile-only meta moved here for space efficiency -->
+<div class="sm:hidden ml-auto flex items-center gap-2 text-primary bg-primary/10 px-2 py-1 rounded text-xs font-semibold">
+<span class="material-symbols-outlined text-[14px]">chat_bubble</span> 5
+                            </div>
+</div>
+<!-- Content -->
+<div class="flex-1 flex flex-col gap-2">
+<div class="flex items-center gap-2 text-xs text-text-secondary mb-1">
+<div class="flex items-center gap-2">
+<div class="size-5 rounded-full bg-cover bg-center" data-alt="Avatar of user Sarah K." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuATOEx5a3wTqkVK0s3nsAI0UV7ltf-REmT0BJafhIcWNWVOyBv90tavonQ5gA8clJvHY81EEzKIl2jIabsQoy5ATmUlmKdSZNa3Rk9g34ulohCwLjTsSkvk8mNQyug-R_f-shhmKQ5nZrCnSxQFfhynP0uvtyHInJxsDpSdpy-SctzIxdW6RMmax02_-Bzvzqm6EtzJi6aPp4XpkHHo62G0AWCJfBbCe1lNTUYC9Bn5vBsX9cAJF-gTuuHahkTaAzEplTEnsZASRXg');"></div>
+<span class="font-medium text-white">Sarah K.</span>
+</div>
+<span>•</span>
+<span>2 hours ago</span>
+</div>
+<h3 class="text-xl font-bold text-white group-hover:text-primary transition-colors leading-snug">
+                                How do I efficiently solve quadratic equations using the matrix method?
+                            </h3>
+<p class="text-text-secondary text-sm line-clamp-2 leading-relaxed">
+                                I'm struggling to understand the concept of determinants when applying matrices to quadratic functions. Could someone explain the step-by-step process or provide a clear example? I've tried looking at the textbook but...
+                            </p>
+<div class="flex flex-wrap items-center justify-between gap-4 mt-3 pt-3 border-t border-dashed border-[#292b38]">
+<div class="flex gap-2">
+<span class="px-2.5 py-1 rounded text-xs font-medium bg-[#292b38] text-text-secondary hover:bg-[#383b4d] transition-colors">#Algebra</span>
+<span class="px-2.5 py-1 rounded text-xs font-medium bg-[#292b38] text-text-secondary hover:bg-[#383b4d] transition-colors">#Matrices</span>
+<span class="px-2.5 py-1 rounded text-xs font-medium bg-[#292b38] text-text-secondary hover:bg-[#383b4d] transition-colors">#Math</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden sm:flex items-center gap-1.5 text-text-secondary text-sm group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+<span>128 views</span>
+</div>
+<div class="hidden sm:flex items-center gap-1.5 text-primary text-sm font-semibold bg-primary/10 px-3 py-1 rounded-full">
+<span class="material-symbols-outlined text-[16px] fill-1">chat_bubble</span>
+<span>5 Answers</span>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- Question Card 2 (Solved) -->
+<article class="group relative flex flex-col sm:flex-row gap-4 p-5 rounded-xl bg-card-dark border border-card-border hover:border-primary/50 transition-all hover:shadow-lg hover:shadow-primary/5 cursor-pointer">
+<div class="flex sm:flex-col items-center justify-between sm:justify-start gap-1 sm:gap-2 min-w-[50px] sm:border-r sm:border-card-border sm:pr-4">
+<button class="text-primary hover:text-primary transition-colors p-1 rounded hover:bg-[#292b38]">
+<span class="material-symbols-outlined text-[24px] fill-1">thumb_up</span>
+</button>
+<span class="text-primary font-bold text-lg">156</span>
+<button class="text-text-secondary hover:text-red-500 transition-colors p-1 rounded hover:bg-[#292b38]">
+<span class="material-symbols-outlined text-[24px]">keyboard_arrow_down</span>
+</button>
+<div class="sm:hidden ml-auto flex items-center gap-2 text-green-400 bg-green-400/10 px-2 py-1 rounded text-xs font-semibold">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Solved
+                            </div>
+</div>
+<div class="flex-1 flex flex-col gap-2">
+<div class="flex items-center gap-2 text-xs text-text-secondary mb-1">
+<div class="flex items-center gap-2">
+<div class="size-5 rounded-full bg-cover bg-center" data-alt="Avatar of user David M." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAESp-l-7B8dIXpzkAz1pp9nd-pW9mu4nbGdIn-8z1PFPlnnobn-VoEBeUFhOEAAvDpuIPBfxAO3DbvOhccWPTZ72anNWaVNypO0-wj3_Q5UQHJ4kSWI9a8y_jvqhGL06cA1Zn0w96aZEG1p6QMQLXajUxB-ON1slgzvLRH7yOcRDxULcX_aoAyb05Zn-fCBsuwTZQDVYSLrTs9f2Pul0CHtp9wnJdAzt-kB-h9dovzjVs3yaUOXom7U6tt17IQ4b9UEwlAOafepQc');"></div>
+<span class="font-medium text-white">David M.</span>
+</div>
+<span>•</span>
+<span>1 day ago</span>
+</div>
+<h3 class="text-xl font-bold text-white group-hover:text-primary transition-colors leading-snug">
+                                Best practices for structuring a React component folder?
+                            </h3>
+<p class="text-text-secondary text-sm line-clamp-2 leading-relaxed">
+                                I'm starting a large project and want to ensure my file structure is scalable. Should I group by file type or by feature? What is the industry standard for 2024?
+                            </p>
+<div class="flex flex-wrap items-center justify-between gap-4 mt-3 pt-3 border-t border-dashed border-[#292b38]">
+<div class="flex gap-2">
+<span class="px-2.5 py-1 rounded text-xs font-medium bg-[#292b38] text-text-secondary hover:bg-[#383b4d] transition-colors">#React</span>
+<span class="px-2.5 py-1 rounded text-xs font-medium bg-[#292b38] text-text-secondary hover:bg-[#383b4d] transition-colors">#WebDev</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden sm:flex items-center gap-1.5 text-text-secondary text-sm group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+<span>3.2k views</span>
+</div>
+<div class="hidden sm:flex items-center gap-1.5 text-green-400 text-sm font-semibold bg-green-400/10 px-3 py-1 rounded-full border border-green-400/20">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span>Solved</span>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- Question Card 3 -->
+<article class="group relative flex flex-col sm:flex-row gap-4 p-5 rounded-xl bg-card-dark border border-card-border hover:border-primary/50 transition-all hover:shadow-lg hover:shadow-primary/5 cursor-pointer">
+<div class="flex sm:flex-col items-center justify-between sm:justify-start gap-1 sm:gap-2 min-w-[50px] sm:border-r sm:border-card-border sm:pr-4">
+<button class="text-text-secondary hover:text-primary transition-colors p-1 rounded hover:bg-[#292b38]">
+<span class="material-symbols-outlined text-[24px]">keyboard_arrow_up</span>
+</button>
+<span class="text-text-secondary font-bold text-lg">0</span>
+<button class="text-text-secondary hover:text-red-500 transition-colors p-1 rounded hover:bg-[#292b38]">
+<span class="material-symbols-outlined text-[24px]">keyboard_arrow_down</span>
+</button>
+<div class="sm:hidden ml-auto flex items-center gap-2 text-text-secondary bg-[#292b38] px-2 py-1 rounded text-xs font-semibold">
+<span class="material-symbols-outlined text-[14px]">chat_bubble_outline</span> 0
+                            </div>
+</div>
+<div class="flex-1 flex flex-col gap-2">
+<div class="flex items-center gap-2 text-xs text-text-secondary mb-1">
+<div class="flex items-center gap-2">
+<div class="size-5 rounded-full bg-cover bg-center" data-alt="Avatar of user Emily R." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAtVhS8DzacOSxriGnTVed0NCIX0jjmS7j-fGH69IRRf_w2nNkoz31f0x52PKxUpgcOWzQjBeXOohXuWmC6TwGFIBoZNorHCzelpfihxHSUdHE3I7-IESyojVJSCBFGVlqDc9O5wc-tj4Qq8c2Wq95uRzk7HraxTq5xxMXtadk5ov-gg6A-oJ7HOK5UdTy1raxa-Q_eqexSlKNlOyy6yhAxfFs_EPg90DN4zZjAnZDhoEBeWbI9sLqXohlTuvXcyQrw8Ei34dM6DfI');"></div>
+<span class="font-medium text-white">Emily R.</span>
+</div>
+<span>•</span>
+<span>5 mins ago</span>
+</div>
+<h3 class="text-xl font-bold text-white group-hover:text-primary transition-colors leading-snug">
+                                Analysis of "The Great Gatsby" themes: American Dream vs Reality?
+                            </h3>
+<p class="text-text-secondary text-sm line-clamp-2 leading-relaxed">
+                                I'm writing an essay on Fitzgerald's portrayal of the American Dream. Does anyone have good sources or critical analysis points regarding the green light symbolism specifically?
+                            </p>
+<div class="flex flex-wrap items-center justify-between gap-4 mt-3 pt-3 border-t border-dashed border-[#292b38]">
+<div class="flex gap-2">
+<span class="px-2.5 py-1 rounded text-xs font-medium bg-[#292b38] text-text-secondary hover:bg-[#383b4d] transition-colors">#Literature</span>
+<span class="px-2.5 py-1 rounded text-xs font-medium bg-[#292b38] text-text-secondary hover:bg-[#383b4d] transition-colors">#EssayHelp</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden sm:flex items-center gap-1.5 text-text-secondary text-sm group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+<span>4 views</span>
+</div>
+<div class="hidden sm:flex items-center gap-1.5 text-text-secondary text-sm font-semibold bg-[#292b38] px-3 py-1 rounded-full">
+<span class="material-symbols-outlined text-[16px]">chat_bubble_outline</span>
+<span>0 Answers</span>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- Pagination (Simple) -->
+<div class="flex justify-center mt-6">
+<button class="text-text-secondary hover:text-white text-sm font-medium px-4 py-2">Load more questions...</button>
+</div>
+</div>
+<!-- Sidebar / Widgets -->
+<aside class="hidden lg:flex lg:col-span-4 flex-col gap-6">
+<!-- Trending Topics Widget -->
+<div class="bg-card-dark border border-card-border rounded-xl p-5">
+<h3 class="text-white font-bold text-lg mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">trending_up</span> 
+                            Trending Topics
+                        </h3>
+<div class="flex flex-col gap-3">
+<a class="flex justify-between items-center group" href="#">
+<span class="text-text-secondary text-sm group-hover:text-white transition-colors">#Calculus</span>
+<span class="text-xs bg-[#292b38] text-text-secondary px-2 py-0.5 rounded-full group-hover:bg-primary group-hover:text-white transition-colors">124 posts</span>
+</a>
+<a class="flex justify-between items-center group" href="#">
+<span class="text-text-secondary text-sm group-hover:text-white transition-colors">#OrganicChemistry</span>
+<span class="text-xs bg-[#292b38] text-text-secondary px-2 py-0.5 rounded-full group-hover:bg-primary group-hover:text-white transition-colors">89 posts</span>
+</a>
+<a class="flex justify-between items-center group" href="#">
+<span class="text-text-secondary text-sm group-hover:text-white transition-colors">#WorldHistory</span>
+<span class="text-xs bg-[#292b38] text-text-secondary px-2 py-0.5 rounded-full group-hover:bg-primary group-hover:text-white transition-colors">56 posts</span>
+</a>
+<a class="flex justify-between items-center group" href="#">
+<span class="text-text-secondary text-sm group-hover:text-white transition-colors">#Python</span>
+<span class="text-xs bg-[#292b38] text-text-secondary px-2 py-0.5 rounded-full group-hover:bg-primary group-hover:text-white transition-colors">42 posts</span>
+</a>
+</div>
+</div>
+<!-- Top Contributors Widget -->
+<div class="bg-card-dark border border-card-border rounded-xl p-5">
+<h3 class="text-white font-bold text-lg mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-yellow-500">emoji_events</span> 
+                            Top Contributors
+                        </h3>
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-cover bg-center border border-card-border" data-alt="Avatar of top contributor Mike T" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAAhTl2nrm-yI1DexvkbigJnWjj0M6vgiVIpLFRX1nCstUe7fwS815C7Y8UDDhn3xs4NmK765L8KQOiClYY0eogiAQBuB167GFjcBbKL6eV9Ol9Ku1VTE18ErFS1ITxixFH9XCrP2HSEtREMYGBUMGnoBVK5U5dOiUTGPEHsvuF-zfVkRnyo9uaZuB1ZztpxNI-9TRqA5iXXzH7gkPifHUm2IkUZtx1edUOaCcN5dWvXaIwKoOf5g-pE1wIRSQF4Ckke0iYc59euzs');"></div>
+<div class="flex flex-col">
+<span class="text-white text-sm font-semibold">Mike T.</span>
+<span class="text-text-secondary text-xs">1,240 pts</span>
+</div>
+<div class="ml-auto text-yellow-500 font-bold text-sm">#1</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-cover bg-center border border-card-border" data-alt="Avatar of top contributor Jessica L" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuATKydYBSfdEpd5LW2NiXI_8rmYZoCGJlof7ckC2iM3rGKZCnnTQUCxUWXwBYgM46o2PQ18i4YUvSTqu88wQLO7dQgOS9XH-GmyKEeqM5gMzRBLXSKHSTuqyzldevLgs6JUzYBOIGJR2UZS2dIrVY82bMcl2cBKyC7s_azca6pIVfY_65DQoCZAH3tm3FI59ireOpqEGSDUkbBAixekIKfMQ2F062Hyi7ph8HejCeEHxmqnHPsXpxIxKMLtaMXmjiyfIO3o9mS-BlE');"></div>
+<div class="flex flex-col">
+<span class="text-white text-sm font-semibold">Jessica L.</span>
+<span class="text-text-secondary text-xs">980 pts</span>
+</div>
+<div class="ml-auto text-text-secondary font-bold text-sm">#2</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-cover bg-center border border-card-border" data-alt="Avatar of top contributor Alex B" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCbUtHk2AFEWJswKCGX01LWpImy4X81Z0BOlNvprC4N6G6El_x5YBPF7KA_1rCgFIcGkROnJtyikEbE-g03iJhs4QUikfUB6DQmmwDk936Q2c5DSKGDncc9rTSxPpvqtmwaXW7ty8RJZ72fhhzhEk86lTp_LOUCO3wJpCxWzze5nNqErTD5aZPny6babkV19FvfWAcVrkP9JpEty1tLVQd1flhSiAsdLmeWLZwVP6J0IiHITpM_wHmAXigx4zgNmKuitDLJg92mcMU');"></div>
+<div class="flex flex-col">
+<span class="text-white text-sm font-semibold">Alex B.</span>
+<span class="text-text-secondary text-xs">850 pts</span>
+</div>
+<div class="ml-auto text-text-secondary font-bold text-sm">#3</div>
+</div>
+</div>
+</div>
+<!-- Promo / Ad Space -->
+<div class="relative overflow-hidden rounded-xl p-5 bg-gradient-to-br from-primary to-purple-800 text-white shadow-lg">
+<div class="relative z-10 flex flex-col gap-3">
+<h3 class="font-bold text-lg">Need 1-on-1 Help?</h3>
+<p class="text-sm opacity-90">Connect with expert tutors instantly for personalized guidance.</p>
+<button class="bg-white text-primary text-sm font-bold py-2 px-4 rounded-lg self-start mt-2 hover:bg-gray-100 transition-colors">Find a Tutor</button>
+</div>
+<div class="absolute -right-4 -bottom-8 opacity-20">
+<span class="material-symbols-outlined text-[120px]">school</span>
+</div>
+</div>
+</aside>
+</div>
+</div>
+</main>
+<!-- Ask Question Modal Overlay (Simulated) -->
+<!-- This would normally be toggled via JS, showing static hidden state here for potential implementation -->
+<div class="hidden fixed inset-0 z-[60] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4" id="ask-modal">
+<div class="bg-card-dark w-full max-w-2xl rounded-2xl shadow-2xl border border-card-border flex flex-col max-h-[90vh]">
+<div class="flex items-center justify-between p-5 border-b border-card-border">
+<h3 class="text-xl font-bold text-white">Ask a Question</h3>
+<button class="text-text-secondary hover:text-white transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="p-6 overflow-y-auto flex flex-col gap-5">
+<div class="flex flex-col gap-2">
+<label class="text-sm font-medium text-white">Title</label>
+<input class="bg-[#111218] border border-card-border rounded-lg p-3 text-white focus:border-primary focus:outline-none placeholder:text-text-secondary/50" placeholder="e.g. How do I solve for X in a quadratic equation?" type="text"/>
+<p class="text-xs text-text-secondary">Be specific and imagine you’re asking a question to another person.</p>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-medium text-white">Body</label>
+<!-- Simulated Rich Text Editor Toolbar -->
+<div class="border border-card-border rounded-lg bg-[#111218] overflow-hidden">
+<div class="flex items-center gap-1 p-2 border-b border-card-border bg-[#1c1f2e]">
+<button class="p-1.5 hover:bg-[#292b38] rounded text-text-secondary hover:text-white transition-colors"><span class="material-symbols-outlined text-[18px]">format_bold</span></button>
+<button class="p-1.5 hover:bg-[#292b38] rounded text-text-secondary hover:text-white transition-colors"><span class="material-symbols-outlined text-[18px]">format_italic</span></button>
+<div class="w-px h-4 bg-card-border mx-1"></div>
+<button class="p-1.5 hover:bg-[#292b38] rounded text-text-secondary hover:text-white transition-colors"><span class="material-symbols-outlined text-[18px]">code</span></button>
+<button class="p-1.5 hover:bg-[#292b38] rounded text-text-secondary hover:text-white transition-colors"><span class="material-symbols-outlined text-[18px]">image</span></button>
+<button class="p-1.5 hover:bg-[#292b38] rounded text-text-secondary hover:text-white transition-colors"><span class="material-symbols-outlined text-[18px]">link</span></button>
+</div>
+<textarea class="w-full bg-[#111218] text-white p-3 focus:outline-none resize-none placeholder:text-text-secondary/50" placeholder="Include all the information someone would need to answer your question..." rows="6"></textarea>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-medium text-white">Tags</label>
+<input class="bg-[#111218] border border-card-border rounded-lg p-3 text-white focus:border-primary focus:outline-none placeholder:text-text-secondary/50" placeholder="e.g. (Calculus) (Algebra) (History)" type="text"/>
+</div>
+</div>
+<div class="p-5 border-t border-card-border flex justify-end gap-3 bg-[#1c1f2e] rounded-b-2xl">
+<button class="px-5 py-2.5 rounded-lg text-sm font-bold text-text-secondary hover:text-white transition-colors">Cancel</button>
+<button class="px-5 py-2.5 rounded-lg bg-primary hover:bg-primary-hover text-white text-sm font-bold transition-colors shadow-lg shadow-primary/25">Post Question</button>
+</div>
+</div>
+</div>
+</body></html>

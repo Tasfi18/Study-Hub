@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Platform Registration Page</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "primary-hover": "#0f4bc4",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', "Noto Sans", sans-serif;
+        }
+        /* Custom scrollbar for better aesthetics */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #cbd5e1;
+            border-radius: 20px;
+        }
+        .dark .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #334155;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white overflow-hidden">
+<div class="flex h-screen w-full overflow-hidden">
+<!-- Left Side: Visual / Branding (Desktop Only) -->
+<div class="hidden lg:flex lg:w-1/2 relative flex-col justify-between p-12 bg-primary overflow-hidden">
+<!-- Background Image/Pattern -->
+<div class="absolute inset-0 z-0 opacity-20 mix-blend-overlay">
+<img alt="Abstract blue geometric gradient pattern representing modern education" class="w-full h-full object-cover" data-alt="Abstract blue geometric gradient pattern representing modern education" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZsNDPIOVz1VNQfNSlcFfv_UzNg4NfF6pE2ukjAWxYEW7G7khWzqxY60SdkZJFGdNd-a1tfpAMz8sgvzzUj98p7omWmJc-TV33s6fChXHLzl7fBaoxxe655ybrf_h0Xi92xO_YBL6xPd-kaGyz93H4vr4oZxRDoaIHqs_1MXotFDK9GR9FtUQJkRtAfewQZr7q8bQYa_wwDAItbRbQQnno1Z6NBN7uRasb_vyPTDeUW1GE9vD-pIcE6AGb8S8r_6sg9xg6mnqJLg7K"/>
+</div>
+<!-- Branding Content -->
+<div class="relative z-10 flex items-center gap-3">
+<div class="size-10 flex items-center justify-center bg-white rounded-lg text-primary shadow-lg">
+<span class="material-symbols-outlined text-3xl">school</span>
+</div>
+<h2 class="text-white text-2xl font-bold tracking-tight">StudyPlatform</h2>
+</div>
+<div class="relative z-10 max-w-lg">
+<h1 class="text-white text-5xl font-black leading-tight tracking-tight mb-6">
+                    Join the Learning Community
+                </h1>
+<p class="text-blue-100 text-xl font-medium leading-relaxed">
+                    Access thousands of study materials, connect with expert teachers, and accelerate your academic journey today.
+                </p>
+</div>
+<div class="relative z-10 flex gap-4 text-blue-200 text-sm font-medium">
+<span>© 2023 StudyPlatform Inc.</span>
+<a class="hover:text-white transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-white transition-colors" href="#">Terms of Service</a>
+</div>
+</div>
+<!-- Right Side: Registration Form -->
+<div class="w-full lg:w-1/2 flex flex-col h-full bg-background-light dark:bg-background-dark relative">
+<!-- Mobile Header -->
+<div class="lg:hidden flex items-center justify-between p-6 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+<div class="flex items-center gap-2 text-slate-900 dark:text-white">
+<span class="material-symbols-outlined text-primary text-2xl">school</span>
+<h2 class="text-lg font-bold">StudyPlatform</h2>
+</div>
+</div>
+<!-- Scrollable Form Container -->
+<div class="flex-1 overflow-y-auto custom-scrollbar p-6 md:p-12 lg:p-16 flex justify-center">
+<div class="w-full max-w-[480px] flex flex-col gap-8">
+<!-- Form Header -->
+<div class="flex flex-col gap-2">
+<h2 class="text-3xl font-bold text-slate-900 dark:text-white tracking-tight">Create your account</h2>
+<p class="text-slate-500 dark:text-slate-400">Start your 30-day free trial. Cancel anytime.</p>
+</div>
+<!-- Social Login -->
+<div class="grid grid-cols-2 gap-4">
+<button class="flex items-center justify-center gap-2 h-12 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors text-slate-700 dark:text-slate-200 font-medium text-sm">
+<img alt="Google Logo" class="w-5 h-5" data-alt="Google G logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCA0hcRKgLY-bcwV69SxV_hufQsrvi5nGS1-HRsLj5vAQ3Sr12FDLO1LnS0MHqf289Hic143LQLsl1OhCG0jHQXArj7TRyexRffuhBEExH0kv5MlEKydxzC8ZfZ76pHst5Dt9VGrHvapOMbnbSmZ8Bx6xJ1QkhWhVu_f-elIH5A_DhVs_D4Mzg0e9sTCdlpwpRxBXuYHlMd1dy_g0Cc0UFE4Kzc70zvK5ERftnTzGPwY2hStSO6moWLkE5X0TwD6nBhSnulPApgZNyU"/>
+                            Google
+                        </button>
+<button class="flex items-center justify-center gap-2 h-12 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors text-slate-700 dark:text-slate-200 font-medium text-sm">
+<img alt="GitHub Logo" class="w-5 h-5 dark:invert" data-alt="Github silhouette logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdOma0ISSZKsuqAgT2qePqFYngPLpLKv9YLbhgBs5rV7gAURPQnb3_gBmtMyPufB1vGQlP-Oq7C4C7PLAyvDRobxKOqeRTu46NMr3ZdAucbfzcar288RZoh1u4ZR51Ia23tA0fzmvMbOxWJQwmFg5khFD2Ug8hJ77Zx19jhqOehlDtWmFOseFu3vSr64qSp2HAuXk83e0AWFYxC4R8C9LEy4FrfYAx6KKErVFv8_JuWVH4AuXS9DgY5RXnRJBZgJKhfvDfeoxYWX3Y"/>
+                            GitHub
+                        </button>
+</div>
+<div class="relative flex items-center py-2">
+<div class="grow border-t border-slate-200 dark:border-slate-700"></div>
+<span class="shrink-0 px-4 text-sm text-slate-400 bg-background-light dark:bg-background-dark font-medium">Or sign up with email</span>
+<div class="grow border-t border-slate-200 dark:border-slate-700"></div>
+</div>
+<form class="flex flex-col gap-5">
+<!-- Role Selector -->
+<div class="flex flex-col gap-2">
+<label class="text-slate-900 dark:text-white text-sm font-medium">I am a...</label>
+<div class="flex p-1 bg-slate-200 dark:bg-slate-800 rounded-lg">
+<label class="flex-1 cursor-pointer">
+<input checked="" class="peer sr-only" name="role" type="radio" value="student"/>
+<div class="flex items-center justify-center py-2.5 px-3 rounded-md text-sm font-medium text-slate-500 dark:text-slate-400 peer-checked:bg-white dark:peer-checked:bg-slate-700 peer-checked:text-primary peer-checked:shadow-sm transition-all">
+                                        Student
+                                    </div>
+</label>
+<label class="flex-1 cursor-pointer">
+<input class="peer sr-only" name="role" type="radio" value="teacher"/>
+<div class="flex items-center justify-center py-2.5 px-3 rounded-md text-sm font-medium text-slate-500 dark:text-slate-400 peer-checked:bg-white dark:peer-checked:bg-slate-700 peer-checked:text-primary peer-checked:shadow-sm transition-all">
+                                        Teacher
+                                    </div>
+</label>
+</div>
+</div>
+<!-- Name Input -->
+<label class="flex flex-col gap-2">
+<span class="text-slate-900 dark:text-white text-sm font-medium">Full Name</span>
+<input class="form-input w-full h-12 px-4 rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-primary focus:ring-primary transition-all text-base" placeholder="John Doe" type="text"/>
+</label>
+<!-- Username Input -->
+<label class="flex flex-col gap-2">
+<span class="text-slate-900 dark:text-white text-sm font-medium">Username</span>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 material-symbols-outlined text-[20px]">alternate_email</span>
+<input class="form-input w-full h-12 pl-11 pr-4 rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-primary focus:ring-primary transition-all text-base" placeholder="johndoe123" type="text"/>
+</div>
+</label>
+<!-- Email Input -->
+<label class="flex flex-col gap-2">
+<span class="text-slate-900 dark:text-white text-sm font-medium">Email Address</span>
+<input class="form-input w-full h-12 px-4 rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-primary focus:ring-primary transition-all text-base" placeholder="john@example.com" type="email"/>
+</label>
+<!-- Password Input -->
+<div class="flex flex-col gap-2">
+<label class="flex flex-col gap-2">
+<span class="text-slate-900 dark:text-white text-sm font-medium">Password</span>
+<input class="form-input w-full h-12 px-4 rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-primary focus:ring-primary transition-all text-base" placeholder="Create a password" type="password"/>
+</label>
+<!-- Strength Indicator -->
+<div class="flex gap-2 items-center mt-1">
+<div class="h-1.5 flex-1 rounded-full bg-emerald-500"></div>
+<div class="h-1.5 flex-1 rounded-full bg-emerald-500"></div>
+<div class="h-1.5 flex-1 rounded-full bg-slate-200 dark:bg-slate-700"></div>
+<div class="h-1.5 flex-1 rounded-full bg-slate-200 dark:bg-slate-700"></div>
+<span class="text-xs font-medium text-emerald-600 dark:text-emerald-400 ml-2">Medium</span>
+</div>
+</div>
+<!-- Confirm Password Input -->
+<label class="flex flex-col gap-2">
+<span class="text-slate-900 dark:text-white text-sm font-medium">Confirm Password</span>
+<div class="relative">
+<input class="form-input w-full h-12 px-4 rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-primary focus:ring-primary transition-all text-base" placeholder="Confirm your password" type="password"/>
+<span class="absolute right-4 top-1/2 -translate-y-1/2 text-emerald-500 material-symbols-outlined text-[20px]">check_circle</span>
+</div>
+</label>
+<!-- Terms Checkbox -->
+<label class="flex items-start gap-3 mt-2 cursor-pointer group">
+<input class="form-checkbox size-5 rounded border-slate-300 text-primary focus:ring-primary bg-white dark:bg-slate-800 dark:border-slate-600 mt-0.5" type="checkbox"/>
+<span class="text-sm text-slate-500 dark:text-slate-400 leading-normal group-hover:text-slate-700 dark:group-hover:text-slate-300 transition-colors">
+                                I agree to the <a class="text-primary font-medium hover:underline" href="#">Terms of Service</a> and <a class="text-primary font-medium hover:underline" href="#">Privacy Policy</a>.
+                            </span>
+</label>
+<!-- Submit Button -->
+<button class="mt-4 flex w-full cursor-pointer items-center justify-center rounded-lg h-12 px-4 bg-primary hover:bg-primary-hover text-white text-base font-bold tracking-wide shadow-lg shadow-primary/20 transition-all active:scale-[0.98]" type="button">
+                            Create Account
+                        </button>
+</form>
+<!-- Footer Link -->
+<div class="text-center pb-8">
+<p class="text-slate-500 dark:text-slate-400 text-sm">
+                            Already have an account? 
+                            <a class="text-primary font-bold hover:underline ml-1" href="#">Log In</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

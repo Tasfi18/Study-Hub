@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>StudyHub - Browse Materials</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#135bec",
+                "primary-hover": "#1d4ed8",
+                "background-light": "#f6f6f8",
+                "background-dark": "#101622",
+                "surface-light": "#ffffff",
+                "surface-dark": "#1e293b",
+                "border-light": "#e2e8f0",
+                "border-dark": "#334155",
+                "text-main": "#0f172a",
+                "text-main-dark": "#f8fafc",
+                "text-muted": "#64748b",
+                "text-muted-dark": "#94a3b8",
+              },
+              fontFamily: {
+                "display": ["Inter", "sans-serif"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-main dark:text-text-main-dark transition-colors duration-200">
+<!-- Top Navigation -->
+<div class="sticky top-0 z-50 w-full bg-surface-light dark:bg-surface-dark border-b border-border-light dark:border-border-dark">
+<div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+<header class="flex items-center justify-between h-16">
+<!-- Logo -->
+<div class="flex items-center gap-3 cursor-pointer">
+<div class="size-8 text-primary">
+<span class="material-symbols-outlined !text-[32px] filled">school</span>
+</div>
+<h2 class="text-xl font-bold tracking-tight text-text-main dark:text-text-main-dark">StudyHub</h2>
+</div>
+<!-- Nav Links & Actions -->
+<div class="hidden md:flex items-center gap-8">
+<nav class="flex gap-6">
+<a class="text-sm font-medium text-text-muted dark:text-text-muted-dark hover:text-primary dark:hover:text-primary transition-colors" href="#">Home</a>
+<a class="text-sm font-medium text-primary dark:text-primary" href="#">Browse</a>
+<a class="text-sm font-medium text-text-muted dark:text-text-muted-dark hover:text-primary dark:hover:text-primary transition-colors" href="#">My Library</a>
+</nav>
+<div class="h-6 w-px bg-border-light dark:bg-border-dark"></div>
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center gap-2 h-9 px-4 rounded-lg bg-primary hover:bg-primary-hover text-white text-sm font-bold shadow-sm transition-colors">
+<span class="material-symbols-outlined !text-[20px]">upload_file</span>
+<span>Upload</span>
+</button>
+<div class="relative cursor-pointer group">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-9 ring-2 ring-transparent hover:ring-primary transition-all" data-alt="User profile avatar showing a smiling student" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDSHhIBuR5pAltLXM73QxAz6oS4G3GWzULG-9kqYl4XayLXxhfjJ2XKf0j19ZaCyblyq5iw-SP7g9FX51pxOj-E12gMNsp1Y1NUmtXKL5F-E9XEVZSf4zRShRcYqdwx5l1Bh2ef5pVGM5QfytK9kNPH4Llu4B_Al1O6X57AQV94J393gWAQnlDiKcRpLSMSVUNXLc1Xv3to3vPC8SxDXbprJ0gkD_28XjG2VbLSlTlOjDmgvLq5nkGxHra4no6whpQQ9Wc0S-MnY0Gd");'>
+</div>
+</div>
+</div>
+</div>
+<!-- Mobile Menu Icon -->
+<div class="md:hidden text-text-main dark:text-text-main-dark">
+<span class="material-symbols-outlined">menu</span>
+</div>
+</header>
+</div>
+</div>
+<!-- Main Content Layout -->
+<main class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-6 min-h-screen">
+<!-- Breadcrumbs -->
+<div class="flex items-center gap-2 mb-6 text-sm">
+<a class="text-text-muted dark:text-text-muted-dark hover:text-primary dark:hover:text-primary" href="#">Home</a>
+<span class="text-text-muted/50 dark:text-text-muted-dark/50">/</span>
+<span class="font-medium text-text-main dark:text-text-main-dark">Browse Materials</span>
+</div>
+<!-- Hero Search Section -->
+<section class="mb-10 bg-surface-light dark:bg-surface-dark rounded-xl p-6 border border-border-light dark:border-border-dark shadow-sm">
+<h1 class="text-2xl font-bold mb-4 text-text-main dark:text-text-main-dark">Discover Study Materials</h1>
+<div class="flex flex-col md:flex-row gap-4">
+<div class="flex-1 relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-text-muted dark:text-text-muted-dark">search</span>
+</div>
+<input class="block w-full pl-10 pr-4 py-3 rounded-lg border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark text-text-main dark:text-text-main-dark focus:ring-2 focus:ring-primary focus:border-transparent placeholder:text-text-muted/70" placeholder="Search for courses, authors, or topics (e.g., 'Calculus II', 'Physics Notes')..." type="text" value="Thermodynamics"/>
+</div>
+<button class="px-6 py-3 rounded-lg border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark text-text-main dark:text-text-main-dark font-medium hover:bg-background-light dark:hover:bg-background-dark transition-colors flex items-center gap-2 whitespace-nowrap">
+<span class="material-symbols-outlined !text-[20px]">tune</span>
+                    Advanced Filters
+                </button>
+<button class="px-8 py-3 rounded-lg bg-primary hover:bg-primary-hover text-white font-bold shadow-md transition-colors">
+                    Search
+                </button>
+</div>
+<!-- Quick Filter Tags -->
+<div class="flex flex-wrap gap-2 mt-4">
+<span class="text-xs font-semibold uppercase tracking-wider text-text-muted dark:text-text-muted-dark py-1">Trending:</span>
+<button class="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium hover:bg-primary/20 transition-colors">#Engineering</button>
+<button class="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium hover:bg-primary/20 transition-colors">#ComputerScience</button>
+<button class="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium hover:bg-primary/20 transition-colors">#OrganicChemistry</button>
+<button class="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium hover:bg-primary/20 transition-colors">#Midterms2024</button>
+</div>
+</section>
+<div class="flex flex-col lg:flex-row gap-8">
+<!-- Sidebar Filters -->
+<aside class="w-full lg:w-64 shrink-0 space-y-4">
+<div class="flex items-center justify-between mb-2">
+<h3 class="font-bold text-lg">Filters</h3>
+<button class="text-sm text-primary hover:underline">Reset</button>
+</div>
+<!-- Accordion Group -->
+<div class="flex flex-col gap-3">
+<!-- Subject Filter -->
+<details class="group rounded-lg border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark open">
+<summary class="flex cursor-pointer items-center justify-between p-4 list-none">
+<p class="text-sm font-medium text-text-main dark:text-text-main-dark">Subject</p>
+<span class="material-symbols-outlined text-text-muted transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="px-4 pb-4 border-t border-border-light dark:border-border-dark pt-2">
+<!-- Checklists Component logic -->
+<div class="space-y-2">
+<label class="flex gap-3 items-center cursor-pointer">
+<input checked="" class="rounded border-border-dark text-primary focus:ring-primary bg-transparent" type="checkbox"/>
+<span class="text-sm text-text-muted dark:text-text-muted-dark">Engineering (45)</span>
+</label>
+<label class="flex gap-3 items-center cursor-pointer">
+<input checked="" class="rounded border-border-dark text-primary focus:ring-primary bg-transparent" type="checkbox"/>
+<span class="text-sm text-text-muted dark:text-text-muted-dark">Physics (23)</span>
+</label>
+<label class="flex gap-3 items-center cursor-pointer">
+<input class="rounded border-border-dark text-primary focus:ring-primary bg-transparent" type="checkbox"/>
+<span class="text-sm text-text-muted dark:text-text-muted-dark">Mathematics (12)</span>
+</label>
+<label class="flex gap-3 items-center cursor-pointer">
+<input class="rounded border-border-dark text-primary focus:ring-primary bg-transparent" type="checkbox"/>
+<span class="text-sm text-text-muted dark:text-text-muted-dark">Chemistry (8)</span>
+</label>
+</div>
+</div>
+</details>
+<!-- Material Type Filter -->
+<details class="group rounded-lg border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark">
+<summary class="flex cursor-pointer items-center justify-between p-4 list-none">
+<p class="text-sm font-medium text-text-main dark:text-text-main-dark">Material Type</p>
+<span class="material-symbols-outlined text-text-muted transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="px-4 pb-4 border-t border-border-light dark:border-border-dark pt-2">
+<div class="space-y-2">
+<label class="flex gap-3 items-center cursor-pointer">
+<input class="rounded border-border-dark text-primary focus:ring-primary bg-transparent" type="checkbox"/>
+<span class="text-sm text-text-muted dark:text-text-muted-dark">Lecture Notes</span>
+</label>
+<label class="flex gap-3 items-center cursor-pointer">
+<input class="rounded border-border-dark text-primary focus:ring-primary bg-transparent" type="checkbox"/>
+<span class="text-sm text-text-muted dark:text-text-muted-dark">Past Papers</span>
+</label>
+<label class="flex gap-3 items-center cursor-pointer">
+<input class="rounded border-border-dark text-primary focus:ring-primary bg-transparent" type="checkbox"/>
+<span class="text-sm text-text-muted dark:text-text-muted-dark">Summaries</span>
+</label>
+</div>
+</div>
+</details>
+<!-- Rating Filter -->
+<details class="group rounded-lg border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark">
+<summary class="flex cursor-pointer items-center justify-between p-4 list-none">
+<p class="text-sm font-medium text-text-main dark:text-text-main-dark">Rating</p>
+<span class="material-symbols-outlined text-text-muted transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="px-4 pb-4 border-t border-border-light dark:border-border-dark pt-2">
+<div class="space-y-2">
+<label class="flex gap-3 items-center cursor-pointer">
+<input class="text-primary focus:ring-primary bg-transparent border-border-dark" name="rating" type="radio"/>
+<div class="flex items-center text-amber-400">
+<span class="material-symbols-outlined filled !text-[16px]">star</span>
+<span class="material-symbols-outlined filled !text-[16px]">star</span>
+<span class="material-symbols-outlined filled !text-[16px]">star</span>
+<span class="material-symbols-outlined filled !text-[16px]">star</span>
+<span class="material-symbols-outlined !text-[16px]">star</span>
+<span class="ml-2 text-sm text-text-muted dark:text-text-muted-dark">&amp; Up</span>
+</div>
+</label>
+<!-- More radio options could go here -->
+</div>
+</div>
+</details>
+<!-- Semester Filter -->
+<details class="group rounded-lg border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark">
+<summary class="flex cursor-pointer items-center justify-between p-4 list-none">
+<p class="text-sm font-medium text-text-main dark:text-text-main-dark">Year / Semester</p>
+<span class="material-symbols-outlined text-text-muted transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="px-4 pb-4 border-t border-border-light dark:border-border-dark pt-2">
+<p class="text-xs text-text-muted">Select Year...</p>
+</div>
+</details>
+</div>
+</aside>
+<!-- Main Content Grid -->
+<div class="flex-1 flex flex-col min-w-0">
+<!-- Toolbar -->
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
+<p class="text-text-muted dark:text-text-muted-dark font-medium">Showing <span class="text-text-main dark:text-text-main-dark font-bold">124</span> results</p>
+<div class="flex items-center gap-4 self-end sm:self-auto">
+<div class="flex items-center gap-2">
+<span class="text-sm text-text-muted dark:text-text-muted-dark whitespace-nowrap">Sort by:</span>
+<div class="relative">
+<select class="appearance-none pl-3 pr-8 py-1.5 rounded-md border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark text-sm font-medium focus:ring-primary focus:border-primary cursor-pointer">
+<option>Relevance</option>
+<option>Newest</option>
+<option>Most Downloaded</option>
+<option>Highest Rated</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none text-text-muted !text-[18px]">expand_more</span>
+</div>
+</div>
+<div class="flex bg-surface-light dark:bg-surface-dark rounded-md border border-border-light dark:border-border-dark p-1">
+<button class="p-1 rounded bg-background-light dark:bg-background-dark text-primary shadow-sm">
+<span class="material-symbols-outlined !text-[20px]">grid_view</span>
+</button>
+<button class="p-1 rounded text-text-muted hover:text-text-main dark:hover:text-text-main-dark transition-colors">
+<span class="material-symbols-outlined !text-[20px]">view_list</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+<!-- Card 1 -->
+<article class="group flex flex-col bg-surface-light dark:bg-surface-dark rounded-xl border border-border-light dark:border-border-dark overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+<div class="relative h-40 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-slate-800 dark:to-slate-900 flex items-center justify-center overflow-hidden">
+<!-- Thumbnail / Icon Representation -->
+<div class="absolute inset-0 opacity-10" data-alt="Abstract geometric pattern background" style="background-image: radial-gradient(#135bec 1px, transparent 1px); background-size: 20px 20px;"></div>
+<div class="relative z-10 p-4 bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-border-light dark:border-border-dark flex flex-col items-center gap-2 w-24 aspect-[3/4]">
+<span class="text-[10px] font-bold text-red-500 uppercase tracking-widest">PDF</span>
+<div class="w-full h-px bg-border-light dark:border-border-dark"></div>
+<div class="flex-1 w-full bg-slate-50 dark:bg-slate-700 rounded-sm"></div>
+<div class="w-2/3 h-1 bg-slate-200 dark:bg-slate-600 rounded-full"></div>
+<div class="w-full h-1 bg-slate-200 dark:bg-slate-600 rounded-full"></div>
+</div>
+<button class="absolute top-3 right-3 size-8 rounded-full bg-white/80 dark:bg-black/50 hover:bg-white dark:hover:bg-black text-text-muted hover:text-primary transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100 backdrop-blur-sm">
+<span class="material-symbols-outlined !text-[20px]">bookmark</span>
+</button>
+</div>
+<div class="p-4 flex flex-col flex-1">
+<div class="flex items-center gap-2 mb-2">
+<span class="bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">Physics</span>
+<span class="text-xs text-text-muted dark:text-text-muted-dark">• Lecture 4</span>
+</div>
+<h3 class="font-bold text-lg text-text-main dark:text-text-main-dark leading-tight mb-2 line-clamp-2 group-hover:text-primary transition-colors">
+                                Intro to Thermodynamics &amp; Kinetic Theory
+                            </h3>
+<p class="text-sm text-text-muted dark:text-text-muted-dark line-clamp-2 mb-4 flex-1">
+                                Comprehensive notes covering the first law, enthalpy, entropy, and basic kinetic models. Includes practice problems.
+                            </p>
+<!-- Tags -->
+<div class="flex flex-wrap gap-1 mb-4">
+<span class="text-[10px] bg-background-light dark:bg-background-dark text-text-muted px-2 py-1 rounded border border-border-light dark:border-border-dark">#Thermodynamics</span>
+<span class="text-[10px] bg-background-light dark:bg-background-dark text-text-muted px-2 py-1 rounded border border-border-light dark:border-border-dark">#Heat</span>
+</div>
+<div class="flex items-center justify-between pt-3 border-t border-border-light dark:border-border-dark">
+<div class="flex items-center gap-1 text-amber-500">
+<span class="material-symbols-outlined filled !text-[16px]">star</span>
+<span class="text-sm font-bold text-text-main dark:text-text-main-dark">4.8</span>
+<span class="text-xs text-text-muted ml-1">(120)</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-1 text-text-muted dark:text-text-muted-dark text-xs">
+<span class="material-symbols-outlined !text-[14px]">download</span>
+<span>3.2k</span>
+</div>
+<button class="size-8 rounded-full bg-primary/10 hover:bg-primary text-primary hover:text-white transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined !text-[18px]">arrow_downward</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="group flex flex-col bg-surface-light dark:bg-surface-dark rounded-xl border border-border-light dark:border-border-dark overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+<div class="relative h-40 bg-gradient-to-br from-green-50 to-emerald-100 dark:from-green-900/20 dark:to-emerald-900/20 flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 opacity-10" data-alt="Abstract wavy lines background" style="background-image: repeating-linear-gradient(45deg, #059669 0, #059669 1px, transparent 0, transparent 50%); background-size: 10px 10px;"></div>
+<div class="relative z-10 p-4 bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-border-light dark:border-border-dark flex flex-col items-center gap-2 w-24 aspect-[3/4]">
+<span class="text-[10px] font-bold text-green-600 uppercase tracking-widest">XLSX</span>
+<div class="w-full h-px bg-border-light dark:border-border-dark"></div>
+<div class="grid grid-cols-3 gap-1 w-full flex-1">
+<div class="bg-green-50 dark:bg-green-900/30 col-span-1 rounded-sm"></div>
+<div class="bg-slate-50 dark:bg-slate-700 col-span-2 rounded-sm"></div>
+<div class="bg-green-50 dark:bg-green-900/30 col-span-1 rounded-sm"></div>
+<div class="bg-slate-50 dark:bg-slate-700 col-span-2 rounded-sm"></div>
+<div class="bg-green-50 dark:bg-green-900/30 col-span-1 rounded-sm"></div>
+<div class="bg-slate-50 dark:bg-slate-700 col-span-2 rounded-sm"></div>
+</div>
+</div>
+<button class="absolute top-3 right-3 size-8 rounded-full bg-white/80 dark:bg-black/50 hover:bg-white dark:hover:bg-black text-text-muted hover:text-primary transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100 backdrop-blur-sm">
+<span class="material-symbols-outlined !text-[20px]">bookmark</span>
+</button>
+</div>
+<div class="p-4 flex flex-col flex-1">
+<div class="flex items-center gap-2 mb-2">
+<span class="bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">Engineering</span>
+<span class="text-xs text-text-muted dark:text-text-muted-dark">• Lab Data</span>
+</div>
+<h3 class="font-bold text-lg text-text-main dark:text-text-main-dark leading-tight mb-2 line-clamp-2 group-hover:text-primary transition-colors">
+                                Structural Analysis Data Sets - Bridge Load Test
+                            </h3>
+<p class="text-sm text-text-muted dark:text-text-muted-dark line-clamp-2 mb-4 flex-1">
+                                Raw data from the semester project load testing on the cantilever bridge model. Includes strain gauge readings.
+                            </p>
+<div class="flex flex-wrap gap-1 mb-4">
+<span class="text-[10px] bg-background-light dark:bg-background-dark text-text-muted px-2 py-1 rounded border border-border-light dark:border-border-dark">#CivilEng</span>
+<span class="text-[10px] bg-background-light dark:bg-background-dark text-text-muted px-2 py-1 rounded border border-border-light dark:border-border-dark">#Data</span>
+</div>
+<div class="flex items-center justify-between pt-3 border-t border-border-light dark:border-border-dark">
+<div class="flex items-center gap-1 text-amber-500">
+<span class="material-symbols-outlined filled !text-[16px]">star</span>
+<span class="text-sm font-bold text-text-main dark:text-text-main-dark">4.2</span>
+<span class="text-xs text-text-muted ml-1">(45)</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-1 text-text-muted dark:text-text-muted-dark text-xs">
+<span class="material-symbols-outlined !text-[14px]">download</span>
+<span>850</span>
+</div>
+<button class="size-8 rounded-full bg-primary/10 hover:bg-primary text-primary hover:text-white transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined !text-[18px]">arrow_downward</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 3 -->
+<article class="group flex flex-col bg-surface-light dark:bg-surface-dark rounded-xl border border-border-light dark:border-border-dark overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+<div class="relative h-40 bg-gradient-to-br from-purple-50 to-fuchsia-100 dark:from-purple-900/20 dark:to-fuchsia-900/20 flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 opacity-10" data-alt="Abstract dots background" style="background-image: radial-gradient(#9333ea 1px, transparent 1px); background-size: 15px 15px;"></div>
+<div class="relative z-10 p-4 bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-border-light dark:border-border-dark flex flex-col items-center gap-2 w-24 aspect-[3/4]">
+<span class="text-[10px] font-bold text-purple-600 uppercase tracking-widest">DOCX</span>
+<div class="w-full h-px bg-border-light dark:border-border-dark"></div>
+<div class="flex-1 w-full bg-slate-50 dark:bg-slate-700 rounded-sm p-1">
+<div class="w-full h-1 bg-slate-200 dark:bg-slate-600 rounded-full mb-1"></div>
+<div class="w-2/3 h-1 bg-slate-200 dark:bg-slate-600 rounded-full mb-1"></div>
+<div class="w-full h-1 bg-slate-200 dark:bg-slate-600 rounded-full mb-1"></div>
+<div class="w-full h-1 bg-slate-200 dark:bg-slate-600 rounded-full mb-1"></div>
+</div>
+</div>
+<button class="absolute top-3 right-3 size-8 rounded-full bg-white/80 dark:bg-black/50 hover:bg-white dark:hover:bg-black text-text-muted hover:text-primary transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100 backdrop-blur-sm">
+<span class="material-symbols-outlined !text-[20px]">bookmark</span>
+</button>
+</div>
+<div class="p-4 flex flex-col flex-1">
+<div class="flex items-center gap-2 mb-2">
+<span class="bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">CS</span>
+<span class="text-xs text-text-muted dark:text-text-muted-dark">• Thesis</span>
+</div>
+<h3 class="font-bold text-lg text-text-main dark:text-text-main-dark leading-tight mb-2 line-clamp-2 group-hover:text-primary transition-colors">
+                                Machine Learning Algorithms in Healthcare Applications
+                            </h3>
+<p class="text-sm text-text-muted dark:text-text-muted-dark line-clamp-2 mb-4 flex-1">
+                                An overview of supervised and unsupervised learning techniques used in modern diagnostic tools.
+                            </p>
+<div class="flex flex-wrap gap-1 mb-4">
+<span class="text-[10px] bg-background-light dark:bg-background-dark text-text-muted px-2 py-1 rounded border border-border-light dark:border-border-dark">#AI</span>
+<span class="text-[10px] bg-background-light dark:bg-background-dark text-text-muted px-2 py-1 rounded border border-border-light dark:border-border-dark">#Thesis</span>
+</div>
+<div class="flex items-center justify-between pt-3 border-t border-border-light dark:border-border-dark">
+<div class="flex items-center gap-1 text-amber-500">
+<span class="material-symbols-outlined filled !text-[16px]">star</span>
+<span class="text-sm font-bold text-text-main dark:text-text-main-dark">5.0</span>
+<span class="text-xs text-text-muted ml-1">(12)</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-1 text-text-muted dark:text-text-muted-dark text-xs">
+<span class="material-symbols-outlined !text-[14px]">download</span>
+<span>156</span>
+</div>
+<button class="size-8 rounded-full bg-primary/10 hover:bg-primary text-primary hover:text-white transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined !text-[18px]">arrow_downward</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 4 -->
+<article class="group flex flex-col bg-surface-light dark:bg-surface-dark rounded-xl border border-border-light dark:border-border-dark overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+<div class="relative h-40 bg-gradient-to-br from-orange-50 to-amber-100 dark:from-orange-900/20 dark:to-amber-900/20 flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 opacity-10" data-alt="Abstract triangle pattern background" style="background-image: linear-gradient(30deg, #f59e0b 12%, transparent 12.5%, transparent 87%, #f59e0b 87.5%, #f59e0b), linear-gradient(150deg, #f59e0b 12%, transparent 12.5%, transparent 87%, #f59e0b 87.5%, #f59e0b), linear-gradient(30deg, #f59e0b 12%, transparent 12.5%, transparent 87%, #f59e0b 87.5%, #f59e0b), linear-gradient(150deg, #f59e0b 12%, transparent 12.5%, transparent 87%, #f59e0b 87.5%, #f59e0b), linear-gradient(60deg, #f59e0b77 25%, transparent 25.5%, transparent 75%, #f59e0b77 75%, #f59e0b77), linear-gradient(60deg, #f59e0b77 25%, transparent 25.5%, transparent 75%, #f59e0b77 75%, #f59e0b77); background-size: 20px 35px;"></div>
+<div class="relative z-10 p-4 bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-border-light dark:border-border-dark flex flex-col items-center gap-2 w-24 aspect-[3/4]">
+<span class="text-[10px] font-bold text-orange-500 uppercase tracking-widest">PPTX</span>
+<div class="w-full h-px bg-border-light dark:border-border-dark"></div>
+<div class="flex-1 w-full flex flex-col gap-1 justify-center">
+<div class="w-full h-8 bg-orange-100 dark:bg-orange-900/30 rounded-sm"></div>
+<div class="flex gap-1">
+<div class="w-1/2 h-8 bg-slate-50 dark:bg-slate-700 rounded-sm"></div>
+<div class="w-1/2 h-8 bg-slate-50 dark:bg-slate-700 rounded-sm"></div>
+</div>
+</div>
+</div>
+<button class="absolute top-3 right-3 size-8 rounded-full bg-white/80 dark:bg-black/50 hover:bg-white dark:hover:bg-black text-text-muted hover:text-primary transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100 backdrop-blur-sm">
+<span class="material-symbols-outlined !text-[20px]">bookmark</span>
+</button>
+</div>
+<div class="p-4 flex flex-col flex-1">
+<div class="flex items-center gap-2 mb-2">
+<span class="bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">History</span>
+<span class="text-xs text-text-muted dark:text-text-muted-dark">• Slides</span>
+</div>
+<h3 class="font-bold text-lg text-text-main dark:text-text-main-dark leading-tight mb-2 line-clamp-2 group-hover:text-primary transition-colors">
+                                The Industrial Revolution: Global Impacts
+                            </h3>
+<p class="text-sm text-text-muted dark:text-text-muted-dark line-clamp-2 mb-4 flex-1">
+                                Slide deck for Week 5 lectures. Covers economic shifts, urbanization, and social changes in the 19th century.
+                            </p>
+<div class="flex flex-wrap gap-1 mb-4">
+<span class="text-[10px] bg-background-light dark:bg-background-dark text-text-muted px-2 py-1 rounded border border-border-light dark:border-border-dark">#History</span>
+<span class="text-[10px] bg-background-light dark:bg-background-dark text-text-muted px-2 py-1 rounded border border-border-light dark:border-border-dark">#19thCentury</span>
+</div>
+<div class="flex items-center justify-between pt-3 border-t border-border-light dark:border-border-dark">
+<div class="flex items-center gap-1 text-amber-500">
+<span class="material-symbols-outlined filled !text-[16px]">star</span>
+<span class="text-sm font-bold text-text-main dark:text-text-main-dark">4.5</span>
+<span class="text-xs text-text-muted ml-1">(89)</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-1 text-text-muted dark:text-text-muted-dark text-xs">
+<span class="material-symbols-outlined !text-[14px]">download</span>
+<span>1.1k</span>
+</div>
+<button class="size-8 rounded-full bg-primary/10 hover:bg-primary text-primary hover:text-white transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined !text-[18px]">arrow_downward</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 5 -->
+<article class="group flex flex-col bg-surface-light dark:bg-surface-dark rounded-xl border border-border-light dark:border-border-dark overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+<div class="relative h-40 bg-gradient-to-br from-pink-50 to-rose-100 dark:from-pink-900/20 dark:to-rose-900/20 flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 opacity-10" data-alt="Abstract circle pattern background" style="background-image: radial-gradient(#e11d48 1px, transparent 1px); background-size: 20px 20px;"></div>
+<div class="relative z-10 p-4 bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-border-light dark:border-border-dark flex flex-col items-center gap-2 w-24 aspect-[3/4]">
+<span class="text-[10px] font-bold text-rose-500 uppercase tracking-widest">PDF</span>
+<div class="w-full h-px bg-border-light dark:border-border-dark"></div>
+<div class="flex-1 w-full bg-slate-50 dark:bg-slate-700 rounded-sm flex items-center justify-center">
+<span class="material-symbols-outlined text-rose-300 text-3xl">functions</span>
+</div>
+</div>
+<button class="absolute top-3 right-3 size-8 rounded-full bg-white/80 dark:bg-black/50 hover:bg-white dark:hover:bg-black text-text-muted hover:text-primary transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100 backdrop-blur-sm">
+<span class="material-symbols-outlined !text-[20px]">bookmark</span>
+</button>
+</div>
+<div class="p-4 flex flex-col flex-1">
+<div class="flex items-center gap-2 mb-2">
+<span class="bg-rose-100 dark:bg-rose-900/30 text-rose-700 dark:text-rose-300 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">Math</span>
+<span class="text-xs text-text-muted dark:text-text-muted-dark">• Cheat Sheet</span>
+</div>
+<h3 class="font-bold text-lg text-text-main dark:text-text-main-dark leading-tight mb-2 line-clamp-2 group-hover:text-primary transition-colors">
+                                Advanced Calculus Integration Formulas
+                            </h3>
+<p class="text-sm text-text-muted dark:text-text-muted-dark line-clamp-2 mb-4 flex-1">
+                                A quick reference guide for all major integration techniques, including by parts, partial fractions, and trig sub.
+                            </p>
+<div class="flex flex-wrap gap-1 mb-4">
+<span class="text-[10px] bg-background-light dark:bg-background-dark text-text-muted px-2 py-1 rounded border border-border-light dark:border-border-dark">#Calculus</span>
+<span class="text-[10px] bg-background-light dark:bg-background-dark text-text-muted px-2 py-1 rounded border border-border-light dark:border-border-dark">#Formulas</span>
+</div>
+<div class="flex items-center justify-between pt-3 border-t border-border-light dark:border-border-dark">
+<div class="flex items-center gap-1 text-amber-500">
+<span class="material-symbols-outlined filled !text-[16px]">star</span>
+<span class="text-sm font-bold text-text-main dark:text-text-main-dark">4.9</span>
+<span class="text-xs text-text-muted ml-1">(342)</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-1 text-text-muted dark:text-text-muted-dark text-xs">
+<span class="material-symbols-outlined !text-[14px]">download</span>
+<span>5.8k</span>
+</div>
+<button class="size-8 rounded-full bg-primary/10 hover:bg-primary text-primary hover:text-white transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined !text-[18px]">arrow_downward</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 6 -->
+<article class="group flex flex-col bg-surface-light dark:bg-surface-dark rounded-xl border border-border-light dark:border-border-dark overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+<div class="relative h-40 bg-gradient-to-br from-teal-50 to-cyan-100 dark:from-teal-900/20 dark:to-cyan-900/20 flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 opacity-10" data-alt="Abstract grid pattern background" style="background-image: linear-gradient(#0891b2 1px, transparent 1px), linear-gradient(90deg, #0891b2 1px, transparent 1px); background-size: 20px 20px;"></div>
+<div class="relative z-10 p-4 bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-border-light dark:border-border-dark flex flex-col items-center gap-2 w-24 aspect-[3/4]">
+<span class="text-[10px] font-bold text-cyan-600 uppercase tracking-widest">TXT</span>
+<div class="w-full h-px bg-border-light dark:border-border-dark"></div>
+<div class="flex-1 w-full bg-slate-50 dark:bg-slate-700 rounded-sm p-1 overflow-hidden">
+<p class="text-[4px] text-slate-400">lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+</div>
+</div>
+<button class="absolute top-3 right-3 size-8 rounded-full bg-white/80 dark:bg-black/50 hover:bg-white dark:hover:bg-black text-text-muted hover:text-primary transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100 backdrop-blur-sm">
+<span class="material-symbols-outlined !text-[20px]">bookmark</span>
+</button>
+</div>
+<div class="p-4 flex flex-col flex-1">
+<div class="flex items-center gap-2 mb-2">
+<span class="bg-cyan-100 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-300 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">Coding</span>
+<span class="text-xs text-text-muted dark:text-text-muted-dark">• Snippets</span>
+</div>
+<h3 class="font-bold text-lg text-text-main dark:text-text-main-dark leading-tight mb-2 line-clamp-2 group-hover:text-primary transition-colors">
+                                Useful Python Utility Scripts
+                            </h3>
+<p class="text-sm text-text-muted dark:text-text-muted-dark line-clamp-2 mb-4 flex-1">
+                                Collection of helper functions for file manipulation, data cleaning, and basic web scraping.
+                            </p>
+<div class="flex flex-wrap gap-1 mb-4">
+<span class="text-[10px] bg-background-light dark:bg-background-dark text-text-muted px-2 py-1 rounded border border-border-light dark:border-border-dark">#Python</span>
+<span class="text-[10px] bg-background-light dark:bg-background-dark text-text-muted px-2 py-1 rounded border border-border-light dark:border-border-dark">#Scripts</span>
+</div>
+<div class="flex items-center justify-between pt-3 border-t border-border-light dark:border-border-dark">
+<div class="flex items-center gap-1 text-amber-500">
+<span class="material-symbols-outlined filled !text-[16px]">star</span>
+<span class="text-sm font-bold text-text-main dark:text-text-main-dark">4.6</span>
+<span class="text-xs text-text-muted ml-1">(67)</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-1 text-text-muted dark:text-text-muted-dark text-xs">
+<span class="material-symbols-outlined !text-[14px]">download</span>
+<span>420</span>
+</div>
+<button class="size-8 rounded-full bg-primary/10 hover:bg-primary text-primary hover:text-white transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined !text-[18px]">arrow_downward</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+</div>
+<!-- Pagination -->
+<div class="mt-12 flex justify-center">
+<nav class="flex items-center gap-1">
+<button class="p-2 rounded-lg border border-border-light dark:border-border-dark text-text-muted hover:bg-background-light dark:hover:bg-background-dark disabled:opacity-50">
+<span class="material-symbols-outlined !text-[20px]">chevron_left</span>
+</button>
+<button class="size-10 rounded-lg bg-primary text-white font-medium flex items-center justify-center">1</button>
+<button class="size-10 rounded-lg border border-transparent hover:bg-background-light dark:hover:bg-background-dark text-text-muted hover:text-text-main dark:hover:text-text-main-dark font-medium flex items-center justify-center transition-colors">2</button>
+<button class="size-10 rounded-lg border border-transparent hover:bg-background-light dark:hover:bg-background-dark text-text-muted hover:text-text-main dark:hover:text-text-main-dark font-medium flex items-center justify-center transition-colors">3</button>
+<span class="px-2 text-text-muted">...</span>
+<button class="size-10 rounded-lg border border-transparent hover:bg-background-light dark:hover:bg-background-dark text-text-muted hover:text-text-main dark:hover:text-text-main-dark font-medium flex items-center justify-center transition-colors">8</button>
+<button class="p-2 rounded-lg border border-border-light dark:border-border-dark text-text-muted hover:bg-background-light dark:hover:bg-background-dark">
+<span class="material-symbols-outlined !text-[20px]">chevron_right</span>
+</button>
+</nav>
+</div>
+</div>
+</div>
+</main>
+</body></html>

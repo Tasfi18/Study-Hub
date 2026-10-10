@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Upload Material - EduShare</title>
+<!-- Google Fonts: Lexend -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#2b4bee",
+              "background-light": "#f6f6f8",
+              "background-dark": "#101322",
+            },
+            fontFamily: {
+              "display": ["Lexend", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Lexend', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-[#111218] dark:text-white overflow-x-hidden transition-colors duration-200">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root">
+<!-- Header -->
+<header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#f0f1f4] dark:border-b-gray-800 bg-white dark:bg-[#1a1d2d] px-10 py-3 shadow-sm">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-[#111218] dark:text-white">
+<div class="size-8 text-primary">
+<svg class="w-full h-full" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M42.1739 20.1739L27.8261 5.82609C29.1366 7.13663 28.3989 10.1876 26.2002 13.7654C24.8538 15.9564 22.9595 18.3449 20.6522 20.6522C18.3449 22.9595 15.9564 24.8538 13.7654 26.2002C10.1876 28.3989 7.13663 29.1366 5.82609 27.8261L20.1739 42.1739C21.4845 43.4845 24.5355 42.7467 28.1133 40.548C30.3042 39.2016 32.6927 37.3073 35 35C37.3073 32.6927 39.2016 30.3042 40.548 28.1133C42.7467 24.5355 43.4845 21.4845 42.1739 20.1739Z" fill="currentColor"></path>
+<path clip-rule="evenodd" d="M7.24189 26.4066C7.31369 26.4411 7.64204 26.5637 8.52504 26.3738C9.59462 26.1438 11.0343 25.5311 12.7183 24.4963C14.7583 23.2426 17.0256 21.4503 19.238 19.238C21.4503 17.0256 23.2426 14.7583 24.4963 12.7183C25.5311 11.0343 26.1438 9.59463 26.3738 8.52504C26.5637 7.64204 26.4411 7.31369 26.4066 7.24189C26.345 7.21246 26.143 7.14535 25.6664 7.1918C24.9745 7.25925 23.9954 7.5498 22.7699 8.14278C20.3369 9.32007 17.3369 11.4915 14.4142 14.4142C11.4915 17.3369 9.32007 20.3369 8.14278 22.7699C7.5498 23.9954 7.25925 24.9745 7.1918 25.6664C7.14534 26.143 7.21246 26.345 7.24189 26.4066ZM29.9001 10.7285C29.4519 12.0322 28.7617 13.4172 27.9042 14.8126C26.465 17.1544 24.4686 19.6641 22.0664 22.0664C19.6641 24.4686 17.1544 26.465 14.8126 27.9042C13.4172 28.7617 12.0322 29.4519 10.7285 29.9001L21.5754 40.747C21.6001 40.7606 21.8995 40.931 22.8729 40.7217C23.9424 40.4916 25.3821 39.879 27.0661 38.8441C29.1062 37.5904 31.3734 35.7982 33.5858 33.5858C35.7982 31.3734 37.5904 29.1062 38.8441 27.0661C39.879 25.3821 40.4916 23.9425 40.7216 22.8729C40.931 21.8995 40.7606 21.6001 40.747 21.5754L29.9001 10.7285ZM29.2403 4.41187L43.5881 18.7597C44.9757 20.1473 44.9743 22.1235 44.6322 23.7139C44.2714 25.3919 43.4158 27.2666 42.252 29.1604C40.8128 31.5022 38.8165 34.012 36.4142 36.4142C34.012 38.8165 31.5022 40.8128 29.1604 42.252C27.2666 43.4158 25.3919 44.2714 23.7139 44.6322C22.1235 44.9743 20.1473 44.9757 18.7597 43.5881L4.41187 29.2403C3.29027 28.1187 3.08209 26.5973 3.21067 25.2783C3.34099 23.9415 3.8369 22.4852 4.54214 21.0277C5.96129 18.0948 8.43335 14.7382 11.5858 11.5858C14.7382 8.43335 18.0948 5.9613 21.0277 4.54214C22.4852 3.8369 23.9415 3.34099 25.2783 3.21067C26.5973 3.08209 28.1187 3.29028 29.2403 4.41187Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-[#111218] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">EduShare</h2>
+</div>
+<div class="hidden md:flex items-center gap-9">
+<a class="text-[#111218] dark:text-gray-300 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Browse Materials</a>
+<a class="text-[#111218] dark:text-gray-300 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">My Library</a>
+<a class="text-[#111218] dark:text-gray-300 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Community</a>
+</div>
+</div>
+<div class="flex flex-1 justify-end gap-4 md:gap-8">
+<label class="hidden md:flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-[#616889] dark:text-gray-400 flex border-none bg-[#f0f1f4] dark:bg-gray-800 items-center justify-center pl-4 rounded-l-lg border-r-0">
+<span class="material-symbols-outlined text-[24px]">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#111218] dark:text-white focus:outline-0 focus:ring-0 border-none bg-[#f0f1f4] dark:bg-gray-800 focus:border-none h-full placeholder:text-[#616889] px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal" placeholder="Search" value=""/>
+</div>
+</label>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 ring-2 ring-white dark:ring-gray-800 cursor-pointer" data-alt="User profile avatar showing a smiling person" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD2nZ1dOhCdz9_zWm_fmGipo6TrZH37772WWhuZK8kgbhyPmL5iSDSoXL1GHiWPNxERkRhU5uSOQAVeMF5qMfUeHOhvxbc4Gi2NPwwfrHokBlm7K2MHuIqejqwnW_3IdEam8xjhM4NjLyO8vLPWP_hziJ5Opql4I0gY0vch7dCpxPKiqNybYe-8UntaJox2tzJwPnOA5HlFhPIk8fF_FKOb44ZLd_KODGu_Tw3FDXXWXT2b-abHmLrPfA-Kga0B-TQafRqRxzdbKfU");'></div>
+</div>
+</header>
+<div class="layout-container flex h-full grow flex-col">
+<div class="px-4 md:px-12 xl:px-40 flex flex-1 justify-center py-8">
+<div class="layout-content-container flex flex-col max-w-7xl flex-1">
+<!-- Page Heading -->
+<div class="flex flex-wrap justify-between gap-3 p-4 mb-4">
+<div class="flex min-w-72 flex-col gap-3">
+<h1 class="text-[#111218] dark:text-white text-4xl font-black leading-tight tracking-[-0.033em]">Contribute to the Community</h1>
+<p class="text-[#616889] dark:text-gray-400 text-base font-normal leading-normal">Share your study materials to help students succeed.</p>
+</div>
+<button class="flex md:hidden min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white text-sm font-bold leading-normal">
+                           View Guidelines
+                        </button>
+</div>
+<div class="flex flex-col lg:flex-row gap-8 px-4">
+<!-- Left Column: Upload & Form -->
+<div class="flex-1 flex flex-col gap-8">
+<!-- Upload Zone -->
+<div class="flex flex-col items-center gap-6 rounded-xl border-2 border-dashed border-primary/40 bg-primary/5 dark:bg-primary/10 px-6 py-14 transition-colors hover:border-primary/70 group cursor-pointer">
+<div class="flex flex-col items-center gap-4 text-center">
+<div class="rounded-full bg-white dark:bg-gray-800 p-4 shadow-sm group-hover:scale-110 transition-transform duration-200">
+<span class="material-symbols-outlined text-primary text-4xl">cloud_upload</span>
+</div>
+<div class="flex max-w-[480px] flex-col items-center gap-2">
+<p class="text-[#111218] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] max-w-[480px]">
+                                            Upload Document
+                                        </p>
+<p class="text-[#616889] dark:text-gray-400 text-sm font-normal leading-normal max-w-[480px]">
+                                            Drag &amp; drop your file here, or click to browse.<br/>Supports PDF, DOCX, PPTX up to 25MB.
+                                        </p>
+</div>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] shadow-md hover:bg-blue-700 transition-colors">
+<span class="truncate">Browse Files</span>
+</button>
+</div>
+</div>
+<!-- Progress Bar (Contextual: Shows after simulated upload) -->
+<div class="flex flex-col gap-3 p-5 rounded-lg border border-[#f0f1f4] dark:border-gray-800 bg-white dark:bg-[#1a1d2d] shadow-sm">
+<div class="flex gap-6 justify-between items-center">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-red-500">picture_as_pdf</span>
+<p class="text-[#111218] dark:text-white text-base font-medium leading-normal">Calculus_II_Final_Review.pdf</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-[#111218] dark:text-white text-sm font-normal leading-normal">100%</span>
+<span class="material-symbols-outlined text-green-500 text-sm">check_circle</span>
+</div>
+</div>
+<div class="rounded-full bg-[#dbdde6] dark:bg-gray-700 h-2 overflow-hidden">
+<div class="h-2 rounded-full bg-primary" style="width: 100%;"></div>
+</div>
+<p class="text-[#616889] dark:text-gray-400 text-sm font-normal leading-normal">Upload Complete</p>
+</div>
+<!-- Metadata Form -->
+<div class="flex flex-col gap-6">
+<h3 class="text-[#111218] dark:text-white text-xl font-bold leading-tight">Material Details</h3>
+<div class="grid gap-6">
+<!-- Title -->
+<div class="flex flex-col gap-2">
+<label class="text-[#111218] dark:text-gray-200 text-sm font-medium leading-normal">Title</label>
+<input class="flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#111218] dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-[#dbdde6] dark:border-gray-700 bg-white dark:bg-[#1a1d2d] focus:border-primary h-12 placeholder:text-[#616889] px-4 text-base font-normal leading-normal transition-all" placeholder="e.g., Calculus II Final Review" value="Calculus II Final Review"/>
+</div>
+<!-- Description -->
+<div class="flex flex-col gap-2">
+<label class="text-[#111218] dark:text-gray-200 text-sm font-medium leading-normal">Description</label>
+<textarea class="flex w-full min-w-0 flex-1 resize-none rounded-lg text-[#111218] dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-[#dbdde6] dark:border-gray-700 bg-white dark:bg-[#1a1d2d] focus:border-primary placeholder:text-[#616889] p-4 text-base font-normal leading-normal transition-all" placeholder="Describe the contents of this material..." rows="4"></textarea>
+<p class="text-[#616889] text-xs">Rich text formatting supported.</p>
+</div>
+<!-- Row: Course & Type -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="flex flex-col gap-2">
+<label class="text-[#111218] dark:text-gray-200 text-sm font-medium leading-normal">Course Code</label>
+<div class="relative">
+<input class="flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#111218] dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-[#dbdde6] dark:border-gray-700 bg-white dark:bg-[#1a1d2d] focus:border-primary h-12 placeholder:text-[#616889] px-4 text-base font-normal leading-normal transition-all" placeholder="e.g. MATH 202"/>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-[#111218] dark:text-gray-200 text-sm font-medium leading-normal">Material Type</label>
+<div class="relative">
+<select class="flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#111218] dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-[#dbdde6] dark:border-gray-700 bg-white dark:bg-[#1a1d2d] focus:border-primary h-12 px-4 text-base font-normal leading-normal transition-all appearance-none">
+<option>Lecture Notes</option>
+<option selected="">Exam Prep</option>
+<option>Homework Solution</option>
+<option>Lab Report</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-[#616889]">
+<span class="material-symbols-outlined">expand_more</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Tags -->
+<div class="flex flex-col gap-2">
+<label class="text-[#111218] dark:text-gray-200 text-sm font-medium leading-normal">Tags</label>
+<div class="flex flex-wrap items-center gap-2 rounded-lg border border-[#dbdde6] dark:border-gray-700 bg-white dark:bg-[#1a1d2d] p-2 focus-within:ring-2 focus-within:ring-primary/50 focus-within:border-primary transition-all">
+<div class="flex items-center gap-1 rounded bg-primary/10 px-2 py-1 text-primary">
+<span class="text-sm font-medium">Calculus</span>
+<button class="flex items-center justify-center text-primary/70 hover:text-primary">
+<span class="material-symbols-outlined text-[16px]">close</span>
+</button>
+</div>
+<div class="flex items-center gap-1 rounded bg-primary/10 px-2 py-1 text-primary">
+<span class="text-sm font-medium">Integrals</span>
+<button class="flex items-center justify-center text-primary/70 hover:text-primary">
+<span class="material-symbols-outlined text-[16px]">close</span>
+</button>
+</div>
+<input class="flex-1 min-w-[120px] border-none bg-transparent p-1 text-base text-[#111218] dark:text-white placeholder:text-[#616889] focus:outline-none focus:ring-0" placeholder="Type and press Enter..."/>
+</div>
+</div>
+</div>
+<!-- Actions Footer -->
+<div class="flex items-center justify-end gap-4 mt-8 pt-6 border-t border-[#f0f1f4] dark:border-gray-800">
+<button class="px-6 py-2.5 rounded-lg text-sm font-bold text-[#616889] hover:bg-gray-100 dark:hover:bg-gray-800 dark:text-gray-400 transition-colors">
+                                        Save Draft
+                                    </button>
+<button class="px-8 py-2.5 rounded-lg bg-primary text-white text-sm font-bold shadow-lg shadow-blue-500/30 hover:bg-blue-600 transition-all transform active:scale-95">
+                                        Publish Material
+                                    </button>
+</div>
+</div>
+</div>
+<!-- Right Column: Sidebar -->
+<div class="w-full lg:w-[360px] flex flex-col gap-6">
+<!-- Preview Card -->
+<div class="bg-white dark:bg-[#1a1d2d] rounded-xl shadow-sm border border-[#f0f1f4] dark:border-gray-800 overflow-hidden">
+<div class="p-4 border-b border-[#f0f1f4] dark:border-gray-800 bg-gray-50 dark:bg-[#151725] flex justify-between items-center">
+<h3 class="font-bold text-[#111218] dark:text-white">File Preview</h3>
+<button class="text-red-500 text-xs font-bold hover:underline">Remove</button>
+</div>
+<div class="p-4">
+<div class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-lg border border-gray-200 dark:border-gray-700 shadow-inner relative group" data-alt="Preview of a document showing mathematical formulas and graphs" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDKKogRJ5Z0iDtolO_2LqlPXa9yrrRkyNpp7gHHTn9A43pjBhgsQ_ncODBWAexqy9d6D91y04URZtfer64aLB05rEZi17DBb4xL_ODnKD70HMSyBs0k7NrtKTVycpFDZ9gqWrFIfY52w80_WQRPDj4vWsCIHBQXZsdwvsQ7mcDsOT-cjGjXPxgQWOgV95-YEzalaH9Yhl1vtGJv-a252gHghCABIBr_uK7Li1uOL5tTQg8ZKjIIGAlMilT_15I-Nzud_RZdswxAbWQ");'>
+<div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center rounded-lg">
+<button class="bg-white/20 backdrop-blur-md border border-white/50 text-white px-4 py-2 rounded-lg font-bold text-sm flex items-center gap-2 hover:bg-white/30 transition-colors">
+<span class="material-symbols-outlined text-sm">visibility</span>
+                                                Expand
+                                            </button>
+</div>
+</div>
+<div class="mt-4 flex flex-col gap-1">
+<p class="text-[#111218] dark:text-white font-bold text-sm">Calculus_II_Final_Review.pdf</p>
+<p class="text-[#616889] dark:text-gray-400 text-xs">12 Pages • 2.4 MB • PDF</p>
+</div>
+</div>
+</div>
+<!-- Guidelines Card -->
+<div class="bg-primary/5 dark:bg-primary/10 rounded-xl border border-primary/20 p-5">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary">lightbulb</span>
+<h3 class="font-bold text-[#111218] dark:text-white">Submission Guidelines</h3>
+</div>
+<ul class="space-y-3">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-green-600 text-[20px] mt-0.5">check_circle</span>
+<p class="text-sm text-[#616889] dark:text-gray-300">Upload high-quality, legible PDFs for best readability.</p>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-green-600 text-[20px] mt-0.5">check_circle</span>
+<p class="text-sm text-[#616889] dark:text-gray-300">Include accurate course codes and descriptive titles.</p>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-red-500 text-[20px] mt-0.5">cancel</span>
+<p class="text-sm text-[#616889] dark:text-gray-300">Do not upload copyrighted textbooks or materials.</p>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-red-500 text-[20px] mt-0.5">cancel</span>
+<p class="text-sm text-[#616889] dark:text-gray-300">Avoid files with personal student information.</p>
+</li>
+</ul>
+</div>
+<!-- Gamification / Motivation -->
+<div class="bg-gradient-to-br from-[#101322] to-[#2b4bee] rounded-xl p-5 text-white shadow-lg relative overflow-hidden">
+<div class="absolute top-0 right-0 -mt-2 -mr-2 w-16 h-16 bg-white/10 rounded-full blur-xl"></div>
+<div class="relative z-10 flex gap-4 items-center">
+<div class="size-10 rounded-full bg-white/20 flex items-center justify-center backdrop-blur-sm">
+<span class="material-symbols-outlined text-yellow-300">stars</span>
+</div>
+<div>
+<p class="font-bold text-sm">Earn Contribution Points</p>
+<p class="text-xs text-white/80">Get +50 points for every approved upload!</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Saved Materials - StudyHub</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2b4bee",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101322",
+                        "surface-dark": "#1c2136", // Added for dark mode cards
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Lexend', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-[#111218] dark:text-white transition-colors duration-200">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Header -->
+<header class="sticky top-0 z-50 flex w-full items-center justify-between border-b border-[#f0f1f4] dark:border-[#2a2e42] bg-white/95 dark:bg-[#101322]/95 backdrop-blur-sm px-6 py-3 lg:px-10">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3">
+<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-white">
+<span class="material-symbols-outlined text-[28px]">school</span>
+</div>
+<h2 class="text-xl font-bold tracking-tight text-[#111218] dark:text-white">StudyHub</h2>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-sm font-medium text-[#616889] hover:text-primary dark:text-gray-400 dark:hover:text-white transition-colors" href="#">Dashboard</a>
+<a class="text-sm font-medium text-[#616889] hover:text-primary dark:text-gray-400 dark:hover:text-white transition-colors" href="#">Courses</a>
+<a class="text-sm font-medium text-[#616889] hover:text-primary dark:text-gray-400 dark:hover:text-white transition-colors" href="#">Community</a>
+<a class="text-sm font-medium text-primary dark:text-white" href="#">Library</a>
+</nav>
+</div>
+<div class="flex items-center gap-4 lg:gap-8">
+<!-- Mobile Search Trigger (Hidden on Desktop) -->
+<button class="md:hidden text-[#616889] dark:text-gray-300">
+<span class="material-symbols-outlined">search</span>
+</button>
+<!-- Desktop Quick Search -->
+<label class="hidden md:flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full border border-transparent focus-within:border-primary/20 transition-all">
+<div class="text-[#616889] flex bg-[#f0f1f4] dark:bg-surface-dark items-center justify-center pl-4 rounded-l-lg border-r-0">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-r-lg text-[#111218] dark:text-white focus:outline-0 focus:ring-0 border-none bg-[#f0f1f4] dark:bg-surface-dark h-full placeholder:text-[#616889] px-4 pl-2 text-sm font-normal leading-normal" placeholder="Quick search..." value=""/>
+</div>
+</label>
+<div class="flex items-center gap-4">
+<button class="relative text-[#616889] dark:text-gray-300 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-0 right-0 h-2 w-2 rounded-full bg-red-500 ring-2 ring-white dark:ring-[#101322]"></span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 ring-2 ring-offset-2 ring-transparent hover:ring-primary/20 transition-all cursor-pointer" data-alt="User profile avatar showing a smiling student" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBQwr2qlLcgwxlGRVeXmsrVMZEza8IMpxWx4oN8oSNE_j-2bcZTyBP2VBUoNwPzi48Q5bj4tyd2DR7oi-rME1ALcnJ0HSaxRjr9VJMdSBOEPoIs_mIHgNlmhm2V39O5zNp9AR4zDJ7obsAsu0eN5-rhpLE-rfbTX556es1hKLjieE_DKRAG84kXS6EFfHB9Ng6iZC3297dqBx9WOFel78xaBWtYIvUWPDesPWGjOjoQju7q2e16O9fYW-Z4fUHSNl0Uhup5zLe4baM");'></div>
+</div>
+</div>
+</header>
+<div class="flex flex-1 flex-col px-4 py-8 lg:px-40">
+<div class="mx-auto flex w-full max-w-[1200px] flex-col gap-8">
+<!-- Page Heading Section -->
+<div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+<div>
+<h1 class="text-3xl font-black tracking-[-0.033em] text-[#111218] dark:text-white md:text-4xl">My Saved Library</h1>
+<p class="mt-2 text-[#616889] dark:text-gray-400">Manage your bookmarked study materials and resources.</p>
+</div>
+<div class="flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary dark:bg-primary/20 dark:text-blue-300">
+<span class="material-symbols-outlined text-[18px]">bookmark</span>
+<span>12 items saved</span>
+</div>
+</div>
+<!-- Filters & Controls Toolbar -->
+<div class="flex flex-col gap-4 rounded-xl bg-white p-4 shadow-sm dark:bg-surface-dark lg:flex-row lg:items-center">
+<!-- Search -->
+<div class="flex-1">
+<div class="relative flex h-11 w-full items-center overflow-hidden rounded-lg bg-[#f0f1f4] dark:bg-[#101322] focus-within:ring-2 focus-within:ring-primary/20">
+<div class="flex h-full items-center justify-center pl-4 text-[#616889] dark:text-gray-400">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="h-full w-full border-none bg-transparent px-3 text-[#111218] placeholder:text-[#616889] focus:outline-none focus:ring-0 dark:text-white dark:placeholder:text-gray-500" placeholder="Search saved materials..."/>
+</div>
+</div>
+<!-- Dropdowns and Toggles -->
+<div class="flex flex-wrap items-center gap-3">
+<!-- Sort Dropdown -->
+<div class="relative min-w-[140px]">
+<select class="h-11 w-full appearance-none rounded-lg border border-[#dbdde6] bg-white px-4 py-2 pr-10 text-sm font-medium text-[#111218] focus:border-primary focus:outline-none focus:ring-0 dark:border-[#2a2e42] dark:bg-[#101322] dark:text-white">
+<option>Newest First</option>
+<option>Oldest First</option>
+<option>Alphabetical (A-Z)</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-[#616889]">
+<span class="material-symbols-outlined text-[20px]">expand_more</span>
+</div>
+</div>
+<!-- Filter Dropdown -->
+<div class="relative min-w-[140px]">
+<select class="h-11 w-full appearance-none rounded-lg border border-[#dbdde6] bg-white px-4 py-2 pr-10 text-sm font-medium text-[#111218] focus:border-primary focus:outline-none focus:ring-0 dark:border-[#2a2e42] dark:bg-[#101322] dark:text-white">
+<option>All Subjects</option>
+<option>Mathematics</option>
+<option>Chemistry</option>
+<option>History</option>
+<option>Computer Science</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-[#616889]">
+<span class="material-symbols-outlined text-[20px]">filter_list</span>
+</div>
+</div>
+<!-- Divider -->
+<div class="hidden h-8 w-px bg-[#dbdde6] dark:bg-[#2a2e42] lg:block"></div>
+<!-- View Toggle -->
+<div class="flex h-11 items-center rounded-lg bg-[#f0f1f4] p-1 dark:bg-[#101322]">
+<button class="flex h-full items-center justify-center rounded px-3 text-[#111218] shadow-sm bg-white dark:bg-surface-dark dark:text-white transition-all">
+<span class="material-symbols-outlined text-[20px]">grid_view</span>
+</button>
+<button class="flex h-full items-center justify-center rounded px-3 text-[#616889] hover:text-[#111218] dark:text-gray-400 dark:hover:text-white transition-all">
+<span class="material-symbols-outlined text-[20px]">view_list</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Grid Content -->
+<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+<!-- Card 1 -->
+<div class="group relative flex flex-col overflow-hidden rounded-xl border border-[#f0f1f4] bg-white transition-all hover:-translate-y-1 hover:shadow-lg dark:border-[#2a2e42] dark:bg-surface-dark">
+<div class="relative aspect-[16/10] w-full overflow-hidden bg-gray-100 dark:bg-gray-800">
+<div class="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Abstract molecular structure visualization for organic chemistry" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCIKu_RUVavdLmnqDQ_rp15ozNAcriF1Eh_9LZIMKIPhzdRAmRzVQGGzG3mO8AwpDT-O5rrw-cq7YZVupoTNLHWpjmiapwsB7zpIfTg3dhUofqZOYfqZUIcK6CR_sNfTl35gp783yTXLz94llQdJyPUp02n_LH88Sunaq1A6d0j90BthrctoWlOtpD3LACFNjJEbVIblGkZxTb5ey5y2iKvtyWTf6f8TagsMmvehufjddtUWQyo3r4zmB5moFNncYiPv1pStT_9yDA');"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60"></div>
+<!-- Type Badge -->
+<div class="absolute bottom-3 left-3 flex items-center gap-1.5 rounded-md bg-black/40 px-2 py-1 text-xs font-medium text-white backdrop-blur-md">
+<span class="material-symbols-outlined text-[14px]">play_circle</span>
+                                Video
+                            </div>
+<!-- Bookmark Action -->
+<button class="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-white/90 text-primary shadow-sm hover:bg-white dark:bg-[#101322]/90 dark:text-blue-400 dark:hover:bg-[#101322] transition-colors" title="Remove from bookmarks">
+<span class="material-symbols-outlined text-[20px] fill-current">bookmark</span>
+</button>
+</div>
+<div class="flex flex-1 flex-col p-4">
+<div class="mb-2 flex items-center justify-between">
+<span class="inline-flex items-center rounded-full bg-blue-50 px-2 py-0.5 text-xs font-semibold text-blue-700 dark:bg-blue-900/30 dark:text-blue-300">Chemistry 101</span>
+<span class="text-xs text-[#616889] dark:text-gray-400">2 days ago</span>
+</div>
+<h3 class="mb-2 text-lg font-bold leading-tight text-[#111218] dark:text-white group-hover:text-primary dark:group-hover:text-blue-400 transition-colors">
+                                Introduction to Organic Molecules
+                            </h3>
+<p class="mb-4 line-clamp-2 text-sm text-[#616889] dark:text-gray-400">
+                                A comprehensive breakdown of hydrocarbon chains and functional groups.
+                            </p>
+<div class="mt-auto flex items-center gap-2 border-t border-[#f0f1f4] pt-3 dark:border-[#2a2e42]">
+<div class="h-6 w-6 rounded-full bg-cover bg-center" data-alt="Profile picture of Professor Smith" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDSGjVM3sWPTZRkJGdIsbeo2dLtCcrYd64A8b-kVk8jWeXgiXZ3pSciYn8IJGLjytCzIUCxaVqya-d_N6yR7IO6Yng57XnMk52u6XJaw0hPrPMdQsy8y2UGiBtovNVTLEU96wZ62Zj2OBJC0Hcx0QThw2Vek2pOsxUs9xEwuV3L459eitERMw5zJ2q6faq45sI1kZFG9C2umAvtSCMyR2vQia4F8L9Q1oWgUNMYcOnn3iO2a_mFyqNn1loAvQ5AakDj5s4TeWRnpoA');"></div>
+<span class="text-xs font-medium text-[#111218] dark:text-gray-300">Prof. Smith</span>
+<div class="ml-auto flex gap-1">
+<button class="text-[#616889] hover:text-primary dark:text-gray-400 dark:hover:text-white">
+<span class="material-symbols-outlined text-[20px]">share</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="group relative flex flex-col overflow-hidden rounded-xl border border-[#f0f1f4] bg-white transition-all hover:-translate-y-1 hover:shadow-lg dark:border-[#2a2e42] dark:bg-surface-dark">
+<div class="relative aspect-[16/10] w-full overflow-hidden bg-gray-100 dark:bg-gray-800">
+<div class="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Close up of a calculus textbook with mathematical formulas" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB8vFj87ZwWfBJ6-p0Gv0YWAQZbDTEL9LOUhFfjVHGfQTA8qkn8FB2U2ZBxorK4IUk_pxROcpi5KLTIlrLmhsCf3zB3Bwz9EwJDi3yiTjbFJL3DUubTVuM5IolbUXTJEgl9K6u6JmgrRKroTFJftJdqixr2AVecvUruOsVlsZAXlh59hgBKeAYUT3r6dsxElmDsQvOjJHJz7fC2IRnn1m8Oh8GaKjREtjveQljMeYMQbo9MPmpFaIrXMKUGpeqOoLAzKwNYxQ8uNs0');"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60"></div>
+<div class="absolute bottom-3 left-3 flex items-center gap-1.5 rounded-md bg-black/40 px-2 py-1 text-xs font-medium text-white backdrop-blur-md">
+<span class="material-symbols-outlined text-[14px]">description</span>
+                                PDF
+                            </div>
+<button class="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-white/90 text-primary shadow-sm hover:bg-white dark:bg-[#101322]/90 dark:text-blue-400 dark:hover:bg-[#101322] transition-colors">
+<span class="material-symbols-outlined text-[20px] fill-current">bookmark</span>
+</button>
+</div>
+<div class="flex flex-1 flex-col p-4">
+<div class="mb-2 flex items-center justify-between">
+<span class="inline-flex items-center rounded-full bg-red-50 px-2 py-0.5 text-xs font-semibold text-red-700 dark:bg-red-900/30 dark:text-red-300">Calculus II</span>
+<span class="text-xs text-[#616889] dark:text-gray-400">5 days ago</span>
+</div>
+<h3 class="mb-2 text-lg font-bold leading-tight text-[#111218] dark:text-white group-hover:text-primary dark:group-hover:text-blue-400 transition-colors">
+                                Derivatives Cheatsheet 2024
+                            </h3>
+<p class="mb-4 line-clamp-2 text-sm text-[#616889] dark:text-gray-400">
+                                Essential formulas and rules for solving derivative problems quickly.
+                            </p>
+<div class="mt-auto flex items-center gap-2 border-t border-[#f0f1f4] pt-3 dark:border-[#2a2e42]">
+<div class="h-6 w-6 rounded-full bg-cover bg-center" data-alt="Profile picture of Sarah Johnson" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDtBqRjKs2OXeb69wGq94ei13vnQxXPvq9tsVkHQBlsij3EUVgUI-wH8AEDZn4X-TtPt7I5SGutuSKeDME_CbfFRCyeg5PPTCHBubp9WrarWvhb_LqjliWul_teZLKlWrWnUq84GjiwmYPXMy9UeYhxBbkYKeHaDEbQOemUMG0ebj0dwgYIQyVb5w9mv7BeiXil3yyWoRyNmlFKMvtAMqbBIzopXgySsTPtnkT7pVrQimXdPa3kE_R21Lz5wp6F3w0_MozmeQfPF4E');"></div>
+<span class="text-xs font-medium text-[#111218] dark:text-gray-300">Sarah Johnson</span>
+<div class="ml-auto flex gap-1">
+<button class="text-[#616889] hover:text-primary dark:text-gray-400 dark:hover:text-white">
+<span class="material-symbols-outlined text-[20px]">share</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="group relative flex flex-col overflow-hidden rounded-xl border border-[#f0f1f4] bg-white transition-all hover:-translate-y-1 hover:shadow-lg dark:border-[#2a2e42] dark:bg-surface-dark">
+<div class="relative aspect-[16/10] w-full overflow-hidden bg-gray-100 dark:bg-gray-800">
+<div class="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Ancient Greek architecture illustration" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAEHZ5ZN56sNv399L2ZP0VDBfa6oChXtG8spjZIdKqXOd7ULWZau42vvRHqh-ZcK5gFIP8e6nfT7ghFbTdWGKrU-cw_5Az-yLviSNOEvbZch6Sq24YsxQ0c6Lluy-39R1eFXLNzAAN2pTdMYqyRjPlR2QU_MIf5T8k3_TCqjERqIkuWAct19y4Mmw9Nwl3jis986qsLNqzEy_ujlCSnmcWGZya1BLMFaBtS1XKYfyesCO0ANG_0t2sksEmPspXCZ5EVsp8fxJsNqec');"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60"></div>
+<div class="absolute bottom-3 left-3 flex items-center gap-1.5 rounded-md bg-black/40 px-2 py-1 text-xs font-medium text-white backdrop-blur-md">
+<span class="material-symbols-outlined text-[14px]">quiz</span>
+                                Quiz
+                            </div>
+<button class="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-white/90 text-primary shadow-sm hover:bg-white dark:bg-[#101322]/90 dark:text-blue-400 dark:hover:bg-[#101322] transition-colors">
+<span class="material-symbols-outlined text-[20px] fill-current">bookmark</span>
+</button>
+</div>
+<div class="flex flex-1 flex-col p-4">
+<div class="mb-2 flex items-center justify-between">
+<span class="inline-flex items-center rounded-full bg-amber-50 px-2 py-0.5 text-xs font-semibold text-amber-700 dark:bg-amber-900/30 dark:text-amber-300">Art History</span>
+<span class="text-xs text-[#616889] dark:text-gray-400">1 week ago</span>
+</div>
+<h3 class="mb-2 text-lg font-bold leading-tight text-[#111218] dark:text-white group-hover:text-primary dark:group-hover:text-blue-400 transition-colors">
+                                Renaissance Era Mock Exam
+                            </h3>
+<p class="mb-4 line-clamp-2 text-sm text-[#616889] dark:text-gray-400">
+                                Test your knowledge on key figures like Da Vinci and Michelangelo.
+                            </p>
+<div class="mt-auto flex items-center gap-2 border-t border-[#f0f1f4] pt-3 dark:border-[#2a2e42]">
+<div class="h-6 w-6 rounded-full bg-cover bg-center" data-alt="Profile picture of Dr. Chen" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBoQ0dg4f6RhBrRfhZimw90GIRg6wTSbeHNP2mkgwJmzV-QubP4L1QMvyRgJWxJyzxrIwmNfhmk4ikOrACxHPuz_dk4-JSVSw-l0J_jppOi8NL4p5kGxm2J-cl2_2yfJLcBk6NgunrLVEcGFemlyGW50mHMomc2f4FhPxycAC1P8e0U3ey0u-y6PLuU8taqFr3ozLU9onHbFtIbgwCOMrspflpYhbeprTRSTI9OZ4qEyLZjuO-h3djhq3QnNyNyyVB6eSNkeRKC4zE');"></div>
+<span class="text-xs font-medium text-[#111218] dark:text-gray-300">Dr. Chen</span>
+<div class="ml-auto flex gap-1">
+<button class="text-[#616889] hover:text-primary dark:text-gray-400 dark:hover:text-white">
+<span class="material-symbols-outlined text-[20px]">share</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="group relative flex flex-col overflow-hidden rounded-xl border border-[#f0f1f4] bg-white transition-all hover:-translate-y-1 hover:shadow-lg dark:border-[#2a2e42] dark:bg-surface-dark">
+<div class="relative aspect-[16/10] w-full overflow-hidden bg-gray-100 dark:bg-gray-800">
+<div class="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Computer screen displaying python code" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDmDXtERiYEnAj6GBZPvrORXiMshgY2FeNFZ0_3Q1kJA2Bgg-a5w42Qy2eNCLVnVUj2N53Wf13NQFDf0qn40cq590sbyUAYSAXeX-7RJ83o4xo3dQZDpedrGzrpl_4-rwf0MWSwFso-RHqffTILdosrpThv5105NLn517n-gMdcqmnCqy27kEvFomMo7Nx6ZTGJIq_mk9F75G_iK3UG1ww_LCL_NmrS_qZQOMox65fKEEgymYJBiMgcTFKPvcDb20z92Wr7Mmk4ZJA');"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60"></div>
+<div class="absolute bottom-3 left-3 flex items-center gap-1.5 rounded-md bg-black/40 px-2 py-1 text-xs font-medium text-white backdrop-blur-md">
+<span class="material-symbols-outlined text-[14px]">code</span>
+                                Snippet
+                            </div>
+<button class="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-white/90 text-primary shadow-sm hover:bg-white dark:bg-[#101322]/90 dark:text-blue-400 dark:hover:bg-[#101322] transition-colors">
+<span class="material-symbols-outlined text-[20px] fill-current">bookmark</span>
+</button>
+</div>
+<div class="flex flex-1 flex-col p-4">
+<div class="mb-2 flex items-center justify-between">
+<span class="inline-flex items-center rounded-full bg-purple-50 px-2 py-0.5 text-xs font-semibold text-purple-700 dark:bg-purple-900/30 dark:text-purple-300">CS 201</span>
+<span class="text-xs text-[#616889] dark:text-gray-400">1 week ago</span>
+</div>
+<h3 class="mb-2 text-lg font-bold leading-tight text-[#111218] dark:text-white group-hover:text-primary dark:group-hover:text-blue-400 transition-colors">
+                                Python Algorithms Pack
+                            </h3>
+<p class="mb-4 line-clamp-2 text-sm text-[#616889] dark:text-gray-400">
+                                Efficient sorting and searching algorithms explained with examples.
+                            </p>
+<div class="mt-auto flex items-center gap-2 border-t border-[#f0f1f4] pt-3 dark:border-[#2a2e42]">
+<div class="h-6 w-6 rounded-full bg-cover bg-center" data-alt="Profile picture of Alex Dev" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCspnqMz7jW07_AxiaAtEFbUGPv1Lzp6im55Jgb1PfMpF0Lwaxb_piXme3KYZd7CfDfW_Sh86uidp4C2YAMkzqso8YLApdtxRM8sqvZ7GRhT9D4fETGH7NLxfIsMKFgCHzoR6NizWPb9vrh6Bpuo2DGVY0S0toAcGzSILIdTrmIbE2PWBhnM7p2AVxfE6w-hBJpIChr8I_SsVxmVUbtvrUiZGM8KId8bxsOTzaxsNR-vjmFTHaYzrQEL3E0uEpufk71PaFYcnZ-MKs');"></div>
+<span class="text-xs font-medium text-[#111218] dark:text-gray-300">Alex Dev</span>
+<div class="ml-auto flex gap-1">
+<button class="text-[#616889] hover:text-primary dark:text-gray-400 dark:hover:text-white">
+<span class="material-symbols-outlined text-[20px]">share</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination / Load More -->
+<div class="flex justify-center py-6">
+<button class="flex items-center gap-2 rounded-lg border border-[#f0f1f4] bg-white px-6 py-2.5 text-sm font-medium text-[#616889] shadow-sm transition-all hover:bg-gray-50 hover:text-[#111218] dark:border-[#2a2e42] dark:bg-surface-dark dark:text-gray-300 dark:hover:bg-[#252942] dark:hover:text-white">
+<span>Load more materials</span>
+<span class="material-symbols-outlined text-[18px]">expand_more</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<script>
+        // Simple script to demonstrate dark mode toggle if needed (not required by prompt but helpful for testing theme compliance)
+        // In a real app, this would be handled by a state manager or local storage.
+    </script>
+</body></html>

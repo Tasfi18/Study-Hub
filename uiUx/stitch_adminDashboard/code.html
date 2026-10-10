@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EduShare Admin Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2b4bee",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101322",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for better aesthetics in dark mode */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-50 font-display antialiased overflow-hidden">
+<div class="flex h-screen w-full">
+<!-- Side Navigation -->
+<aside class="hidden lg:flex w-72 flex-col border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-[#151925]">
+<div class="flex items-center gap-3 px-6 py-6">
+<div class="bg-primary/10 flex items-center justify-center rounded-xl size-10">
+<span class="material-symbols-outlined text-primary text-2xl">school</span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-lg font-bold leading-none tracking-tight">EduShare</h1>
+<p class="text-slate-500 dark:text-slate-400 text-xs font-medium mt-1">Admin Console</p>
+</div>
+</div>
+<nav class="flex-1 flex flex-col gap-2 px-4 py-4 overflow-y-auto">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-primary text-white shadow-md shadow-primary/20" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-semibold">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-colors" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-sm font-medium">User Management</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-colors" href="#">
+<span class="material-symbols-outlined">library_books</span>
+<span class="text-sm font-medium">Content Library</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-colors" href="#">
+<span class="material-symbols-outlined">bar_chart</span>
+<span class="text-sm font-medium">Analytics</span>
+</a>
+<div class="h-px bg-slate-200 dark:bg-slate-800 my-2 mx-2"></div>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-colors" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="text-sm font-medium">Support</span>
+</a>
+</nav>
+<div class="p-4 border-t border-slate-200 dark:border-slate-800">
+<button class="flex w-full items-center gap-3 px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-red-50 dark:hover:bg-red-900/10 hover:text-red-600 dark:hover:text-red-400 transition-colors">
+<span class="material-symbols-outlined">logout</span>
+<span class="text-sm font-medium">Log Out</span>
+</button>
+</div>
+</aside>
+<!-- Main Content Wrapper -->
+<main class="flex-1 flex flex-col h-full min-w-0 overflow-hidden relative">
+<!-- Top Header -->
+<header class="h-16 flex items-center justify-between px-6 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-[#151925] shrink-0 z-20">
+<div class="flex items-center gap-4 lg:hidden">
+<button class="text-slate-500 hover:text-primary">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h2 class="text-lg font-bold">EduShare</h2>
+</div>
+<div class="hidden lg:flex items-center gap-2 text-slate-400">
+<span class="material-symbols-outlined text-[20px]">search</span>
+<span class="text-sm font-medium">Search anything... (Cmd + K)</span>
+</div>
+<div class="flex items-center gap-4 ml-auto">
+<!-- Search Mobile -->
+<button class="lg:hidden p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500">
+<span class="material-symbols-outlined">search</span>
+</button>
+<!-- Notifications -->
+<button class="relative p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-red-500 rounded-full border-2 border-white dark:border-[#151925]"></span>
+</button>
+<!-- Quick Actions Dropdown Placeholder -->
+<button class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-primary text-white text-sm font-medium hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span>New Upload</span>
+</button>
+<div class="h-8 w-px bg-slate-200 dark:bg-slate-800 mx-2"></div>
+<!-- Profile -->
+<div class="flex items-center gap-3 cursor-pointer group">
+<div class="size-9 rounded-full bg-cover bg-center ring-2 ring-transparent group-hover:ring-primary/50 transition-all" data-alt="Administrator profile picture showing a smiling professional" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAhwcQ5nLTlEGcODyAtQ0nq6Gk4sDHosPH2s0U-IFYPaHaPYoZYVN2jB-rGu0e0wMkEeydZqNBgqWFF6d1OoMb1qyieMjuR-mJnoDQ2e9yuDdp7K_XTrxUQnPbzK9eIFVkbmvrZYIOF9C7MmCJCBuUAm8kq0XqrLeloDUEhEyNjOBjy9n26J7ML3-eyvAFj39q8nQ-PLll6ksXV3VHrU3NERhz7loAJZ8IvtTbBTgIRJmPv_HcgHMz0jGIoKo3EbA_eWiCCNi81vcM')"></div>
+<div class="hidden md:flex flex-col">
+<p class="text-sm font-semibold text-slate-700 dark:text-slate-200">Alex Morgan</p>
+<p class="text-xs text-slate-500">Super Admin</p>
+</div>
+<span class="hidden md:block material-symbols-outlined text-slate-400">expand_more</span>
+</div>
+</div>
+</header>
+<!-- Scrollable Dashboard Content -->
+<div class="flex-1 overflow-y-auto p-4 md:p-8 scroll-smooth">
+<div class="max-w-[1400px] mx-auto flex flex-col gap-8">
+<!-- Stats Section -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+<!-- Stat 1 -->
+<div class="bg-white dark:bg-[#1c2133] border border-slate-200 dark:border-slate-800 p-5 rounded-xl flex flex-col gap-4 shadow-sm">
+<div class="flex items-start justify-between">
+<div class="bg-blue-50 dark:bg-blue-900/20 p-2.5 rounded-lg text-primary">
+<span class="material-symbols-outlined">group</span>
+</div>
+<span class="flex items-center gap-1 text-emerald-500 text-xs font-bold bg-emerald-50 dark:bg-emerald-900/20 px-2 py-1 rounded-full">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+                                    5.2%
+                                </span>
+</div>
+<div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Total Users</p>
+<h3 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">12,450</h3>
+</div>
+</div>
+<!-- Stat 2 -->
+<div class="bg-white dark:bg-[#1c2133] border border-slate-200 dark:border-slate-800 p-5 rounded-xl flex flex-col gap-4 shadow-sm">
+<div class="flex items-start justify-between">
+<div class="bg-purple-50 dark:bg-purple-900/20 p-2.5 rounded-lg text-purple-600 dark:text-purple-400">
+<span class="material-symbols-outlined">description</span>
+</div>
+<span class="flex items-center gap-1 text-emerald-500 text-xs font-bold bg-emerald-50 dark:bg-emerald-900/20 px-2 py-1 rounded-full">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+                                    1.2%
+                                </span>
+</div>
+<div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Total Materials</p>
+<h3 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">3,200</h3>
+</div>
+</div>
+<!-- Stat 3 -->
+<div class="bg-white dark:bg-[#1c2133] border border-slate-200 dark:border-slate-800 p-5 rounded-xl flex flex-col gap-4 shadow-sm">
+<div class="flex items-start justify-between">
+<div class="bg-orange-50 dark:bg-orange-900/20 p-2.5 rounded-lg text-orange-600 dark:text-orange-400">
+<span class="material-symbols-outlined">download</span>
+</div>
+<span class="flex items-center gap-1 text-emerald-500 text-xs font-bold bg-emerald-50 dark:bg-emerald-900/20 px-2 py-1 rounded-full">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+                                    8.5%
+                                </span>
+</div>
+<div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Total Downloads</p>
+<h3 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">85,000</h3>
+</div>
+</div>
+<!-- Stat 4 -->
+<div class="bg-white dark:bg-[#1c2133] border border-primary/20 p-5 rounded-xl flex flex-col gap-4 shadow-sm relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"></div>
+<div class="flex items-start justify-between relative z-10">
+<div class="bg-primary/10 p-2.5 rounded-lg text-primary">
+<span class="material-symbols-outlined">pending_actions</span>
+</div>
+<button class="text-xs font-semibold text-primary hover:underline">View All</button>
+</div>
+<div class="relative z-10">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Pending Approvals</p>
+<h3 class="text-2xl font-bold text-primary mt-1">42</h3>
+</div>
+</div>
+</section>
+<!-- Charts Section -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Line Chart -->
+<div class="lg:col-span-2 bg-white dark:bg-[#1c2133] border border-slate-200 dark:border-slate-800 rounded-xl p-6 shadow-sm">
+<div class="flex items-center justify-between mb-6">
+<div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white">User Growth &amp; Downloads</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400">Platform performance over the last 6 months</p>
+</div>
+<button class="p-2 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+<!-- Chart Visual -->
+<div class="relative w-full aspect-[2/1] lg:aspect-[3/1]">
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 472 160">
+<defs>
+<lineargradient id="gradientPrimary" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#2b4bee" stop-opacity="0.2"></stop>
+<stop offset="100%" stop-color="#2b4bee" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<!-- Grid lines -->
+<line class="text-slate-200 dark:text-slate-700" stroke="currentColor" stroke-dasharray="4 4" stroke-width="1" x1="0" x2="472" y1="140" y2="140"></line>
+<line class="text-slate-200 dark:text-slate-700" stroke="currentColor" stroke-dasharray="4 4" stroke-width="1" x1="0" x2="472" y1="100" y2="100"></line>
+<line class="text-slate-200 dark:text-slate-700" stroke="currentColor" stroke-dasharray="4 4" stroke-width="1" x1="0" x2="472" y1="60" y2="60"></line>
+<line class="text-slate-200 dark:text-slate-700" stroke="currentColor" stroke-dasharray="4 4" stroke-width="1" x1="0" x2="472" y1="20" y2="20"></line>
+<!-- Area Path -->
+<path d="M0 109C18.1538 109 18.1538 21 36.3077 21C54.4615 21 54.4615 41 72.6154 41C90.7692 41 90.7692 93 108.923 93C127.077 93 127.077 33 145.231 33C163.385 33 163.385 101 181.538 101C199.692 101 199.692 61 217.846 61C236 61 236 45 254.154 45C272.308 45 272.308 121 290.462 121C308.615 121 308.615 149 326.769 149C344.923 149 344.923 1 363.077 1C381.231 1 381.231 81 399.385 81C417.538 81 417.538 129 435.692 129C453.846 129 453.846 25 472 25V160H0V109Z" fill="url(#gradientPrimary)"></path>
+<!-- Stroke Path -->
+<path d="M0 109C18.1538 109 18.1538 21 36.3077 21C54.4615 21 54.4615 41 72.6154 41C90.7692 41 90.7692 93 108.923 93C127.077 93 127.077 33 145.231 33C163.385 33 163.385 101 181.538 101C199.692 101 199.692 61 217.846 61C236 61 236 45 254.154 45C272.308 45 272.308 121 290.462 121C308.615 121 308.615 149 326.769 149C344.923 149 344.923 1 363.077 1C381.231 1 381.231 81 399.385 81C417.538 81 417.538 129 435.692 129C453.846 129 453.846 25 472 25" fill="none" stroke="#2b4bee" stroke-linecap="round" stroke-width="3"></path>
+</svg>
+</div>
+<div class="flex justify-between mt-4 px-2">
+<span class="text-xs font-semibold text-slate-400">JAN</span>
+<span class="text-xs font-semibold text-slate-400">FEB</span>
+<span class="text-xs font-semibold text-slate-400">MAR</span>
+<span class="text-xs font-semibold text-slate-400">APR</span>
+<span class="text-xs font-semibold text-slate-400">MAY</span>
+<span class="text-xs font-semibold text-slate-400">JUN</span>
+</div>
+</div>
+<!-- Categories Chart -->
+<div class="bg-white dark:bg-[#1c2133] border border-slate-200 dark:border-slate-800 rounded-xl p-6 shadow-sm flex flex-col">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Popular Categories</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 mb-6">Distribution of study material topics</p>
+<div class="flex-1 flex flex-col justify-center gap-6">
+<!-- Category Item -->
+<div class="group">
+<div class="flex justify-between items-end mb-2">
+<span class="text-sm font-medium text-slate-700 dark:text-slate-300">Mathematics</span>
+<span class="text-xs font-bold text-primary">45%</span>
+</div>
+<div class="h-2 w-full bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 45%"></div>
+</div>
+</div>
+<!-- Category Item -->
+<div class="group">
+<div class="flex justify-between items-end mb-2">
+<span class="text-sm font-medium text-slate-700 dark:text-slate-300">Science</span>
+<span class="text-xs font-bold text-slate-500 dark:text-slate-400">32%</span>
+</div>
+<div class="h-2 w-full bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="h-full bg-indigo-500 rounded-full" style="width: 32%"></div>
+</div>
+</div>
+<!-- Category Item -->
+<div class="group">
+<div class="flex justify-between items-end mb-2">
+<span class="text-sm font-medium text-slate-700 dark:text-slate-300">Computer Science</span>
+<span class="text-xs font-bold text-slate-500 dark:text-slate-400">15%</span>
+</div>
+<div class="h-2 w-full bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="h-full bg-cyan-500 rounded-full" style="width: 15%"></div>
+</div>
+</div>
+<!-- Category Item -->
+<div class="group">
+<div class="flex justify-between items-end mb-2">
+<span class="text-sm font-medium text-slate-700 dark:text-slate-300">History &amp; Arts</span>
+<span class="text-xs font-bold text-slate-500 dark:text-slate-400">8%</span>
+</div>
+<div class="h-2 w-full bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="h-full bg-orange-400 rounded-full" style="width: 8%"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Bottom Section: Contributors & Activity -->
+<section class="grid grid-cols-1 xl:grid-cols-3 gap-6">
+<!-- Top Contributors Table -->
+<div class="xl:col-span-2 bg-white dark:bg-[#1c2133] border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden shadow-sm flex flex-col">
+<div class="px-6 py-5 border-b border-slate-200 dark:border-slate-800 flex justify-between items-center">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white">Top Contributors</h3>
+<button class="text-sm font-medium text-primary hover:text-primary/80">View All Users</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="bg-slate-50 dark:bg-[#151925]">
+<tr>
+<th class="px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Contributor</th>
+<th class="px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Role</th>
+<th class="px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Uploads</th>
+<th class="px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Badge</th>
+<th class="px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-200 dark:divide-slate-800">
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center gap-3">
+<div class="size-9 rounded-full bg-cover bg-center" data-alt="Profile picture of Sarah J." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC6LKxT64P4v8JvGXtd-UUXmrhx5pxftyrvSpJr_tT_3G3j_jRfn2UdPClb0ZbvtMz3VMBjWjUkfqGyEi1HGIzkY7KLFITHa2pN7AU6rvejlrMlDW5HBcomqee_htf_bzOHvtm6c4Rz-ILdmKkhybfG6XfsMFlou4Iui9zH1_RLitUsmTrNiihgOitU30DGQXFO27wDTsa41xgWcWJPP9mkhb2ZWjnF_I_bjAhY4_RW0PHkLhm2RX26DgxZ-EeEZFk9QGNepKKhgnM');"></div>
+<span class="text-sm font-medium text-slate-900 dark:text-white">Sarah Jenkins</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-slate-500 dark:text-slate-400">Student</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-slate-500 dark:text-slate-400">150</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400">
+<span class="material-symbols-outlined text-[14px]">star</span> Top Rated
+                                                </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right">
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center gap-3">
+<div class="size-9 rounded-full bg-cover bg-center" data-alt="Profile picture of Michael C." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCDetElOGuYRHoge_q4NXPnQkPNEFuzFpGnfOF8GuCu470b1xoue8arBfBWUJ1yaASo29yewjwnAvdVURxYfL-B8V4gptcWL_s8WtquIbaboDkYzyKktDOEtP6r0pE1QNVw9WkBRWOwoeQ1Eeksvz0uPiwEkTNl3WppNtqHV34-O0vQNCpygUkOuqZVloAxwL_S8BxG0IY2z4g0hvOmc451Ruh7FdpqnqZtuFk7InZBnZxhzTiiYQypHqDR2iqLmzRft5rPjWGRXEc');"></div>
+<span class="text-sm font-medium text-slate-900 dark:text-white">Michael Chen</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-slate-500 dark:text-slate-400">Tutor</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-slate-500 dark:text-slate-400">120</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400">
+<span class="material-symbols-outlined text-[14px]">rocket_launch</span> Rising Star
+                                                </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right">
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center gap-3">
+<div class="size-9 rounded-full bg-cover bg-center" data-alt="Profile picture of David R." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuADcEiGYSR3j2vaD2_2fJLxLAjwslfl8sI-sZ4cagA2Ok3MUVxYBocrC3TF1PcG52Ys6h7iotep8SFz3eMv7Rj04FCDDZUUrcsE66kgHojHFRCgstH1zo7A2U_rPoFsP60bo_sPj1H5qyWTs4d69waoNZB0kXccdzagzSa68Vy3l1U81uTR5hDZj-pwrTQYOfhE1ROIGNnsbdNNhqIhWsKVKC8yqaRIz_BOJbcuRZAEi_8aHC_i72dcGoa4ItqygiwstAGBxt-4Fg4');"></div>
+<span class="text-sm font-medium text-slate-900 dark:text-white">David Ross</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-slate-500 dark:text-slate-400">Professor</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-slate-500 dark:text-slate-400">85</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">
+<span class="material-symbols-outlined text-[14px]">verified</span> Verified
+                                                </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right">
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center gap-3">
+<div class="size-9 rounded-full bg-cover bg-center" data-alt="Profile picture of Emily W." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBmJErL10JGG82P0VFbhaIsk3DgdlKt4ssiX7qN3FIKY4vHArREOJ8CETSbAp0BiGrH-GCDsRT6ah5XVeuJP1HN-lCtJIT2sbgYcIYbwt6Wo6BF3uJCEzjq8fllfYStnIJ-CRZAcxO2YJC-f90farrmt3al6w_FXK8O-UVLtJ8r9d3pnxp3T01bPTHCq4uEGhgT3MxLkJHXQJv_OYnTdRLNCWfZuUrem2BrqBQhcm3OXB37gVy8zMLkg7Upl-GTBQ7gbULmzWeP_Ko');"></div>
+<span class="text-sm font-medium text-slate-900 dark:text-white">Emily White</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-slate-500 dark:text-slate-400">Student</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-slate-500 dark:text-slate-400">72</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-800 dark:bg-slate-700 dark:text-slate-300">
+<span class="material-symbols-outlined text-[14px]">new_releases</span> New
+                                                </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right">
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Recent Activity & Quick Actions -->
+<div class="flex flex-col gap-6">
+<!-- Recent Activity -->
+<div class="bg-white dark:bg-[#1c2133] border border-slate-200 dark:border-slate-800 rounded-xl p-6 shadow-sm flex-1">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-4">Recent Activity</h3>
+<div class="relative pl-2 flex flex-col gap-6">
+<!-- Activity timeline line -->
+<div class="absolute left-2 top-2 bottom-2 w-px bg-slate-200 dark:bg-slate-800"></div>
+<!-- Activity Item 1 -->
+<div class="relative flex gap-4 pl-4">
+<div class="absolute left-[3px] top-1.5 size-2 bg-primary rounded-full ring-4 ring-white dark:ring-[#1c2133]"></div>
+<div class="flex flex-col gap-1">
+<p class="text-sm text-slate-700 dark:text-slate-300"><span class="font-semibold text-slate-900 dark:text-white">John D.</span> uploaded "Calculus 101 Notes"</p>
+<span class="text-xs text-slate-500">5 minutes ago</span>
+</div>
+</div>
+<!-- Activity Item 2 -->
+<div class="relative flex gap-4 pl-4">
+<div class="absolute left-[3px] top-1.5 size-2 bg-orange-400 rounded-full ring-4 ring-white dark:ring-[#1c2133]"></div>
+<div class="flex flex-col gap-1">
+<p class="text-sm text-slate-700 dark:text-slate-300"><span class="font-semibold text-slate-900 dark:text-white">System</span> flagged "Physics Lab Report" for review</p>
+<span class="text-xs text-slate-500">1 hour ago</span>
+</div>
+</div>
+<!-- Activity Item 3 -->
+<div class="relative flex gap-4 pl-4">
+<div class="absolute left-[3px] top-1.5 size-2 bg-emerald-400 rounded-full ring-4 ring-white dark:ring-[#1c2133]"></div>
+<div class="flex flex-col gap-1">
+<p class="text-sm text-slate-700 dark:text-slate-300"><span class="font-semibold text-slate-900 dark:text-white">Anna B.</span> registered as a new Tutor</p>
+<span class="text-xs text-slate-500">3 hours ago</span>
+</div>
+</div>
+<!-- Activity Item 4 -->
+<div class="relative flex gap-4 pl-4">
+<div class="absolute left-[3px] top-1.5 size-2 bg-blue-400 rounded-full ring-4 ring-white dark:ring-[#1c2133]"></div>
+<div class="flex flex-col gap-1">
+<p class="text-sm text-slate-700 dark:text-slate-300"><span class="font-semibold text-slate-900 dark:text-white">Kevin L.</span> updated profile settings</p>
+<span class="text-xs text-slate-500">5 hours ago</span>
+</div>
+</div>
+</div>
+<button class="w-full mt-6 py-2 text-sm text-slate-500 hover:text-primary border border-dashed border-slate-300 dark:border-slate-700 rounded-lg transition-colors">View All Activity</button>
+</div>
+<!-- Quick Actions -->
+<div class="bg-primary/5 dark:bg-primary/10 border border-primary/20 rounded-xl p-6 shadow-sm">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">bolt</span> Quick Actions
+                                </h3>
+<div class="grid grid-cols-2 gap-3">
+<button class="bg-white dark:bg-[#151925] hover:bg-slate-50 dark:hover:bg-[#1c2133] border border-slate-200 dark:border-slate-700 p-3 rounded-lg flex flex-col items-center justify-center gap-2 transition-all">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="text-xs font-semibold text-slate-700 dark:text-slate-300">Approve All</span>
+</button>
+<button class="bg-white dark:bg-[#151925] hover:bg-slate-50 dark:hover:bg-[#1c2133] border border-slate-200 dark:border-slate-700 p-3 rounded-lg flex flex-col items-center justify-center gap-2 transition-all">
+<span class="material-symbols-outlined text-purple-500">person_add</span>
+<span class="text-xs font-semibold text-slate-700 dark:text-slate-300">Add Admin</span>
+</button>
+<button class="bg-white dark:bg-[#151925] hover:bg-slate-50 dark:hover:bg-[#1c2133] border border-slate-200 dark:border-slate-700 p-3 rounded-lg flex flex-col items-center justify-center gap-2 transition-all">
+<span class="material-symbols-outlined text-orange-500">flag</span>
+<span class="text-xs font-semibold text-slate-700 dark:text-slate-300">Reports</span>
+</button>
+<button class="bg-white dark:bg-[#151925] hover:bg-slate-50 dark:hover:bg-[#1c2133] border border-slate-200 dark:border-slate-700 p-3 rounded-lg flex flex-col items-center justify-center gap-2 transition-all">
+<span class="material-symbols-outlined text-emerald-500">file_download</span>
+<span class="text-xs font-semibold text-slate-700 dark:text-slate-300">Export CSV</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+</div>
+</body></html>

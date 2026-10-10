@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>User Profile Page - StudyShare</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2b4bee",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101322",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<!-- Google Fonts: Lexend -->
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Lexend', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen text-[#111218] dark:text-white overflow-x-hidden">
+<div class="relative flex flex-col w-full min-h-screen">
+<!-- Header -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-[#dbdde6] dark:border-[#2a2e42] bg-white dark:bg-[#1a1d2d] px-10 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-primary">
+<div class="size-8 flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl">school</span>
+</div>
+<h2 class="text-[#111218] dark:text-white text-xl font-bold leading-tight tracking-[-0.015em]">StudyShare</h2>
+</div>
+<label class="hidden md:flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full group focus-within:ring-2 ring-primary/20 transition-all">
+<div class="text-[#616889] dark:text-[#9ca3af] flex border-none bg-[#f0f1f4] dark:bg-[#2a2e42] items-center justify-center pl-4 rounded-l-lg border-r-0">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#111218] dark:text-white focus:outline-0 focus:ring-0 border-none bg-[#f0f1f4] dark:bg-[#2a2e42] focus:border-none h-full placeholder:text-[#616889] dark:placeholder:text-[#6f7796] px-4 rounded-l-none border-l-0 pl-2 text-sm font-normal leading-normal" placeholder="Search materials" value=""/>
+</div>
+</label>
+</div>
+<div class="flex flex-1 justify-end gap-8 items-center">
+<div class="hidden lg:flex items-center gap-9">
+<a class="text-[#111218] dark:text-[#e2e8f0] text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Explore Materials</a>
+<a class="text-[#111218] dark:text-[#e2e8f0] text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Community</a>
+<a class="text-[#111218] dark:text-[#e2e8f0] text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Upload</a>
+</div>
+<button class="flex items-center justify-center overflow-hidden rounded-full size-10 bg-[#f0f1f4] dark:bg-[#2a2e42] hover:bg-[#e0e2e8] dark:hover:bg-[#363b54] text-[#111218] dark:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+</button>
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10 border-2 border-white dark:border-[#2a2e42] shadow-sm cursor-pointer" data-alt="User profile avatar thumbnail" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAEwDyEQoNa1n6L8Hb7upBm6udD1p75BPjseD98a8kQwxDFDm7AOJARzc9-V_gNcGX1rd_5Hmx8ceuJU_Pkqz0kY23vCk8TvJXZaQiP-LvPEOU6q946AIUuvDbxnb8HWrajRVa4Tn8UMkGivI0i6Wamy6k-KcbYOjT_0qEJ-NhuAu-qjU5GwVqEQkdEGKS8cdTJ57hXwSPYtmgLdKKlURQYRmweIci67I3avmt2DQnp-ymAYLEgYhDNNKLY6ri7b__OG0henL2GBz4");'></div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 flex justify-center py-8 px-4 md:px-10 lg:px-20">
+<div class="max-w-[1080px] w-full flex flex-col gap-6">
+<!-- Profile Header Card -->
+<div class="bg-white dark:bg-[#1a1d2d] rounded-xl border border-[#dbdde6] dark:border-[#2a2e42] p-6 shadow-sm">
+<div class="flex flex-col md:flex-row gap-6 items-start md:items-center justify-between">
+<div class="flex flex-col sm:flex-row gap-6 items-center sm:items-start text-center sm:text-left w-full">
+<div class="relative group cursor-pointer">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-32 shadow-md border-4 border-white dark:border-[#2a2e42]" data-alt="Large user profile picture of a young student" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCBgdqoELKHE1_AkB9A3Sm2ueWO3Y1lXh0dXcLN5ujm7msnfx1MgHpStU-1UjI5ZwH7crhTWFmJRtqxuhrx3BJBXsZF9uPaSJEX3QsB6mf81yroI8zNWZUINLRdzH3i0qC4aHMa_OfaXn0rkplxjlZqg-S6beStoFAvWMK-Ya7TlTvEWgJRT18ZPrzmtHuDDW_--ZrMjhG24G5JlBGx1YiE9vFOQZo2HZ6og1bGmDpZGTDN7ndr-RbWXtD7Jf03p9J6HfV5s59TwJc");'></div>
+<div class="absolute bottom-1 right-1 bg-primary text-white rounded-full p-1.5 shadow-sm border-2 border-white dark:border-[#2a2e42]">
+<span class="material-symbols-outlined text-sm font-bold block">edit</span>
+</div>
+</div>
+<div class="flex flex-col justify-center flex-1">
+<div class="flex flex-col sm:flex-row items-center sm:items-baseline gap-2 mb-1">
+<h1 class="text-[#111218] dark:text-white text-2xl md:text-3xl font-bold tracking-tight">Alex Johnson</h1>
+<span class="bg-primary/10 text-primary px-2 py-0.5 rounded-full text-xs font-semibold">Student</span>
+</div>
+<p class="text-[#616889] dark:text-[#9ca3af] text-base font-normal mb-3">@alexj_studies • Computer Science Major</p>
+<p class="text-[#616889] dark:text-[#9ca3af] text-sm flex items-center justify-center sm:justify-start gap-1.5">
+<span class="material-symbols-outlined text-lg">calendar_month</span>
+                                    Member since September 2021
+                                </p>
+<p class="mt-3 text-sm text-[#4b5563] dark:text-[#cbd5e1] max-w-lg">
+                                    Passionate about algorithms and data structures. Sharing my notes to help others ace their exams! 🚀
+                                </p>
+</div>
+</div>
+<div class="w-full md:w-auto flex flex-col gap-3">
+<button class="flex items-center justify-center gap-2 rounded-lg h-10 px-6 bg-primary hover:bg-primary/90 text-white text-sm font-bold transition-all shadow-sm w-full md:w-auto">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+<span>Edit Profile</span>
+</button>
+<div class="flex gap-2 justify-center md:justify-end">
+<button class="size-10 flex items-center justify-center rounded-lg bg-[#f0f1f4] dark:bg-[#2a2e42] text-[#616889] dark:text-[#9ca3af] hover:bg-[#e0e2e8] dark:hover:bg-[#363b54] transition-colors">
+<span class="material-symbols-outlined text-[20px]">share</span>
+</button>
+<button class="size-10 flex items-center justify-center rounded-lg bg-[#f0f1f4] dark:bg-[#2a2e42] text-[#616889] dark:text-[#9ca3af] hover:bg-[#e0e2e8] dark:hover:bg-[#363b54] transition-colors">
+<span class="material-symbols-outlined text-[20px]">more_horiz</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Stats Section -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+<div class="flex flex-col gap-1 rounded-xl p-5 bg-white dark:bg-[#1a1d2d] border border-[#dbdde6] dark:border-[#2a2e42] shadow-sm relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity text-primary">
+<span class="material-symbols-outlined text-6xl">upload_file</span>
+</div>
+<p class="text-[#616889] dark:text-[#9ca3af] text-sm font-medium uppercase tracking-wider">Materials Uploaded</p>
+<p class="text-[#111218] dark:text-white text-3xl font-bold">42</p>
+</div>
+<div class="flex flex-col gap-1 rounded-xl p-5 bg-white dark:bg-[#1a1d2d] border border-[#dbdde6] dark:border-[#2a2e42] shadow-sm relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity text-green-500">
+<span class="material-symbols-outlined text-6xl">download</span>
+</div>
+<p class="text-[#616889] dark:text-[#9ca3af] text-sm font-medium uppercase tracking-wider">Total Downloads</p>
+<p class="text-[#111218] dark:text-white text-3xl font-bold">1.2k</p>
+</div>
+<div class="flex flex-col gap-1 rounded-xl p-5 bg-white dark:bg-[#1a1d2d] border border-[#dbdde6] dark:border-[#2a2e42] shadow-sm relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity text-yellow-500">
+<span class="material-symbols-outlined text-6xl">bookmark</span>
+</div>
+<p class="text-[#616889] dark:text-[#9ca3af] text-sm font-medium uppercase tracking-wider">Bookmarks</p>
+<p class="text-[#111218] dark:text-white text-3xl font-bold">156</p>
+</div>
+</div>
+<!-- Tabs & Content Area -->
+<div class="flex flex-col bg-white dark:bg-[#1a1d2d] rounded-xl border border-[#dbdde6] dark:border-[#2a2e42] shadow-sm min-h-[500px]">
+<!-- Tabs -->
+<div class="border-b border-[#dbdde6] dark:border-[#2a2e42]">
+<div class="flex overflow-x-auto px-6 gap-8 no-scrollbar">
+<a class="flex items-center gap-2 border-b-[3px] border-primary text-primary pb-4 pt-5 px-1 hover:text-primary/80 transition-colors whitespace-nowrap" href="#">
+<span class="material-symbols-outlined text-[20px] filled">folder_open</span>
+<span class="text-sm font-bold tracking-[0.015em]">Uploaded Materials</span>
+</a>
+<a class="flex items-center gap-2 border-b-[3px] border-transparent text-[#616889] dark:text-[#9ca3af] pb-4 pt-5 px-1 hover:text-[#111218] dark:hover:text-white hover:border-[#dbdde6] dark:hover:border-[#374151] transition-all whitespace-nowrap" href="#">
+<span class="material-symbols-outlined text-[20px]">bookmark</span>
+<span class="text-sm font-bold tracking-[0.015em]">Bookmarks/Saved</span>
+</a>
+<a class="flex items-center gap-2 border-b-[3px] border-transparent text-[#616889] dark:text-[#9ca3af] pb-4 pt-5 px-1 hover:text-[#111218] dark:hover:text-white hover:border-[#dbdde6] dark:hover:border-[#374151] transition-all whitespace-nowrap" href="#">
+<span class="material-symbols-outlined text-[20px]">history</span>
+<span class="text-sm font-bold tracking-[0.015em]">Download History</span>
+</a>
+<a class="flex items-center gap-2 border-b-[3px] border-transparent text-[#616889] dark:text-[#9ca3af] pb-4 pt-5 px-1 hover:text-[#111218] dark:hover:text-white hover:border-[#dbdde6] dark:hover:border-[#374151] transition-all whitespace-nowrap" href="#">
+<span class="material-symbols-outlined text-[20px]">star</span>
+<span class="text-sm font-bold tracking-[0.015em]">Reviews</span>
+</a>
+</div>
+</div>
+<!-- Tab Content Grid -->
+<div class="p-6">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-lg font-bold text-[#111218] dark:text-white">Recent Uploads</h3>
+<div class="flex gap-2">
+<select class="bg-[#f0f1f4] dark:bg-[#2a2e42] border-none text-sm rounded-lg px-3 py-2 text-[#111218] dark:text-white focus:ring-0 cursor-pointer">
+<option>Newest First</option>
+<option>Most Popular</option>
+<option>Oldest First</option>
+</select>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+<!-- Card 1 -->
+<div class="group flex flex-col gap-3 pb-3 hover:-translate-y-1 transition-transform duration-300">
+<div class="relative w-full aspect-video rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-800">
+<div class="w-full h-full bg-center bg-no-repeat bg-cover group-hover:scale-105 transition-transform duration-500" data-alt="Abstract gradient in blue and purple representing math concepts" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBvYhCyN7aY6qhDVfx80YaJitskQxpSykdJlfQl5Qcg8gp3AQsMqiaTwigJqjUL2v-XQrYIRRygC9mpuRF-9cpr74t3Mq_HMu6hYIS1u_qe6J4P9hYsJJkvIFHRN3dCNgI4WDRtdUXAZH1X29AYGEBNcjF849viAEZPozNfTVc4vSxHurmt4LtLu0d984KNyAdxtwwT3OyVe2oLW_SBxMJ-xq4NfAOBcnegiuVOEpXB5uc5Yk3SBeMcU-z90RNriXFBkB9Bo7Y16Y8");'></div>
+<div class="absolute top-2 right-2 bg-black/60 backdrop-blur-sm text-white text-xs px-2 py-1 rounded">PDF</div>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-start">
+<h4 class="text-[#111218] dark:text-white text-base font-semibold leading-tight line-clamp-2 group-hover:text-primary transition-colors cursor-pointer">Intro to Calculus II - Finals Prep</h4>
+<button class="text-[#616889] hover:text-primary"><span class="material-symbols-outlined text-[20px]">more_vert</span></button>
+</div>
+<div class="flex items-center gap-3 text-[#616889] dark:text-[#9ca3af] text-xs font-normal mt-1">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">visibility</span> 345</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">calendar_today</span> 2d ago</span>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="group flex flex-col gap-3 pb-3 hover:-translate-y-1 transition-transform duration-300">
+<div class="relative w-full aspect-video rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-800">
+<div class="w-full h-full bg-center bg-no-repeat bg-cover group-hover:scale-105 transition-transform duration-500" data-alt="Computer screen showing code editor with colorful syntax highlighting" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBTgAEAaE7BKI1uQ2J53ucL-EYhN-fd510B5HbB0J_s-V3D2hCj4XoqD_haTWIogGY4l4nDAq757bzEIgfLR_33-q1EolwU6mu-lq7fjQQ0IDtB84NfXSQ9zbiTF-xG_3oPA6-Fnt8YUUlfaJ1UkzgDw3lB4gDyS1siIlq5oMLXxtGZuyhR2XWlS2rbaPHkN8wcYhePiYASiDYQp5Jm1J0Bh_6kMtegUeh9RQZePqELTyPHkA8CDDEQhDVjhSoDCC9WzV0bvxoryWI");'></div>
+<div class="absolute top-2 right-2 bg-black/60 backdrop-blur-sm text-white text-xs px-2 py-1 rounded">DOCX</div>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-start">
+<h4 class="text-[#111218] dark:text-white text-base font-semibold leading-tight line-clamp-2 group-hover:text-primary transition-colors cursor-pointer">Algorithms &amp; Data Structures Notes</h4>
+<button class="text-[#616889] hover:text-primary"><span class="material-symbols-outlined text-[20px]">more_vert</span></button>
+</div>
+<div class="flex items-center gap-3 text-[#616889] dark:text-[#9ca3af] text-xs font-normal mt-1">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">visibility</span> 1.1k</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">calendar_today</span> 1w ago</span>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="group flex flex-col gap-3 pb-3 hover:-translate-y-1 transition-transform duration-300">
+<div class="relative w-full aspect-video rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-800">
+<div class="w-full h-full bg-center bg-no-repeat bg-cover group-hover:scale-105 transition-transform duration-500" data-alt="Close up of matrix numbers on a dark background" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA-P7WCeNfNH7K5MAcORKKiXKP0Ko-N99MMXlc6pjmOQuisZB5-4g1K_MmxKtv_-Ug9YwpQPV_MWTnBA4Pmaf5YnHrx_RToA_FiGfJoWdVTU3kxqpYVrPTZ672EpqMUjDlvI-jES9sCo6mWwafPIBKksB-5pwo7Oq2MgX330GoNqbOK2mSywhX_AncLtBboCYn7BNc5RD3rqi1fczq9Mcg-STxQlyxjVo63s3eAwF8MFpl27oDkntQJgWljXXaDJOtdqLg-nsLoLIs");'></div>
+<div class="absolute top-2 right-2 bg-black/60 backdrop-blur-sm text-white text-xs px-2 py-1 rounded">PDF</div>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-start">
+<h4 class="text-[#111218] dark:text-white text-base font-semibold leading-tight line-clamp-2 group-hover:text-primary transition-colors cursor-pointer">Linear Algebra Cheat Sheet</h4>
+<button class="text-[#616889] hover:text-primary"><span class="material-symbols-outlined text-[20px]">more_vert</span></button>
+</div>
+<div class="flex items-center gap-3 text-[#616889] dark:text-[#9ca3af] text-xs font-normal mt-1">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">visibility</span> 890</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">calendar_today</span> 2w ago</span>
+</div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="group flex flex-col gap-3 pb-3 hover:-translate-y-1 transition-transform duration-300">
+<div class="relative w-full aspect-video rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-800">
+<div class="w-full h-full bg-center bg-no-repeat bg-cover group-hover:scale-105 transition-transform duration-500" data-alt="Server racks with blue lights representing databases" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAlZhNUa4qppjXnbNVuRuv3h_Q-YyFhZrm69BHhbEUj7uebcBq6AQUBrEKZvkjfPefn46Q_9s7WigJ5KUo-W6yhk8Xmt2nGUtStSggQoTVI3SHr0bbMoCIbce-AvcIc9EW79AKd6I7ZvS_e8tsKUnGCTJQYh2CfHA-2zKUXZ18CRVsD6Rn9McFdtlvI0rNjgz1VqB8tbAjE8QF-lZTDf0jR9sz-X01blKtQZpHMJxCuLpz31tS-xjLTk2H1XzE_zL298nQZits29Dg");'></div>
+<div class="absolute top-2 right-2 bg-black/60 backdrop-blur-sm text-white text-xs px-2 py-1 rounded">PPTX</div>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-start">
+<h4 class="text-[#111218] dark:text-white text-base font-semibold leading-tight line-clamp-2 group-hover:text-primary transition-colors cursor-pointer">Database Design Fundamentals</h4>
+<button class="text-[#616889] hover:text-primary"><span class="material-symbols-outlined text-[20px]">more_vert</span></button>
+</div>
+<div class="flex items-center gap-3 text-[#616889] dark:text-[#9ca3af] text-xs font-normal mt-1">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">visibility</span> 210</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">calendar_today</span> 1mo ago</span>
+</div>
+</div>
+</div>
+<!-- Card 5 -->
+<div class="group flex flex-col gap-3 pb-3 hover:-translate-y-1 transition-transform duration-300">
+<div class="relative w-full aspect-video rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-800">
+<div class="w-full h-full bg-center bg-no-repeat bg-cover group-hover:scale-105 transition-transform duration-500" data-alt="Abstract circuit board pattern in orange and black" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAxZsO1aomzB3-zkYT7W08hXLjDn_fbrqnGPtA7IKTWMYbleOiBPPpO_T9EToN5njhJ-ytF4g9s1FKe8vbYoPMKenAViyY5Y3ezzhskAHwlIHKBiMrPOjoMdpGiXIWzyIhsPbAUmTsiDStjYM3fFQUElScVT3lrrNM9xg-3uUVnjDk-R6b_AGXKWRW1L-YATd7hJGZgaT2_r-cz0cO4V-LyvUtRS7kjf3fJcIoASNo2-PlLAyybRw6DNjqd1xdKwnXKcRNItDr5qo0");'></div>
+<div class="absolute top-2 right-2 bg-black/60 backdrop-blur-sm text-white text-xs px-2 py-1 rounded">PDF</div>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-start">
+<h4 class="text-[#111218] dark:text-white text-base font-semibold leading-tight line-clamp-2 group-hover:text-primary transition-colors cursor-pointer">OS Concepts Summary</h4>
+<button class="text-[#616889] hover:text-primary"><span class="material-symbols-outlined text-[20px]">more_vert</span></button>
+</div>
+<div class="flex items-center gap-3 text-[#616889] dark:text-[#9ca3af] text-xs font-normal mt-1">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">visibility</span> 560</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">calendar_today</span> 2mo ago</span>
+</div>
+</div>
+</div>
+<!-- Card 6 -->
+<div class="group flex flex-col gap-3 pb-3 hover:-translate-y-1 transition-transform duration-300">
+<div class="relative w-full aspect-video rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-800">
+<div class="w-full h-full bg-center bg-no-repeat bg-cover group-hover:scale-105 transition-transform duration-500" data-alt="Laptop screen showing HTML and CSS code" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBJvyDG58K6EfJ2BhHE-YbyxIedwpd3VaLZbhzACZZsT1LJ6ChCKmmt-39Z-98BsyfVvQZj6AUS33hb6Lg5kqhWlFa2dUc-iQf_HhXwHs5_GzrZjDrocZo9qUbHhDq_RpVe4EVAfLSMyPF8PdZ1cHWArRUH9Tihv-s303YMUahos3RsbXJuSaqWxmoSQsY0kqZK9R2DOtvE62yMY7CaS0aMtx7JpfndV3_VJ9iVDSL-GIaMAU2mubTgY7SD65ai_Rq_3Vr9wJkGmOE");'></div>
+<div class="absolute top-2 right-2 bg-black/60 backdrop-blur-sm text-white text-xs px-2 py-1 rounded">PDF</div>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-start">
+<h4 class="text-[#111218] dark:text-white text-base font-semibold leading-tight line-clamp-2 group-hover:text-primary transition-colors cursor-pointer">Web Development Basics</h4>
+<button class="text-[#616889] hover:text-primary"><span class="material-symbols-outlined text-[20px]">more_vert</span></button>
+</div>
+<div class="flex items-center gap-3 text-[#616889] dark:text-[#9ca3af] text-xs font-normal mt-1">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">visibility</span> 430</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">calendar_today</span> 3mo ago</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination (Added for completeness) -->
+<div class="p-6 border-t border-[#dbdde6] dark:border-[#2a2e42] flex justify-center">
+<div class="flex gap-2">
+<button class="w-9 h-9 flex items-center justify-center rounded-lg border border-[#dbdde6] dark:border-[#374151] hover:bg-[#f0f1f4] dark:hover:bg-[#363b54] text-[#616889] dark:text-[#9ca3af]">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="w-9 h-9 flex items-center justify-center rounded-lg bg-primary text-white text-sm font-medium">1</button>
+<button class="w-9 h-9 flex items-center justify-center rounded-lg border border-[#dbdde6] dark:border-[#374151] hover:bg-[#f0f1f4] dark:hover:bg-[#363b54] text-[#111218] dark:text-white text-sm font-medium">2</button>
+<button class="w-9 h-9 flex items-center justify-center rounded-lg border border-[#dbdde6] dark:border-[#374151] hover:bg-[#f0f1f4] dark:hover:bg-[#363b54] text-[#111218] dark:text-white text-sm font-medium">3</button>
+<span class="w-9 h-9 flex items-center justify-center text-[#616889] dark:text-[#9ca3af]">...</span>
+<button class="w-9 h-9 flex items-center justify-center rounded-lg border border-[#dbdde6] dark:border-[#374151] hover:bg-[#f0f1f4] dark:hover:bg-[#363b54] text-[#616889] dark:text-[#9ca3af]">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

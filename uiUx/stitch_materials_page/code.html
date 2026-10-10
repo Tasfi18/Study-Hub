@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>StudyShare - Browse Materials</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2b4bee",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101322",
+                        "surface-dark": "#1e2130", 
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for sidebar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; 
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background: #374151;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 bg-white dark:bg-surface-dark px-4 lg:px-10 py-3 shadow-sm">
+<div class="flex items-center gap-4 text-slate-900 dark:text-white">
+<div class="size-8 text-primary flex items-center justify-center bg-primary/10 rounded-lg">
+<span class="material-symbols-outlined text-2xl">school</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-xl font-bold leading-tight tracking-[-0.015em]">StudyShare</h2>
+</div>
+<!-- Desktop Nav -->
+<div class="hidden md:flex flex-1 justify-end gap-8 items-center">
+<div class="flex items-center gap-9">
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium leading-normal transition-colors" href="#">Browse</a>
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium leading-normal transition-colors" href="#">Community</a>
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium leading-normal transition-colors" href="#">Profile</a>
+</div>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-primary hover:bg-blue-700 transition-colors text-white text-sm font-bold leading-normal tracking-[0.015em] shadow-md shadow-blue-500/20">
+<span class="truncate">Upload</span>
+</button>
+</div>
+<!-- Mobile Menu Icon -->
+<button class="md:hidden text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</header>
+<div class="layout-container flex grow flex-col w-full max-w-[1440px] mx-auto px-4 lg:px-8 py-6">
+<div class="flex flex-col lg:flex-row gap-8">
+<!-- Sidebar Filters (Left Column) -->
+<aside class="w-full lg:w-64 shrink-0 flex flex-col gap-6">
+<div class="flex items-center justify-between lg:hidden">
+<h2 class="text-lg font-bold">Filters</h2>
+<button class="text-primary text-sm font-medium">Reset All</button>
+</div>
+<div class="hidden lg:flex items-center justify-between mb-2">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white">Filters</h2>
+<button class="text-primary hover:text-blue-600 text-sm font-medium transition-colors">Reset</button>
+</div>
+<!-- Filter Sections -->
+<div class="flex flex-col gap-4">
+<!-- Subject Accordion -->
+<details class="group flex flex-col rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-surface-dark overflow-hidden" open="">
+<summary class="flex cursor-pointer items-center justify-between gap-2 px-4 py-3 bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors select-none">
+<p class="text-slate-900 dark:text-white text-sm font-semibold">Subject</p>
+<span class="material-symbols-outlined text-slate-500 transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="p-4 flex flex-col gap-3">
+<label class="flex items-center gap-3 cursor-pointer group/item">
+<input class="rounded border-slate-300 text-primary focus:ring-primary h-4 w-4 bg-slate-50 dark:bg-slate-800 dark:border-slate-600" type="checkbox"/>
+<span class="text-sm text-slate-600 dark:text-slate-300 group-hover/item:text-primary transition-colors">Mathematics (124)</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group/item">
+<input class="rounded border-slate-300 text-primary focus:ring-primary h-4 w-4 bg-slate-50 dark:bg-slate-800 dark:border-slate-600" type="checkbox"/>
+<span class="text-sm text-slate-600 dark:text-slate-300 group-hover/item:text-primary transition-colors">Computer Science (89)</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group/item">
+<input class="rounded border-slate-300 text-primary focus:ring-primary h-4 w-4 bg-slate-50 dark:bg-slate-800 dark:border-slate-600" type="checkbox"/>
+<span class="text-sm text-slate-600 dark:text-slate-300 group-hover/item:text-primary transition-colors">History (45)</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group/item">
+<input class="rounded border-slate-300 text-primary focus:ring-primary h-4 w-4 bg-slate-50 dark:bg-slate-800 dark:border-slate-600" type="checkbox"/>
+<span class="text-sm text-slate-600 dark:text-slate-300 group-hover/item:text-primary transition-colors">Physics (32)</span>
+</label>
+<button class="text-left text-xs font-medium text-primary mt-1 hover:underline">Show more +</button>
+</div>
+</details>
+<!-- Material Type -->
+<details class="group flex flex-col rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-surface-dark overflow-hidden" open="">
+<summary class="flex cursor-pointer items-center justify-between gap-2 px-4 py-3 bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors select-none">
+<p class="text-slate-900 dark:text-white text-sm font-semibold">Material Type</p>
+<span class="material-symbols-outlined text-slate-500 transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="p-4 flex flex-col gap-3">
+<label class="flex items-center gap-3 cursor-pointer group/item">
+<input checked="" class="rounded border-slate-300 text-primary focus:ring-primary h-4 w-4 bg-slate-50 dark:bg-slate-800 dark:border-slate-600" type="checkbox"/>
+<span class="text-sm text-slate-600 dark:text-slate-300 group-hover/item:text-primary transition-colors">Lecture Notes</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group/item">
+<input class="rounded border-slate-300 text-primary focus:ring-primary h-4 w-4 bg-slate-50 dark:bg-slate-800 dark:border-slate-600" type="checkbox"/>
+<span class="text-sm text-slate-600 dark:text-slate-300 group-hover/item:text-primary transition-colors">Past Exams</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group/item">
+<input class="rounded border-slate-300 text-primary focus:ring-primary h-4 w-4 bg-slate-50 dark:bg-slate-800 dark:border-slate-600" type="checkbox"/>
+<span class="text-sm text-slate-600 dark:text-slate-300 group-hover/item:text-primary transition-colors">Summaries</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group/item">
+<input class="rounded border-slate-300 text-primary focus:ring-primary h-4 w-4 bg-slate-50 dark:bg-slate-800 dark:border-slate-600" type="checkbox"/>
+<span class="text-sm text-slate-600 dark:text-slate-300 group-hover/item:text-primary transition-colors">Essays</span>
+</label>
+</div>
+</details>
+<!-- Rating Filter -->
+<div class="flex flex-col rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-surface-dark overflow-hidden p-4 gap-3">
+<p class="text-slate-900 dark:text-white text-sm font-semibold">Rating</p>
+<label class="flex items-center gap-2 cursor-pointer group hover:bg-slate-50 dark:hover:bg-slate-800/50 p-1 -ml-1 rounded transition-colors">
+<input class="text-primary focus:ring-primary border-slate-300 bg-transparent" name="rating" type="radio"/>
+<div class="flex text-amber-400">
+<span class="material-symbols-outlined text-sm fill-[1]">star</span>
+<span class="material-symbols-outlined text-sm fill-[1]">star</span>
+<span class="material-symbols-outlined text-sm fill-[1]">star</span>
+<span class="material-symbols-outlined text-sm fill-[1]">star</span>
+<span class="material-symbols-outlined text-sm fill-[1]">star</span>
+</div>
+<span class="text-xs text-slate-500 font-medium">5.0</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer group hover:bg-slate-50 dark:hover:bg-slate-800/50 p-1 -ml-1 rounded transition-colors">
+<input class="text-primary focus:ring-primary border-slate-300 bg-transparent" name="rating" type="radio"/>
+<div class="flex text-amber-400">
+<span class="material-symbols-outlined text-sm fill-[1]">star</span>
+<span class="material-symbols-outlined text-sm fill-[1]">star</span>
+<span class="material-symbols-outlined text-sm fill-[1]">star</span>
+<span class="material-symbols-outlined text-sm fill-[1]">star</span>
+<span class="material-symbols-outlined text-sm text-slate-300">star</span>
+</div>
+<span class="text-xs text-slate-500 font-medium">&amp; Up</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer group hover:bg-slate-50 dark:hover:bg-slate-800/50 p-1 -ml-1 rounded transition-colors">
+<input class="text-primary focus:ring-primary border-slate-300 bg-transparent" name="rating" type="radio"/>
+<div class="flex text-amber-400">
+<span class="material-symbols-outlined text-sm fill-[1]">star</span>
+<span class="material-symbols-outlined text-sm fill-[1]">star</span>
+<span class="material-symbols-outlined text-sm fill-[1]">star</span>
+<span class="material-symbols-outlined text-sm text-slate-300">star</span>
+<span class="material-symbols-outlined text-sm text-slate-300">star</span>
+</div>
+<span class="text-xs text-slate-500 font-medium">&amp; Up</span>
+</label>
+</div>
+<!-- Year Slider (Mockup) -->
+<div class="flex flex-col rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-surface-dark overflow-hidden p-4 gap-4">
+<p class="text-slate-900 dark:text-white text-sm font-semibold">Semester Year</p>
+<div class="px-1">
+<input class="w-full h-1 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-primary" max="2024" min="2020" type="range"/>
+<div class="flex justify-between mt-2 text-xs text-slate-500">
+<span>2020</span>
+<span>2024</span>
+</div>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area (Right Column) -->
+<main class="flex-1 flex flex-col min-w-0">
+<!-- Hero Search Section -->
+<div class="bg-white dark:bg-surface-dark rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-6 mb-6">
+<label class="flex flex-col w-full mb-4">
+<div class="flex w-full items-stretch rounded-lg h-12 relative">
+<div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-400">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex w-full flex-1 rounded-lg text-slate-900 dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/20 border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-800 placeholder:text-slate-400 pl-10 pr-4 text-base font-normal leading-normal transition-shadow" placeholder="Search by course code, subject, or topic..." value=""/>
+<button class="absolute right-1 top-1 bottom-1 bg-primary hover:bg-blue-600 text-white rounded px-4 text-sm font-bold transition-colors">Search</button>
+</div>
+</label>
+<!-- Chips -->
+<div class="flex gap-2 flex-wrap items-center">
+<span class="text-xs font-semibold text-slate-500 uppercase tracking-wider mr-1">Trending:</span>
+<button class="flex h-7 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 px-3 transition-colors">
+<p class="text-slate-700 dark:text-slate-200 text-xs font-medium">Calculus II</p>
+</button>
+<button class="flex h-7 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 px-3 transition-colors">
+<p class="text-slate-700 dark:text-slate-200 text-xs font-medium">Biology 101</p>
+</button>
+<button class="flex h-7 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 px-3 transition-colors">
+<p class="text-slate-700 dark:text-slate-200 text-xs font-medium">Newest</p>
+</button>
+<button class="flex h-7 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 px-3 transition-colors">
+<p class="text-slate-700 dark:text-slate-200 text-xs font-medium">Exams</p>
+</button>
+</div>
+</div>
+<!-- Utility Bar -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+<p class="text-slate-600 dark:text-slate-400 text-sm font-medium"><span class="text-slate-900 dark:text-white font-bold">1,204</span> results found</p>
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-2">
+<label class="text-sm text-slate-500 font-medium" for="sort">Sort by:</label>
+<div class="relative">
+<select class="appearance-none bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 py-1.5 pl-3 pr-8 rounded text-sm font-medium focus:outline-none focus:ring-1 focus:ring-primary cursor-pointer" id="sort">
+<option>Relevance</option>
+<option>Date Uploaded</option>
+<option>Most Downloaded</option>
+<option>Highest Rated</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-slate-500">
+<span class="material-symbols-outlined text-sm">expand_more</span>
+</div>
+</div>
+</div>
+<div class="flex items-center bg-white dark:bg-surface-dark rounded border border-slate-200 dark:border-slate-700 p-0.5">
+<button class="p-1 rounded hover:bg-slate-100 dark:hover:bg-slate-700 text-primary">
+<span class="material-symbols-outlined text-[20px]">grid_view</span>
+</button>
+<button class="p-1 rounded hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-400">
+<span class="material-symbols-outlined text-[20px]">list</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Material Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 mb-8">
+<!-- Card 1 -->
+<article class="group flex flex-col bg-white dark:bg-surface-dark rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden hover:shadow-lg hover:border-primary/30 transition-all duration-300">
+<div class="h-40 bg-slate-100 dark:bg-slate-800 relative flex items-center justify-center overflow-hidden">
+<!-- Badge -->
+<span class="absolute top-3 left-3 bg-white/90 dark:bg-slate-900/90 text-primary backdrop-blur-sm text-xs font-bold px-2 py-1 rounded shadow-sm z-10">MATH 101</span>
+<!-- Image -->
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Abstract geometric shapes representing calculus mathematics" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDI3QlFl9KVuUeJecb8HpCfBQBrRut-z-nNmGVRrNRGtFWID3FX2eAAvzEDInRkmYPJY_Q7oQxcrh3lxvAAcKWBMWnG5opHIk2M5vPd60qfB3pRS4eWZpVsffGzVaD6iqH8n18AbCbA-6uGk3gb6zJhf2pRLWUmaDBgkHfK9cRsAybqcNnOhUYgwLey7cof-8WDpUwW7QimiTehCGSc3YEAO9C2If5nuVB2d38OvbdQIRMnuMIkHG14LnY9aXNx9vmHkQSGqE8XJjE"/>
+<div class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<div class="p-4 flex flex-col flex-1">
+<div class="flex items-start justify-between gap-2 mb-2">
+<h3 class="text-slate-900 dark:text-white font-bold text-lg leading-snug line-clamp-2 group-hover:text-primary transition-colors">Introduction to Calculus - Midterm Review Notes</h3>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-xs mb-3 font-medium">Lecture Notes • Fall 2023</p>
+<!-- Tags -->
+<div class="flex flex-wrap gap-1.5 mb-4">
+<span class="bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2 py-0.5 rounded text-[10px] font-medium border border-slate-100 dark:border-slate-700">Derivatives</span>
+<span class="bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2 py-0.5 rounded text-[10px] font-medium border border-slate-100 dark:border-slate-700">Limits</span>
+</div>
+<div class="mt-auto pt-4 border-t border-slate-100 dark:border-slate-700 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<img class="w-6 h-6 rounded-full object-cover ring-2 ring-white dark:ring-surface-dark" data-alt="Portrait of Jane Doe" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMrkZSsbcQpC8KjISHEWlztsuMS2AepcWHgBvusa88QUEw2EjhLE34T01IYuOOhqX9iJVfb0DZ2HeG8Dw1bn9b_5_dVSDxqey8EBYqo7UJCXOpvLHo18zYePaQvZbYkRLWCgW9G3VvOoA6uwNTTDLn7W42pUOEMSWB7q0ff6FOqvJyv5gmqtd_JbWosqIKpP0f8ydrKBEOp3wygmWk6Jo7i1qBC-iPUVEoGjKW4Djho4uciT61dV0vlSDZfRWL7F6Fsmcfn8W5Z8M"/>
+<span class="text-xs text-slate-500 dark:text-slate-400 truncate max-w-[80px]">@JaneDoe</span>
+</div>
+<div class="flex items-center gap-3 text-xs font-semibold">
+<div class="flex items-center text-amber-500 gap-1">
+<span class="material-symbols-outlined text-[16px] fill-[1]">star</span>
+<span>4.8</span>
+</div>
+<div class="flex items-center text-slate-400 gap-1">
+<span class="material-symbols-outlined text-[16px]">download</span>
+<span>1.2k</span>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="group flex flex-col bg-white dark:bg-surface-dark rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden hover:shadow-lg hover:border-primary/30 transition-all duration-300">
+<div class="h-40 bg-slate-100 dark:bg-slate-800 relative flex items-center justify-center overflow-hidden">
+<span class="absolute top-3 left-3 bg-white/90 dark:bg-slate-900/90 text-purple-600 backdrop-blur-sm text-xs font-bold px-2 py-1 rounded shadow-sm z-10">HIST 202</span>
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Old paper texture with historical writing" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVRb-i4tejc5bWys8qyiOE1ZVixw5ZsuGp5upvdys0-9m19OZZf996aRPjyEOlxI0_-H3CPG5HJoJbwTPMwAk571UiNDBmIWbRv_4s1frszcY9TxeD2VOHfWRxCMtnoXzcVcrim6znCEZksnhILyYehBQRmvENSr5_S1Bw9VZm75yj34H9_JRa2Kj9XZJT5oX1rd-XgHA4ZeKUaHGUHGRBUkFJ3wpnKXYg6P0n7kMvE7rMsAPoIQCsV1cfdAOHm3AyY4xRLfSqEMI"/>
+</div>
+<div class="p-4 flex flex-col flex-1">
+<div class="flex items-start justify-between gap-2 mb-2">
+<h3 class="text-slate-900 dark:text-white font-bold text-lg leading-snug line-clamp-2 group-hover:text-primary transition-colors">World War II Comprehensive Study Guide</h3>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-xs mb-3 font-medium">Study Guide • Spring 2023</p>
+<div class="flex flex-wrap gap-1.5 mb-4">
+<span class="bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2 py-0.5 rounded text-[10px] font-medium border border-slate-100 dark:border-slate-700">European Front</span>
+<span class="bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2 py-0.5 rounded text-[10px] font-medium border border-slate-100 dark:border-slate-700">Timeline</span>
+</div>
+<div class="mt-auto pt-4 border-t border-slate-100 dark:border-slate-700 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center text-[10px] font-bold">MK</div>
+<span class="text-xs text-slate-500 dark:text-slate-400 truncate max-w-[80px]">@MikeK</span>
+</div>
+<div class="flex items-center gap-3 text-xs font-semibold">
+<div class="flex items-center text-amber-500 gap-1">
+<span class="material-symbols-outlined text-[16px] fill-[1]">star</span>
+<span>4.5</span>
+</div>
+<div class="flex items-center text-slate-400 gap-1">
+<span class="material-symbols-outlined text-[16px]">download</span>
+<span>850</span>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 3 -->
+<article class="group flex flex-col bg-white dark:bg-surface-dark rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden hover:shadow-lg hover:border-primary/30 transition-all duration-300">
+<div class="h-40 bg-slate-100 dark:bg-slate-800 relative flex items-center justify-center overflow-hidden">
+<span class="absolute top-3 left-3 bg-white/90 dark:bg-slate-900/90 text-green-600 backdrop-blur-sm text-xs font-bold px-2 py-1 rounded shadow-sm z-10">BIO 305</span>
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Microscope slide view of plant cells" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqJFfBmHxwIeoBrE1gIPSTJSFr6uU3M_Ph2XoXmC11NqI3BepG9tUw8b7UDMTXJmep_JIj7J_JWqMbT8_EjRXXq5cWw-RNUC_7_xg-vcqMt0AGqKUDQcO1QtxVCWPNCLCPFDi5hEAAl4a2iRlT9ySv1VAvy8Iv5OlJn2zbEg00Fc5u9hZG3UnLYUy7YGwCzuvEOAnr7pdDtBEIu9xmk864H4q2hNOHLW8jGYVS-JH85u1sqHNvwt7dGcVXfkStSr0fiygh6U0BOqA"/>
+</div>
+<div class="p-4 flex flex-col flex-1">
+<div class="flex items-start justify-between gap-2 mb-2">
+<h3 class="text-slate-900 dark:text-white font-bold text-lg leading-snug line-clamp-2 group-hover:text-primary transition-colors">Cellular Respiration Lab Report Template</h3>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-xs mb-3 font-medium">Lab Report • Fall 2023</p>
+<div class="flex flex-wrap gap-1.5 mb-4">
+<span class="bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2 py-0.5 rounded text-[10px] font-medium border border-slate-100 dark:border-slate-700">Lab</span>
+<span class="bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2 py-0.5 rounded text-[10px] font-medium border border-slate-100 dark:border-slate-700">Cells</span>
+</div>
+<div class="mt-auto pt-4 border-t border-slate-100 dark:border-slate-700 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<img class="w-6 h-6 rounded-full object-cover ring-2 ring-white dark:ring-surface-dark" data-alt="Portrait of Sarah Lee" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFKnDfXMfazmIvV8wHVyL6WfvqbAuRCGDpYG9v9fR9fyNMNqkeHxKB_HkuzbGm-9vfQn8V6oH7VUAVuFEsoBNTtZO_sYXK2ORcuILsSzTsGqtOyH7xnXzeLZF1lOuE_BlMM8bDrB7Cjavbfs_CXhge_-72QDjV6EdLOtFsFQ-iToe80EMKqcj90iWK7G9m4Sym78TMhg5UNwUfhzHlHs1ruDyYGfHrfexFKEas1PJmb7CL9MdjSVkGcY6QKGeM2PRBQjDuoM0aO9g"/>
+<span class="text-xs text-slate-500 dark:text-slate-400 truncate max-w-[80px]">@SarahLee</span>
+</div>
+<div class="flex items-center gap-3 text-xs font-semibold">
+<div class="flex items-center text-amber-500 gap-1">
+<span class="material-symbols-outlined text-[16px] fill-[1]">star</span>
+<span>5.0</span>
+</div>
+<div class="flex items-center text-slate-400 gap-1">
+<span class="material-symbols-outlined text-[16px]">download</span>
+<span>2.3k</span>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 4 -->
+<article class="group flex flex-col bg-white dark:bg-surface-dark rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden hover:shadow-lg hover:border-primary/30 transition-all duration-300">
+<div class="h-40 bg-slate-100 dark:bg-slate-800 relative flex items-center justify-center overflow-hidden">
+<span class="absolute top-3 left-3 bg-white/90 dark:bg-slate-900/90 text-red-600 backdrop-blur-sm text-xs font-bold px-2 py-1 rounded shadow-sm z-10">CS 201</span>
+<div class="w-full h-full bg-gradient-to-br from-slate-200 to-slate-300 dark:from-slate-700 dark:to-slate-800 flex items-center justify-center group-hover:scale-105 transition-transform duration-500" data-alt="Code syntax highlighting abstract pattern">
+<span class="material-symbols-outlined text-4xl text-slate-400 dark:text-slate-500">code</span>
+</div>
+</div>
+<div class="p-4 flex flex-col flex-1">
+<div class="flex items-start justify-between gap-2 mb-2">
+<h3 class="text-slate-900 dark:text-white font-bold text-lg leading-snug line-clamp-2 group-hover:text-primary transition-colors">Algorithms &amp; Data Structures Cheatsheet</h3>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-xs mb-3 font-medium">Cheatsheet • Spring 2024</p>
+<div class="flex flex-wrap gap-1.5 mb-4">
+<span class="bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2 py-0.5 rounded text-[10px] font-medium border border-slate-100 dark:border-slate-700">Java</span>
+<span class="bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2 py-0.5 rounded text-[10px] font-medium border border-slate-100 dark:border-slate-700">Sorting</span>
+</div>
+<div class="mt-auto pt-4 border-t border-slate-100 dark:border-slate-700 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-[10px] font-bold">JD</div>
+<span class="text-xs text-slate-500 dark:text-slate-400 truncate max-w-[80px]">@JohnDev</span>
+</div>
+<div class="flex items-center gap-3 text-xs font-semibold">
+<div class="flex items-center text-amber-500 gap-1">
+<span class="material-symbols-outlined text-[16px] fill-[1]">star</span>
+<span>4.9</span>
+</div>
+<div class="flex items-center text-slate-400 gap-1">
+<span class="material-symbols-outlined text-[16px]">download</span>
+<span>3.1k</span>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 5 -->
+<article class="group flex flex-col bg-white dark:bg-surface-dark rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden hover:shadow-lg hover:border-primary/30 transition-all duration-300">
+<div class="h-40 bg-slate-100 dark:bg-slate-800 relative flex items-center justify-center overflow-hidden">
+<span class="absolute top-3 left-3 bg-white/90 dark:bg-slate-900/90 text-orange-600 backdrop-blur-sm text-xs font-bold px-2 py-1 rounded shadow-sm z-10">ENG 101</span>
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Stack of books and open notebook" src="https://lh3.googleusercontent.com/aida-public/AB6AXuABY1ZOpUkdnzdlUjRPPp2CDgbi5c-rMTLI1uxR2d3zq0-Ktvx9JqwwRRYq_5xrl4IippHQ03z8zfNmobECHEs0Gdgu1jqh2b1e2orqGKCYSFjAT-CA4FVQ4k50stBisxi5LlTmI14Anl8dXx9aAeUFLtWIf_T76i8xhWeNz4VrNFkITZma2i1SCReZe6_GAtBAic-9q6EhcIYLT4yCuENlaoR9vW3eP5Gi-eOj8NfThlYOHrdwZZqVBJVNYe7Pqm7lrM19clMlfFU"/>
+</div>
+<div class="p-4 flex flex-col flex-1">
+<div class="flex items-start justify-between gap-2 mb-2">
+<h3 class="text-slate-900 dark:text-white font-bold text-lg leading-snug line-clamp-2 group-hover:text-primary transition-colors">Hamlet: Character Analysis Essay</h3>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-xs mb-3 font-medium">Essay • Fall 2022</p>
+<div class="flex flex-wrap gap-1.5 mb-4">
+<span class="bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2 py-0.5 rounded text-[10px] font-medium border border-slate-100 dark:border-slate-700">Shakespeare</span>
+<span class="bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2 py-0.5 rounded text-[10px] font-medium border border-slate-100 dark:border-slate-700">Lit</span>
+</div>
+<div class="mt-auto pt-4 border-t border-slate-100 dark:border-slate-700 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<img class="w-6 h-6 rounded-full object-cover ring-2 ring-white dark:ring-surface-dark" data-alt="Portrait of Emma W" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgRq_7MzgOGv-D17aKaKqXuSzfoZc-iIkkqRoNZPmXNcnJ3JEwLhmuOeoKWKfkDlEMcUG5uYA0pTz5Q3mEr9Fnrj5vLe8gzcyhwEbGpMQQ-DT-r0HsQYxHuNZjRqEkcCdEYDBDs5V8sqwF_SGlluzeYPJs6nyTjJ0Hj2AQ7Zbgq-X2G18ZPVFZ49PvjuPpBRwwwzxcJu_NySFkrQb-bxYkmDva6dw7LQUd457KJyFLQc9hwJq4BhXGKisAI1n-c6LnHppgzo6TDEU"/>
+<span class="text-xs text-slate-500 dark:text-slate-400 truncate max-w-[80px]">@EmmaW</span>
+</div>
+<div class="flex items-center gap-3 text-xs font-semibold">
+<div class="flex items-center text-amber-500 gap-1">
+<span class="material-symbols-outlined text-[16px] fill-[1]">star</span>
+<span>4.2</span>
+</div>
+<div class="flex items-center text-slate-400 gap-1">
+<span class="material-symbols-outlined text-[16px]">download</span>
+<span>420</span>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 6 -->
+<article class="group flex flex-col bg-white dark:bg-surface-dark rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden hover:shadow-lg hover:border-primary/30 transition-all duration-300">
+<div class="h-40 bg-slate-100 dark:bg-slate-800 relative flex items-center justify-center overflow-hidden">
+<span class="absolute top-3 left-3 bg-white/90 dark:bg-slate-900/90 text-teal-600 backdrop-blur-sm text-xs font-bold px-2 py-1 rounded shadow-sm z-10">CHEM 102</span>
+<div class="w-full h-full bg-gradient-to-br from-teal-50 to-teal-100 dark:from-slate-800 dark:to-teal-900 flex items-center justify-center group-hover:scale-105 transition-transform duration-500" data-alt="Molecular structure abstract icon">
+<span class="material-symbols-outlined text-4xl text-teal-300 dark:text-teal-700">science</span>
+</div>
+</div>
+<div class="p-4 flex flex-col flex-1">
+<div class="flex items-start justify-between gap-2 mb-2">
+<h3 class="text-slate-900 dark:text-white font-bold text-lg leading-snug line-clamp-2 group-hover:text-primary transition-colors">Organic Chemistry Reactions Summary</h3>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-xs mb-3 font-medium">Summary • Spring 2023</p>
+<div class="flex flex-wrap gap-1.5 mb-4">
+<span class="bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2 py-0.5 rounded text-[10px] font-medium border border-slate-100 dark:border-slate-700">Reactions</span>
+<span class="bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2 py-0.5 rounded text-[10px] font-medium border border-slate-100 dark:border-slate-700">O-Chem</span>
+</div>
+<div class="mt-auto pt-4 border-t border-slate-100 dark:border-slate-700 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center text-[10px] font-bold">AL</div>
+<span class="text-xs text-slate-500 dark:text-slate-400 truncate max-w-[80px]">@AlexL</span>
+</div>
+<div class="flex items-center gap-3 text-xs font-semibold">
+<div class="flex items-center text-amber-500 gap-1">
+<span class="material-symbols-outlined text-[16px] fill-[1]">star</span>
+<span>4.7</span>
+</div>
+<div class="flex items-center text-slate-400 gap-1">
+<span class="material-symbols-outlined text-[16px]">download</span>
+<span>920</span>
+</div>
+</div>
+</div>
+</div>
+</article>
+</div>
+<!-- Pagination -->
+<div class="flex justify-center items-center gap-2 mb-12">
+<button class="flex items-center justify-center w-10 h-10 rounded-lg text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 disabled:opacity-50">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="flex items-center justify-center w-10 h-10 rounded-lg bg-primary text-white font-bold shadow-md shadow-blue-500/20">1</button>
+<button class="flex items-center justify-center w-10 h-10 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium transition-colors">2</button>
+<button class="flex items-center justify-center w-10 h-10 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium transition-colors">3</button>
+<span class="text-slate-400 px-1">...</span>
+<button class="flex items-center justify-center w-10 h-10 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium transition-colors">12</button>
+<button class="flex items-center justify-center w-10 h-10 rounded-lg text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</main>
+</div>
+</div>
+</body></html>

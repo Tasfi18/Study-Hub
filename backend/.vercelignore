@@ -1,0 +1,25 @@
+# Dependencies
+node_modules
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Build outputs
+dist
+
+# Testing
+coverage
+
+# Logs
+*.log
+
+# Documentation
+README.md
+CLEANUP_SUMMARY.md
+VERCEL_DEPLOYMENT.md
+
+# Config files
+.eslintrc.js
+jest.config.js
